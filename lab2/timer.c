@@ -33,15 +33,40 @@ void (timer_int_handler)() {
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  /* printf("%s is not yet implemented!\n", __func__); */
 
-  return 1;
+  // check if timer is either 0, 1 or 2
+  if (timer < 0 || timer > 2) return 1;
+  if (st == NULL) return 1;
+
+  // prepare to send a read back command to controle reg
+  unsigned char cmd = (TIMER_RB_CMD | TIMER_RB_STATUS_ | TIMER_RB_SEL(timer));
+
+  // sending the command to the timer controller
+  sys_outb(TIMER_CTRL, cmd);
+
+  uint8_t timer_addr = 0x40 + timer;
+  printf("timer address = %x\n", timer_addr);
+  util_sys_inb(timer_addr, st);
+
+
+  // success
+  return 0;
 }
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  /* printf("%s is not yet implemented!\n", __func__); */
+  union timer_status_field_val conf;
 
-  return 1;
+  // todo
+
+
+
+
+  if (timer_print_config(timer, field, conf)) return 1;
+
+  //success
+  return 0;
 }
