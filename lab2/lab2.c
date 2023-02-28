@@ -32,6 +32,9 @@ int main(int argc, char *argv[]) {
 int(timer_test_read_config)(uint8_t timer, enum timer_status_field field) {
   /* To be implemented by the students */
   /* printf("%s is not yet implemented!\n", __func__); */
+
+  // to test type lcom_run lab2 "time <0,1,2> <frequency> -t 0"
+
   unsigned char st = 0;
   if (timer_get_conf(timer, &st)) return 1;
   if (timer_display_conf(timer, st, field)) return 1;

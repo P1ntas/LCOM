@@ -8,6 +8,8 @@ int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
 
   // LSB -> least-significant bits
   // this function should update (*lsb) with the 8 least-significant bits of (val)
+  if (lsb == NULL) return 1;
+
   *lsb = val;
   return 0;
 }
@@ -19,6 +21,8 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
   // MSB -> most significant bits
   // this function should update (*msb) with the 8 most significant bits of (val)
   // to do this, we have to right shift 8 bits to (val)
+
+  if (msb == NULL) return 1;
 
   uint16_t temp = val;
   *msb = (temp >> 8);
