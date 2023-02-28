@@ -76,13 +76,13 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
       break;
     case tsf_initial:
       //todo
-      // finds the the timer value init value (LSB/MSB/LSB and MSB/invalid)
+      // finds the the timer value init value (LSB/MSB/LSB and MSB/invalid), bits 4, 5 of st are responsible for it
 
       config.in_mode = (st & TIMER_LSB_MSB) >> 4;
       break;
     case tsf_mode:
       //todo
-      // find the timer counting/operating mode, bit 1, 2, 3 of st are responsible for it
+      // find the timer counting/operating mode, bits 1, 2, 3 of st are responsible for it
 
       config.count_mode = (st & (BIT(1) | BIT(2) | BIT(3))) >> 1;
       if (config.count_mode == 0x06) config.count_mode = 0x02; // exception for case 110*
@@ -91,9 +91,9 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
       break;
     case tsf_base:
       //todo
-      // find the timer counting base, bits 1 and 2 of st are responsible for it
+      // find the timer counting base, bit 1 of st are responsible for it
 
-      config.bcd = (st & (BIT(1)|BIT(2)));
+      config.bcd = (st & TIMER_BCD);
       break;
   }
 
