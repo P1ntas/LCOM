@@ -9,9 +9,70 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   /* To be implemented by the students */
   //printf("%s is not yet implemented!\n", __func__);
 
+  // check if timer is either 0, 1 or 2
 
+  if (timer < 0 || timer > 2) return 1;
 
-  return 1;
+  // check if frequency is valid  
+
+  if (freq > TIMER_FREQ) return 1;
+
+  // check the status before operate
+
+  unsigned char st = 0;
+  if (timer_get_conf(timer, &st)) return 1;
+
+  // prepare the control word
+
+  unsigned char ctrl = 0;
+  switch (timer)
+  {
+  case 0:
+    ctrl |= TIMER_SEL0;
+    break;
+
+  case 1:
+    ctrl |= TIMER_SEL1;
+    break;
+
+  case 2:
+    ctrl |= TIMER_SEL2;
+    break;
+  }
+
+  // preserve the 4 LSB of the status
+
+  uint8_t mask = BIT(0) | BIT(1) | BIT(2) | BIT(3);
+  ctrl = ctrl | TIMER_LSB_MSB | (st & mask);
+
+  // send the control word to the timer controller
+  if (sys_outb(TIMER_CTRL, ctrl)) return 1;
+
+  // counter_init = clock/freq
+  uint16_t counter_init = (uint16_t)(TIMER_FREQ / freq);
+
+  int timer_port = TIMER_0 + timer;
+
+  uint8_t lsb = 0, msb = 0;
+
+  // Split the 16 bits word in two bytes
+
+  if (util_get_LSB(counter_init, &lsb)) {
+    printf("error in util_get_LSB\n");
+    return 1;
+  }
+
+  if (util_get_MSB(counter_init, &msb)) {
+    printf("error in util_get_MSB\n");
+    return 1;
+  }
+
+  // Write the 8 LSB of the counter
+  if (sys_outb(timer_port, lsb)) return 1;
+  // Write the 8 MSB of the counter
+  if (sys_outb(timer_port, msb)) return 1;
+
+  return 0;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
