@@ -12,6 +12,9 @@
 #define TIMER_FREQ 1193182 /**< @brief clock frequency for timer in PC and AT */
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 
+
+
+
 /* I/O port addresses */
 
 #define TIMER_0    0x40 /**< @brief Timer 0 count register */
@@ -19,7 +22,13 @@
 #define TIMER_2    0x42 /**< @brief Timer 2 count register */
 #define TIMER_CTRL 0x43 /**< @brief Control register */
 
+
+
+
 #define SPEAKER_CTRL 0x61 /**< @brief Register for speaker control  */
+
+
+
 
 /* Timer control */
 
@@ -28,7 +37,6 @@
 #define TIMER_SEL0   0x00              /**< @brief Control Word for Timer 0 */
 #define TIMER_SEL1   BIT(6)            /**< @brief Control Word for Timer 1 */
 #define TIMER_SEL2   BIT(7)            /**< @brief Control Word for Timer 2 */
-#define TIMER_RB_CMD (BIT(7) | BIT(6)) /**< @brief Read Back Command */
 
 /* Register selection: bits 5 and 4 */
 
@@ -46,11 +54,18 @@
 #define TIMER_BCD 0x01 /**< @brief Count in BCD */
 #define TIMER_BIN 0x00 /**< @brief Count in binary */
 
+
 /* READ-BACK COMMAND FORMAT */
 
+#define TIMER_RB_CMD (BIT(7) | BIT(6)) /**< @brief Read Back Command */
 #define TIMER_RB_COUNT_  BIT(5)
 #define TIMER_RB_STATUS_ BIT(4)
 #define TIMER_RB_SEL(n)  BIT((n) + 1)
+
+/* MACROS PARA BOLEANOS */
+
+#define TRUE    1
+#define FALSE   0
 
 /**@}*/
 
