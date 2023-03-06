@@ -5,6 +5,9 @@
 
 #include "i8254.h"
 
+int counter = 0;
+int hook_id = TIMER0_IRQ;
+
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   /* To be implemented by the students */
   //printf("%s is not yet implemented!\n", __func__);
@@ -23,6 +26,7 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   if (timer_get_conf(timer, &st)) return 1;
 
   // prepare the control word
+  // timer select
 
   unsigned char ctrl = 0;
   switch (timer)
@@ -46,16 +50,16 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   ctrl = ctrl | TIMER_LSB_MSB | (st & mask);
 
   // send the control word to the timer controller
+
   if (sys_outb(TIMER_CTRL, ctrl)) return 1;
 
   // counter_init = clock/freq
-  uint16_t counter_init = (uint16_t)(TIMER_FREQ / freq);
 
-  int timer_port = TIMER_0 + timer;
+  uint16_t counter_init = (uint16_t)(TIMER_FREQ / freq);
 
   uint8_t lsb = 0, msb = 0;
 
-  // Split the 16 bits word in two bytes
+  // Split the 16 bits word in two bytes 
 
   if (util_get_LSB(counter_init, &lsb)) {
     printf("error in util_get_LSB\n");
@@ -67,32 +71,47 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
     return 1;
   }
 
+  // port of the timer which will be configured
+
+  int timer_port = TIMER_0 + timer;
+
   // Write the 8 LSB of the counter
+
   if (sys_outb(timer_port, lsb)) return 1;
+
   // Write the 8 MSB of the counter
+
   if (sys_outb(timer_port, msb)) return 1;
 
   return 0;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
-    /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  /* To be implemented by the students */
+  //printf("%s is not yet implemented!\n", __func__);
 
-  return 1;
+  *bit_no = BIT(hook_id);
+  
+  if (sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)) return 1;
+
+  return 0;
+    
 }
 
 int (timer_unsubscribe_int)() {
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
-
-  return 1;
+  /* printf("%s is not yet implemented!\n", __func__); */
+  if(sys_irqrmpolicy(&hook_id)) return 1;
+  
+  return 0;
 }
 
-void (timer_int_handler)() {
+void (timer_int_handler)() { 
   /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  /* printf("%s is not yet implemented!\n", __func__); */
+  counter++;
 }
+
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   /* To be implemented by the students */
@@ -158,10 +177,9 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
       break;
   }
 
-
-
   if (timer_print_config(timer, field, config)) return 1;
 
   //success
+
   return 0;
 }
