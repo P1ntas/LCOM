@@ -32,7 +32,7 @@
 #define KBC_WRITE_CMD   0x60
 
 #define WAIT_KBC        20000
-#define MAX_ATTEMPTS     10
+#define MAX_ATTEMPTS    10
 
 #define ENABLE_DEV      0xF4
 #define DISABLE_DEV     0xF5
