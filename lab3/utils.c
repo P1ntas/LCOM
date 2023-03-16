@@ -2,6 +2,13 @@
 
 #include <stdint.h>
 
+int counter_kbc;
+int counter;
+#ifdef LAB3
+int counter_kbc;
+int counter;
+#endif
+
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
   
   *lsb  = (uint8_t) val; 
@@ -20,8 +27,9 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 int (util_sys_inb)(int port, uint8_t *value) {
   
   uint32_t port_val = (uint32_t) *value;
-
   if (sys_inb(port, &port_val) == 0) {
+    counter_kbc++;
+    counter++;
     *value = (uint8_t) port_val;
     return 0;
   }
