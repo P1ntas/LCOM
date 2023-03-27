@@ -121,7 +121,7 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
   if (timer < 0 || timer > 2) return 1;
   if (st == NULL) return 1;
 
-  // prepare to send a read back command to controle reg
+  // prepare to send a read back command to control reg
   unsigned char cmd = (TIMER_RB_CMD | TIMER_RB_COUNT_ | TIMER_RB_SEL(timer));
 
   // sending the command to the timer controller

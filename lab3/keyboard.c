@@ -7,7 +7,7 @@
 
 
 /* ------ keyboard.c ------ */
-int keyboard_hook_id = 1;
+int keyboard_hook_id = IRQ_KEYBOARD;
 uint8_t scancode = 0;
 
 // subscribe interrupts
@@ -36,5 +36,32 @@ void (kbc_ih)() {
 }
 
 int (keyboard_restore)() {
+
+
+  unsigned char cmd;
+
+  //notify
+  if (write_KBC_command(KBC_IN_CMD, KBC_READ_CMD) != 0) {
+    printf("Error writing command to KBC_IN_CMD\n");
     return 1;
+  }
+  //read
+  if (read_KBC_output(KBC_OUT_CMD, &cmd) != 0) {
+    printf("Error reading OUT_BUF\n");
+    return 1;
+  }
+  //prepare cmd
+  cmd = cmd & ENABLE_INT;
+  //notify
+  if (write_KBC_command(KBC_IN_CMD, KBC_WRITE_CMD) != 0) {
+    printf("Error writing command to KBC_IN_CMD\n");
+    return 1;
+  }
+  //write
+  if (write_KBC_command(KBC_OUT_CMD, cmd) != 0) {
+    printf("Error writing command to KBC_OUT_CMD\n");
+    return 1;
+  }
+  //success
+  return 0;
 }

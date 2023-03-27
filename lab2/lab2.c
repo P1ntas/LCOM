@@ -64,9 +64,7 @@ int(timer_test_int)(uint8_t time) {
   // setting up the timer frequency
 
   const int frequency = 60;
-  timer_set_frequency(0, frequency);
-
-  // a number between 0 and 31 to 
+  // timer_set_frequency(0, frequency);
 
   uint8_t irq_set = 0;
 
