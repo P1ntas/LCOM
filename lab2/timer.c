@@ -99,24 +99,16 @@ int (timer_subscribe_int)(uint8_t *bit_no) {
 }
 
 int (timer_unsubscribe_int)() {
-  /* To be implemented by the students */
-  /* printf("%s is not yet implemented!\n", __func__); */
   if(sys_irqrmpolicy(&hook_id)) return 1;
-  
   return 0;
 }
 
 void (timer_int_handler)() { 
-  /* To be implemented by the students */
-  /* printf("%s is not yet implemented!\n", __func__); */
   counter++;
 }
 
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  /* To be implemented by the students */
-  /* printf("%s is not yet implemented!\n", __func__); */
-
   // check if timer is either 0, 1 or 2
   if (timer < 0 || timer > 2) return 1;
   if (st == NULL) return 1;
@@ -139,40 +131,26 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
 
 int (timer_display_conf)(uint8_t timer, uint8_t st,
                         enum timer_status_field field) {
-  /* To be implemented by the students */
-  /* printf("%s is not yet implemented!\n", __func__); */
 
   union timer_status_field_val config;
 
-  // todo
-  // for each enum of field all/initial/mode/base/ do:
-
   switch (field){
     case tsf_all:
-      //todo
       // copy the st to byte
-
       config.byte = st;
       break;
     case tsf_initial:
-      //todo
       // finds the the timer value init value (LSB/MSB/LSB and MSB/invalid), bits 4, 5 of st are responsible for it
-
       config.in_mode = (st & TIMER_LSB_MSB) >> 4;
       break;
     case tsf_mode:
-      //todo
       // find the timer counting/operating mode, bits 1, 2, 3 of st are responsible for it
-
       config.count_mode = (st & (BIT(1) | BIT(2) | BIT(3))) >> 1;
       if (config.count_mode == 0x06) config.count_mode = 0x02; // exception for case 110*
       if (config.count_mode == 0x07) config.count_mode = 0x03; // exception for case 111*
-
       break;
     case tsf_base:
-      //todo
       // find the timer counting base, bit 1 of st are responsible for it
-
       config.bcd = (st & TIMER_BCD);
       break;
   }

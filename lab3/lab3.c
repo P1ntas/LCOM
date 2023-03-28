@@ -61,12 +61,6 @@ int(kbd_test_scan)() {
               continue;
             }
             code[index] = scancode;
-            if (scancode & MAKE_CODE) {
-              printf("Make code: 0x%02x\n", scancode);
-            }
-            else {
-              printf("Break code: 0x%02x\n", scancode);
-            }
             if (kbd_print_scancode(!(scancode & MAKE_CODE), index + 1, code)) {
               printf("Error printing scancode\n");
               return 1;
@@ -101,34 +95,15 @@ int(kbd_test_poll)() {
       tickdelay(micros_to_ticks(WAIT_KBC));
       continue;
     }
-
-    if (scancode == TWO_BYTES) {
-      code[index] = scancode;
-      index += 1;
-      continue;
-    }
     code[index] = scancode;
-    if (scancode & MAKE_CODE) {
-      printf("Make code: 0x%02x\n", scancode);
-    }
-    else {
-      printf("Break code: 0x%02x\n", scancode);
-    }
-    if (kbd_print_scancode(!(scancode & MAKE_CODE), index + 1, code)) {
-      printf("Error printing scancode\n");
-      return 1;
-      index = 0;
-    }
+    kbd_print_scancode(!(scancode & MAKE_CODE), index + 1, code);
+    index = 0;
   }
-  if (keyboard_restore()) {
-    printf("Error restoring keyboard\n");
-    return 1;
-  }
+  if (keyboard_restore()) return 1;
 
-  if (kbd_print_no_sysinb(no_sys_call)) {
-    printf("Error printing number of sys_inb calls\n");
-    return 1;
-  }
+
+  if (kbd_print_no_sysinb(no_sys_call)) return 1;
+  
 
   return 0;
 }

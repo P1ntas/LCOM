@@ -36,8 +36,6 @@ void (kbc_ih)() {
 }
 
 int (keyboard_restore)() {
-
-
   unsigned char cmd;
 
   //notify
