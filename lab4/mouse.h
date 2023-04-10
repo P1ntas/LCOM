@@ -22,6 +22,8 @@ int (keyboard_restore)();
 
 int write_to_mouse(uint8_t command);
 
-void (mouse_parse_packet)(struct packet* pp);
+void (mouse_check_bytes)();
+
+void (mouse_parse_packet)();
 
 #endif

@@ -1,0 +1,7 @@
+util_sys_inb is implemented!
+The value is effff72b and port is 40!
+timer_get_conf is implemented!
+The timer status is b6: 
+timer_print_config:all timer = 0 conf = 0xb6
+timer_display_conf is implemented!
+timer_test_read_config is implemented!

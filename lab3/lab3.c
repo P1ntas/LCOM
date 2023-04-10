@@ -47,6 +47,7 @@ int(kbd_test_scan)()
     printf("Error: Can not subscribe keyboard!\n");
     return TRUE;
   }
+  
 
   while(scancode != BREAK_ESC) 
   {

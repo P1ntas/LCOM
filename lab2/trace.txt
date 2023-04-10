@@ -1,0 +1,42 @@
+@lcflib.a:2019, lcf_start
+  timer_test_read_config(timer, field)
+> timer_test_read_config(0, timer_status_field::all)
+  @lab2.c:38, timer_test_read_config
+    timer_get_conf(timer, &st)
+  > timer_get_conf(0, addr: 0xeffff72b)
+    @timer.c:150, timer_get_conf
+      sys_outb(TIMER_CTRL, read_back_command)
+    > sys_outb(0x43, 0xe2 = 0b11100010)
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x40, addr: 0xeffff610)
+    < sys_inb(0x40, addr: 0xeffff610 [0xb6 = 0b10110110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff72b and port is 40!"
+    @timer.c:163, timer_get_conf
+      printf("%s is implemented!\n", __func__)
+      "timer_get_conf is implemented!"
+  < timer_get_conf(0, addr: 0xeffff72b [0xb6 = 0b10110110]) -> (ret: 0)
+  @lab2.c:44, timer_test_read_config
+    timer_display_conf(timer, st, field)
+  > timer_display_conf(0, 0xb6 = 0b10110110, timer_status_field::all)
+    @timer.c:178, timer_display_conf
+      printf("The timer status is %x: \n", val.byte)
+      "The timer status is b6: "
+    @timer.c:253, timer_display_conf
+      timer_print_config(timer, field, val)
+    > timer_print_config(0, timer_status_field::all, timer_status_field_val::byte = 0xb6 = 0b10110110)
+      "timer_print_config:all timer = 0 conf = 0xb6"
+    < timer_print_config(...) -> (ret: 0)
+    @timer.c:259, timer_display_conf
+      printf("%s is implemented!\n", __func__)
+      "timer_display_conf is implemented!"
+  < timer_display_conf(0, 0xb6 = 0b10110110, timer_status_field::all) -> (ret: 0)
+  @lab2.c:50, timer_test_read_config
+    printf("%s is implemented!\n", __func__)
+    "timer_test_read_config is implemented!"
+< timer_test_read_config(0, timer_status_field::all) -> (ret: 0)

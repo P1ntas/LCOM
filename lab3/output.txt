@@ -1,0 +1,475 @@
+keyboard_subscribe_interrupts is implemented!
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 156!
+9c, breakcode!
+Breakcode: 0x9c
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 31!
+1f, makecode!
+Makecode: 0x1f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 159!
+9f, breakcode!
+Breakcode: 0x9f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 30!
+1e, makecode!
+Makecode: 0x1e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 158!
+9e, breakcode!
+Breakcode: 0x9e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 16!
+10, makecode!
+Makecode: 0x10
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 17!
+11, makecode!
+Makecode: 0x11
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 144!
+90, breakcode!
+Breakcode: 0x90
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 145!
+91, breakcode!
+Breakcode: 0x91
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 31!
+1f, makecode!
+Makecode: 0x1f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 58!
+3a, makecode!
+Makecode: 0x3a
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 37!
+25, makecode!
+Makecode: 0x25
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 159!
+9f, breakcode!
+Breakcode: 0x9f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 186!
+ba, breakcode!
+Breakcode: 0xba
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 165!
+a5, breakcode!
+Breakcode: 0xa5
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 49!
+31, makecode!
+Makecode: 0x31
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 177!
+b1, breakcode!
+Breakcode: 0xb1
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 30!
+1e, makecode!
+Makecode: 0x1e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 37!
+25, makecode!
+Makecode: 0x25
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 36!
+24, makecode!
+Makecode: 0x24
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 164!
+a4, breakcode!
+Breakcode: 0xa4
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 165!
+a5, breakcode!
+Breakcode: 0xa5
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 31!
+1f, makecode!
+Makecode: 0x1f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 49!
+31, makecode!
+Makecode: 0x31
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 158!
+9e, breakcode!
+Breakcode: 0x9e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 159!
+9f, breakcode!
+Breakcode: 0x9f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 177!
+b1, breakcode!
+Breakcode: 0xb1
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 37!
+25, makecode!
+Makecode: 0x25
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 36!
+24, makecode!
+Makecode: 0x24
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 164!
+a4, breakcode!
+Breakcode: 0xa4
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 165!
+a5, breakcode!
+Breakcode: 0xa5
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 16!
+10, makecode!
+Makecode: 0x10
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 144!
+90, breakcode!
+Breakcode: 0x90
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 32!
+20, makecode!
+Makecode: 0x20
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 35!
+23, makecode!
+Makecode: 0x23
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 36!
+24, makecode!
+Makecode: 0x24
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 164!
+a4, breakcode!
+Breakcode: 0xa4
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 31!
+1f, makecode!
+Makecode: 0x1f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 163!
+a3, breakcode!
+Breakcode: 0xa3
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 159!
+9f, breakcode!
+Breakcode: 0x9f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 160!
+a0, breakcode!
+Breakcode: 0xa0
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 35!
+23, makecode!
+Makecode: 0x23
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 30!
+1e, makecode!
+Makecode: 0x1e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 31!
+1f, makecode!
+Makecode: 0x1f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 163!
+a3, breakcode!
+Breakcode: 0xa3
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 159!
+9f, breakcode!
+Breakcode: 0x9f
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 158!
+9e, breakcode!
+Breakcode: 0x9e
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 1!
+01, makecode!
+Makecode: 0x01
+util_sys_inb is implemented!
+The value is effff60f and port is 64!
+read_KBC_status is implemented!
+util_sys_inb is implemented!
+The value is 822fe48 and port is 60!
+kbc_ih is implemented, scancode: 129!
+81, breakcode!
+Breakcode: 0x81
+keyboard_unsubscribe_interrupts is implemented!
+sys_inb_calls: 118

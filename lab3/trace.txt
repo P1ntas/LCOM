@@ -1,0 +1,2320 @@
+@lcflib.a:2019, lcf_start
+  kbd_test_scan()
+  @keyboard.c:22, keyboard_subscribe_interrupts
+    sys_irqsetpolicy(IRQ_KEYBOARD, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id_keyboard)
+  > sys_irqsetpolicy(1, 3, addr: 0x822f1cc [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x822f1cc [10]) -> (ret: 0)
+  @keyboard.c:28, keyboard_subscribe_interrupts
+    printf("%s is implemented!\n", __func__)
+    "keyboard_subscribe_interrupts is implemented!"
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9c = 0b10011100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 156!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9c, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9c"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9c]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1f = 0b00011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 31!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1f, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1f"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9f = 0b10011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 159!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9f, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9f"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1e = 0b00011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 30!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1e, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1e"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9e = 0b10011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 158!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9e, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9e"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x10 = 0b00010000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 16!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "10, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x10"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x10]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x11 = 0b00010001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 17!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "11, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x11"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x11]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x90 = 0b10010000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 144!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "90, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x90"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x90]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x91 = 0b10010001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 145!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "91, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x91"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x91]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1f = 0b00011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 31!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1f, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1f"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x3a = 0b00111010])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 58!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "3a, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x3a"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x3a]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x25 = 0b00100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 37!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "25, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x25"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x25]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9f = 0b10011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 159!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9f, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9f"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xba = 0b10111010])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 186!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "ba, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xba"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xba]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa5 = 0b10100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 165!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a5, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa5"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa5]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x31 = 0b00110001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 49!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "31, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x31"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x31]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xb1 = 0b10110001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 177!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "b1, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xb1"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xb1]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1e = 0b00011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 30!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1e, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1e"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x25 = 0b00100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 37!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "25, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x25"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x25]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x24 = 0b00100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 36!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "24, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x24"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x24]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa4 = 0b10100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 164!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a4, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa4"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa4]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa5 = 0b10100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 165!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a5, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa5"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa5]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1f = 0b00011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 31!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1f, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1f"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x31 = 0b00110001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 49!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "31, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x31"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x31]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9e = 0b10011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 158!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9e, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9e"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9f = 0b10011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 159!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9f, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9f"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xb1 = 0b10110001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 177!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "b1, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xb1"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xb1]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x25 = 0b00100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 37!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "25, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x25"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x25]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x24 = 0b00100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 36!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "24, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x24"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x24]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa4 = 0b10100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 164!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a4, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa4"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa4]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa5 = 0b10100101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 165!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a5, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa5"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa5]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x10 = 0b00010000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 16!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "10, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x10"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x10]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x90 = 0b10010000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 144!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "90, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x90"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x90]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x20 = 0b00100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 32!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "20, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x20"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x20]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x23 = 0b00100011])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 35!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "23, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x23"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x23]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x24 = 0b00100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 36!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "24, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x24"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x24]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa4 = 0b10100100])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 164!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a4, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa4"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa4]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1f = 0b00011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 31!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1f, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1f"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa3 = 0b10100011])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 163!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a3, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa3"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa3]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9f = 0b10011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 159!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9f, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9f"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa0 = 0b10100000])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 160!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a0, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa0"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa0]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x23 = 0b00100011])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 35!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "23, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x23"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x23]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1e = 0b00011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 30!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1e, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1e"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x1f = 0b00011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 31!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "1f, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x1f"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x1f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0xa3 = 0b10100011])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 163!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "a3, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0xa3"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0xa3]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9f = 0b10011111])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 159!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9f, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9f"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9f]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x9e = 0b10011110])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 158!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "9e, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x9e"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x9e]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x01 = 0b00000001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 1!"
+  @lab3.c:80, kbd_test_scan
+    printf("%02x, makecode!\n", scancode)
+    "01, makecode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Makecode: 0x01"
+  < kbd_print_scancode(true, 1, addr: 0xeffff70e [0x01]) -> (ret: 0)
+  @lab3.c:53, kbd_test_scan
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff710, addr: 0xeffff758)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab3.c:65, kbd_test_scan
+    kbc_ih()
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x64, addr: 0xeffff5e0)
+    < sys_inb(0x64, addr: 0xeffff5e0 [0x1d = 0b00011101])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is effff60f and port is 64!"
+    @KBC.c:21, read_KBC_status
+      printf("%s is implemented!\n", __func__)
+      "read_KBC_status is implemented!"
+    @utils.c:41, util_sys_inb
+      sys_inb(port, &val)
+    > sys_inb(0x60, addr: 0xeffff5e0)
+    < sys_inb(0x60, addr: 0xeffff5e0 [0x81 = 0b10000001])
+    @utils.c:47, util_sys_inb
+      printf("%s is implemented!\n", __func__)
+      "util_sys_inb is implemented!"
+    @utils.c:48, util_sys_inb
+      printf("The value is %x and port is %x!\n", value, port)
+      "The value is 822fe48 and port is 60!"
+    @keyboard.c:53, kbc_ih
+      printf("%s is implemented, scancode: %d!\n", __func__, scancode)
+      "kbc_ih is implemented, scancode: 129!"
+  @lab3.c:76, kbd_test_scan
+    printf("%02x, breakcode!\n", scancode)
+    "81, breakcode!"
+  @lab3.c:82, kbd_test_scan
+    kbd_print_scancode(!(scancode & MAKE_CODE), index+1, bytes)
+    "Breakcode: 0x81"
+  < kbd_print_scancode(false, 1, addr: 0xeffff70e [0x81]) -> (ret: 0)
+  @keyboard.c:35, keyboard_unsubscribe_interrupts
+    sys_irqrmpolicy(&hook_id_keyboard)
+  > sys_irqrmpolicy(addr: 0x822f1cc [10])
+  < sys_irqrmpolicy(addr: 0x822f1cc [10]) -> (ret: 0)
+  @keyboard.c:41, keyboard_unsubscribe_interrupts
+    printf("%s is implemented!\n", __func__)
+    "keyboard_unsubscribe_interrupts is implemented!"
+  @lab3.c:106, kbd_test_scan
+    kbd_print_no_sysinb(no_calls)
+    "sys_inb_calls: 118"
