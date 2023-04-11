@@ -22,7 +22,7 @@ int (keyboard_restore)();
 
 int write_to_mouse(uint8_t command);
 
-void (mouse_check_bytes)();
+void (mouse_sync_bytes)();
 
 void (mouse_parse_packet)();
 

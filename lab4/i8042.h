@@ -18,7 +18,8 @@
 #define TWO_BYTES       0xE0
 #define ENABLE_INT      BIT(0)
 #define FOWARD_REQ      0xD4
-#define ACK             0XFA
+#define ACK             0xFA
+#define NACK            0xFE
 
 #define TIMEOUT_ERROR   BIT(6)
 #define PARITY_ERROR    BIT(7)
@@ -38,8 +39,8 @@
 #define DISABLE_DEV     0xF5
 
 #define PRESSED_LB      BIT(0)
-#define PRESSED_MB      BIT(1)
-#define PRESSED_RB      BIT(2)
+#define PRESSED_RB      BIT(1)
+#define PRESSED_MB      BIT(2)
 #define CONTROL         BIT(3)
 #define DELTA_X         BIT(4)
 #define DELTA_Y         BIT(5)

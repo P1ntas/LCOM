@@ -75,7 +75,7 @@ int (mouse_test_packet)(uint32_t cnt)
           if (msg.m_notify.interrupts & irq_set_mouse) 
           { /* subscribed interrupt */
             mouse_ih();
-            mouse_check_bytes();
+            mouse_sync_bytes();
             if (byte_index == 3) 
             {
               mouse_parse_packet();
@@ -164,7 +164,7 @@ int (mouse_test_async)(uint8_t idle_time)
           if (msg.m_notify.interrupts & irq_set_mouse)
           {  
             mouse_ih();
-            mouse_check_bytes();
+            mouse_sync_bytes();
             if (byte_index == 3) 
             {
               mouse_parse_packet();

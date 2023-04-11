@@ -176,13 +176,29 @@ int write_to_mouse(uint8_t command)
         printf("Error: Could not get current status!\n");
         return TRUE;
     }
+
+    if(mouse_response == NACK)
+    {
+        tickdelay(micros_to_ticks(WAIT_KBC));
+        if (write_to_mouse(DISABLE_DEV))
+        {
+            printf("Error: Could not disable the device (the host should disable the device with a Disable (0xF5) command before sending any other command)!\n");
+            return TRUE;
+        }
+        tickdelay(micros_to_ticks(WAIT_KBC));
+        if (write_to_mouse(ENABLE_DEV))
+        {
+            printf("Error: Could not enable the device (If the device is in Stream mode (the default) and has been enabled with an Enable (0xF4) command)!\n");
+            return TRUE;
+        }
+    }
   } 
   while (mouse_response != ACK && attempts);       
 
   return FALSE;
 }
 
-void (mouse_check_bytes)()
+void (mouse_sync_bytes)()
 {
     if (byte_index == 0 && (current_byte & CONTROL)) 
     {
@@ -204,8 +220,8 @@ void (mouse_parse_packet)()
     }
 
     mouse_packet.lb = packet[0] & PRESSED_LB;
-    mouse_packet.mb = packet[0] & PRESSED_MB;
     mouse_packet.rb = packet[0] & PRESSED_RB;
+    mouse_packet.mb = packet[0] & PRESSED_MB;
     mouse_packet.delta_x = (packet[0] & DELTA_X) ? ( 0xFF00 | packet[1] ) : packet[1];
     mouse_packet.delta_y = (packet[0] & DELTA_Y) ? ( 0XFF00 | packet[2] ) : packet[2];
     mouse_packet.x_ov = packet[0] & OVERFLOW_X;
