@@ -1,0 +1,139 @@
+@lcflib.a:2019, lcf_start
+  mouse_test_gesture(x_len, tolerance)
+> mouse_test_gesture(10, 5)
+  @mouse.c:14, mouse_subscribe_int
+    sys_irqsetpolicy(12, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id_mouse)
+  > sys_irqsetpolicy(12, 3, addr: 0x822dc44 [3])
+  < sys_irqsetpolicy(12, 3, addr: 0x822dc44 [10]) -> (ret: 0)
+  @utils.c:24, util_sys_inb
+    sys_inb(port, &port_val)
+  > sys_inb(0x64, addr: 0xeffff618)
+  < sys_inb(0x64, addr: 0xeffff618 [0x1c = 0b00011100])
+  @KBC.c:71, write_KBC_command
+    sys_outb(port, commandByte)
+  > sys_outb(0x64, 0xd4 = 0b11010100)
+  @utils.c:24, util_sys_inb
+    sys_inb(port, &port_val)
+  > sys_inb(0x64, addr: 0xeffff618)
+  < sys_inb(0x64, addr: 0xeffff618 [0x1c = 0b00011100])
+  @KBC.c:71, write_KBC_command
+    sys_outb(port, commandByte)
+  > sys_outb(0x60, 0xf4 = 0b11110100)
+  @mouse.c:58, mouse_write
+    micros_to_ticks(WAIT_KBC)
+  @mouse.c:58, mouse_write
+    tickdelay(micros_to_ticks(WAIT_KBC))
+  > tickdelay(1 [16.7 ms])
+  @utils.c:24, util_sys_inb
+    sys_inb(port, &port_val)
+  > sys_inb(0x64, addr: 0xeffff618)
+  < sys_inb(0x64, addr: 0xeffff618 [0x3d = 0b00111101])
+  @utils.c:24, util_sys_inb
+    sys_inb(port, &port_val)
+  > sys_inb(0x60, addr: 0xeffff618)
+  < sys_inb(0x60, addr: 0xeffff618 [0xfa = 0b11111010])
+  @lab4.c:255, mouse_test_gesture
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6b0, addr: 0xeffff6f8)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000001000]>)
+  @lab4.c:265, mouse_test_gesture
+    mouse_ih()
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @utils.c:24, util_sys_inb
+      sys_inb(port, &port_val)
+    > sys_inb(0x64, addr: 0xeffff590)
+    < sys_inb(0x64, addr: 0xeffff590 [0x1c = 0b00011100])
+    @KBC.c:51, read_KBC_output
+      micros_to_ticks(20000)
+    @KBC.c:51, read_KBC_output
+      tickdelay(micros_to_ticks(20000))
+    > tickdelay(1 [16.7 ms])
+    @KBC.c:54, read_KBC_output
+      printf("wrong\n")
+      "wrong"
+    @mouse.c:22, mouse_ih
+      printf("Error reading byte\n")
+      "Error reading byte"
+  @lab4.c:255, mouse_test_gesture
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff6b0, addr: 0xeffff6f8)

@@ -5,7 +5,8 @@
 
 #include "i8254.h"
 
-int hook_id, counter;
+int counter;
+int hook_id;
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   
@@ -74,7 +75,7 @@ int (timer_get_conf)(uint8_t timer, uint8_t *st) {
     case 1:
       if (util_sys_inb(TIMER_1, st) != 0) return 1;
       break;
-    
+
     case 2:
       if (util_sys_inb(TIMER_2, st) != 0) return 1;
       break;
