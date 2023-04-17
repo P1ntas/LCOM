@@ -144,7 +144,7 @@ int (mouse_test_async)(uint8_t idle_time) {
     return 0;
 }
 
-void (state_machine)(uint8_t tolerance, uint8_t x_len) {
+void (state_machine)(uint8_t tolerance, uint8_t x_len, struct mouse_ev *event) {
 
     switch (state) {
 
@@ -164,7 +164,7 @@ void (state_machine)(uint8_t tolerance, uint8_t x_len) {
               state = VERTEX;
             } else state = START;
           }
-          else if (mouse_byte.lb && !mouse_byte.rb && !mouse_byte.mb) {
+          else if (event->type == MOUSE_MOV) {
             if (mouse_byte.delta_x <= 0 || mouse_byte.delta_y <= 0) {
               if (abs(mouse_byte.delta_x) > tolerance || abs(mouse_byte.delta_y) > tolerance) {
                 state = START;
@@ -194,7 +194,7 @@ void (state_machine)(uint8_t tolerance, uint8_t x_len) {
               state = DOWN;
             }
           }
-          else if (mouse_byte.lb && !mouse_byte.rb && !mouse_byte.mb) {
+          else if (event->type == MOUSE_MOV) {
             delta_x = 0;
             delta_y = 0;
             state = UP;
@@ -214,7 +214,7 @@ void (state_machine)(uint8_t tolerance, uint8_t x_len) {
             }
             else state = START;
           }
-          else if (mouse_byte.delta_x != 0 && mouse_byte.delta_y != 0) {
+          else if (event->type == MOUSE_MOV) {
             if (mouse_byte.delta_x <= 0 || mouse_byte.delta_y >= 0) {
               if (abs(mouse_byte.delta_x) > tolerance || abs(mouse_byte.delta_y) > tolerance) {
                 state = START;
@@ -245,6 +245,7 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
     int ipc_status;
     message msg;
     uint8_t hook_id_mouse;
+    struct mouse_ev* event;
 
     if (mouse_subscribe_int(&hook_id_mouse) != 0) return 1;
 
@@ -265,8 +266,9 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
                 mouse_ih();                               
                 mouse_sync_bytes();                      
                 if (byte_index == 3) {                    
-                  mouse_bytes_to_packet();               
-                  state_machine(tolerance, x_len);        
+                  mouse_bytes_to_packet();  
+                  event = mouse_detect_event(&mouse_byte);             
+                  state_machine(tolerance, x_len, event);        
                   byte_index = 0;
                 }
             }
