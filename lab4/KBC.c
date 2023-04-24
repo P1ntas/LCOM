@@ -11,14 +11,20 @@ int(read_KBC_status)(uint8_t *status) {
   if (util_sys_inb(0x64, status) != 0) return 1;
 
   no_sys_call++;
+  printf("read_KBC_status succeeded...\n");
   return 0;
 }
 
-int(read_KBC_output)(uint8_t port, uint8_t *output, uint8_t mouse) {
-  uint8_t status;
+int (read_KBC_output)(int port, uint8_t output, uint8_t mouse) {
+  uint8_t status = 0;
   uint8_t attemps = 10;
+  printf("Parameters\n");
+  printf("Port:%d\n",port);
+  printf("Output:%d\n",output);
+  printf("Mouse:%d\n",mouse);
 
   while (attemps) {
+    printf("Attempt to read output...\n");
     // 1. ler o status register
     if (read_KBC_status(&status)) { // ler o status
       printf("Error: Status not available!\n");
@@ -26,22 +32,35 @@ int(read_KBC_output)(uint8_t port, uint8_t *output, uint8_t mouse) {
     }
     // 2. verificar se o bit 0 está a 0 (é possível escrever)E
     if ((status & BIT(0))) {
+      printf("Trying to read from outputbuffer...\n");
       // o output buffer está cheio, pode-se ler
-      if (util_sys_inb(port, output)) {
+      if (util_sys_inb(port, &output)) {
         // leitura do buffer de saída
         printf("Error: Could not read output!\n");
         return 1;
       }
       no_sys_call++;
       // 2.1 Verificar o erro de paridade
-      if (mouse && (status & BIT(7))) return 1;
+      if (mouse && (status & BIT(7))) {
+        printf("Parity Error\n");
+        return 1;
+      }
+      
       // 2.2 Verificar o erro de timeout
-      if (mouse && (status & BIT(6))) return 1;
+      if (mouse && (status & BIT(6))) {
+        printf("Timeout Error\n");
+        return 1;
+      }
       // O output do rato
-      if (mouse && !(status & BIT(5))) return 1;
-      // O output do teclado
-      if (!mouse && (status & BIT(5))) return 1;
-    
+      if (mouse && !(status & BIT(5))) {
+        printf("Mouse Error\n");
+        return 1;
+      }
+      if (!mouse && (status & BIT(5))) {
+        printf("KB Error\n");
+        return 1;
+      }
+  
       return 0;
     }
 
@@ -52,7 +71,7 @@ int(read_KBC_output)(uint8_t port, uint8_t *output, uint8_t mouse) {
   return 1; 
 }
 
-int(write_KBC_command)(uint8_t port, uint8_t commandByte) {
+int(write_KBC_command)(int port, uint8_t commandByte) {
   uint8_t status;
   uint8_t attemps = 10;
 
@@ -91,7 +110,7 @@ int write_to_mouse(uint8_t command)
     // Ler a resposta do rato pela porta 0x60
     if (util_sys_inb(0x60, &mouse_response))
       return 1;
-    // Se a resposta for 0xFE, tentar disab
+    // Se a resposta for 0xFE
     if (mouse_response == 0xFE) {
       tickdelay(micros_to_ticks(20000));
       if (write_to_mouse(0xF5))

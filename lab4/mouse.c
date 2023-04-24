@@ -12,10 +12,14 @@ struct packet mouse_packet;
 
 int mouse_hook_id = 2;
 
-extern 
+void (mouse_ih)(void) {
+    printf("At mouse handler...\n");
+    printf("Current_byte:%d\n",current_byte);
+    printf("Current_byte address:%x\n",&current_byte);
 
-void (mouse_ih)() {
-    read_KBC_output(0xD4, &current_byte, 1);
+    if (read_KBC_output(0x60, current_byte, 1))
+      return;
+    printf("Trying to sync");
     mouse_sync_bytes();
 }
 
@@ -32,7 +36,7 @@ int (mouse_subscribe_interrupts) (uint8_t *bit_no)
 }
 
 // unsubscribe interrupts
-int (mouse_unsubscribe_interrupts) ()
+int (mouse_unsubscribe_interrupts)(void)
 {
   return sys_irqrmpolicy(&mouse_hook_id);
 }
@@ -59,9 +63,9 @@ void (load_packet)(struct packet *packet, uint8_t bytes[])
     packet->delta_y |= 0xFF00;
 }
 
-
-void (mouse_sync_bytes)()
+void (mouse_sync_bytes)(void)
 {
+  printf("Mouse sync bytes...\n");
   if (byte_index == 0 && (current_byte & BIT(3))) {
     // é o byte CONTROL, o bit 3 está ativo
     mouse_bytes[byte_index]= current_byte;
@@ -69,12 +73,12 @@ void (mouse_sync_bytes)()
   }
   if (byte_index == 3) {
     // completou o pacote
+    printf("Full, loading to packet...\n");
     load_packet(&mouse_packet, mouse_bytes);
-    mouse_print_packet(&mouse_packet);
-    byte_index = 0;
   }
   if (byte_index > 0) {
     // recebe os deslocamentos em X e Y
+    printf("Filling a byte at index: %d\n", byte_index);
     mouse_bytes[byte_index] = current_byte;
     byte_index++;
   }

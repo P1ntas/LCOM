@@ -4,6 +4,7 @@
 #include "mouse.h"
 
 extern int byte_index;
+extern struct packet mouse_packet;
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -35,11 +36,11 @@ int (mouse_test_packet)(uint32_t cnt) {
   message msg;
   uint8_t irq_set = 0;
 
-  if (mouse_subscribe_interrupts(&irq_set) != 0) {
+  if (mouse_subscribe_interrupts(&irq_set)) {
     printf("Error subscribing mouse interrupts");
     return 1;
   }
-  if (write_to_mouse(0xF4) != 0) {
+  if (write_to_mouse(0xF4)) {
     printf("Error enabling data reporting");
     return 1;
   }
@@ -53,8 +54,12 @@ int (mouse_test_packet)(uint32_t cnt) {
       switch (_ENDPOINT_P(msg.m_source)) {
         case HARDWARE:
           if (msg.m_notify.interrupts & irq_set) {
+            printf("Test...\n");
             mouse_ih();
             if (byte_index == 3) {
+              printf("Index: %d", byte_index);
+              mouse_print_packet(&mouse_packet);
+              byte_index = 0;
               cnt--;
             }
           }
@@ -76,7 +81,7 @@ int (mouse_test_packet)(uint32_t cnt) {
     printf("Error unsubscribing mouse interrupts");
     return 1;
   }
-
+  printf("Test Packet succeeded... Quitting\n");
   return 0;
 }
 

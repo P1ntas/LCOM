@@ -9,12 +9,10 @@ void (mouse_ih)();
 
 int (mouse_subscribe_interrupts) (uint8_t *bit_no);
 
-int (mouse_unsubscribe_interrupts)();
-
-int (keyboard_restore)();
+int (mouse_unsubscribe_interrupts)(void);
 
 void (load_packet)(struct packet *packet, uint8_t bytes[]);
 
-void (mouse_sync_bytes)();
+void (mouse_sync_bytes)(void);
 
 #endif
