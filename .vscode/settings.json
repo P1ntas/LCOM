@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "video_gr.h": "c",
+        "stdint.h": "c",
+        "vbe.h": "c",
+        "stdio.h": "c",
+        "lcf.h": "c",
+        "lab5.h": "c",
+        "type.h": "c",
+        "sysutil.h": "c",
+        "i8042.h": "c",
+        "kbc.h": "c"
+    }
+}
