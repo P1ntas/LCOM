@@ -86,12 +86,12 @@ int (vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
 int (vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
 
     for (unsigned i = 0 ; i < len ; i++) {
-        if (vg_draw_pixel(x+i, y, color) != 0) return 1;
+        if (vg_draw_pixel(x + i, y, color) != 0) return 1;
     }
   return 0;
 }
 
-int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t height, uint16_t width, uint32_t color) {
+int (vg_draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, uint32_t color) {
 
     for (unsigned i = 0; i < height ; i++) {
         if (vg_draw_hline(x, y + i, width, color) != 0) {
@@ -114,6 +114,20 @@ int (print_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
       if (vg_draw_pixel(x + w, y + h, *colors) != 0) return 1;
       colors++; // avança para a próxima cor
     }
+  }
+  return 0;
+}
+
+// Em modos de cores com bytes incompletos (por exemplo 0x110 - 5:5:5) os bits extra
+// são colocados a 0. A máscara usada é constuída pelo número de bits por pixel do modo.
+// Exemplo:
+// Modo 0x110 -> BitsPerPixel = 15
+// Máscara = BIT(15) - 1 = 0b1000000000000000 - 1 = 0b0111111111111111
+int normalize_color(uint32_t color, uint32_t *new_color) {
+  if (mode_info.BitsPerPixel == 32) {
+    *new_color = color;
+  } else {
+    *new_color = color & (BIT(mode_info.BitsPerPixel) - 1);
   }
   return 0;
 }

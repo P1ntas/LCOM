@@ -49,7 +49,6 @@ int read_KBC_output(uint8_t port, uint8_t *output, uint8_t mouse)
     tickdelay(micros_to_ticks(20000));
     attemps--;
   }
-  printf("wrong\n");
   return 1; // se ultrapassar o número de tentativas lança um erro
 }
 
