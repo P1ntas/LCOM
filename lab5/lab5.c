@@ -177,14 +177,7 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
   return 0;
 }
 
-int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  //printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
-
-  if (vg_init(0x105) == NULL) {
-    return 1;
-  }
-
+int (draw_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
   xpm_image_t img;
   uint8_t *color = xpm_load(xpm, XPM_INDEXED, &img);
 
@@ -194,6 +187,20 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
         return 1;
       color++;
     }
+  }
+  return 0;
+}
+
+int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
+  /* To be completed */
+  //printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
+
+  if (vg_init(0x105) == NULL) {
+    return 1;
+  }
+
+  if (draw_xpm(xpm, x, y) != 0) {
+    return 1;
   }
 
   if (keyboard() != 0) {
@@ -213,9 +220,8 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
   /*printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
          __func__, xpm, xi, yi, xf, yf, speed, fr_rate);*/
 
-  
-
   return 1;
+
 }
 
 int(video_test_controller)() {
