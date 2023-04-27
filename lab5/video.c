@@ -127,7 +127,7 @@ uint32_t (Blue)(unsigned col, unsigned row, uint8_t step, uint32_t first) {
 // obtencao dos componentes R, G e B respetivamente
 
 uint32_t (R)(uint32_t first){
-  //      1 << 5 = 100000
+  //     (1 << 5 - 1 = 100000 - 1 = 011111) & (cor >> Position)
   return ((1 << mode_info.RedMaskSize) - 1) & (first >> mode_info.RedFieldPosition);
 }
 
