@@ -1,13 +1,13 @@
 // IMPORTANT: you must include the following line in all your C files
 #include <lcom/lcf.h>
 #include <lcom/lab5.h>
-#include <lcom/video_gr.h>
 
 #include <stdint.h>
 #include <stdio.h>
 
 // Any header files included below this line should have been created by you
 #include "keyboard.h"
+#include "video.h"
 
 // video_gr
 vbe_mode_info_t mode_info;
@@ -74,18 +74,13 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
     return 1;
   }
 
-  uint16_t w, h;
-  w = (x + width > mode_info.XResolution) ? mode_info.XResolution - x : width;
-  h = (y + height > mode_info.YResolution) ? mode_info.YResolution - y : height;
+  uint32_t right_color;
+  if (get_color(color, &right_color)) return 1;
 
-  if (x < mode_info.XResolution && y < mode_info.YResolution) {
-    if (vg_draw_rectangle(x, y, w, h, color) != 0){
-      return 1;
-    }
-  } else {
-    printf("X or Y out of bound.\n");
+  if (vg_draw_rectangle(x, y, width, height, color) != 0){
     return 1;
   }
+  
     
 
   // keyboard code
