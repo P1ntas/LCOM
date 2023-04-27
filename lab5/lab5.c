@@ -37,6 +37,52 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+int (keyboard)(void) {
+  // keyboard code
+  int ipc_status;
+  uint8_t irq_set;
+  message msg;
+  uint8_t code[2];
+  int index = 0;
+
+  if (keyboard_subscribe_interrupts(&irq_set) != 0)
+    return 1;
+
+  while (scancode != 0x81 /*ESC*/) {
+    if (driver_receive(ANY, &msg, &ipc_status) != 0) {
+      printf("Error");
+      continue;
+    }
+
+    if (is_ipc_notify(ipc_status)) {
+      switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE:
+          if (msg.m_notify.interrupts & irq_set) {
+            kbc_ih();
+            if (scancode == 0xE0 /*TWO_BYTES*/) {
+              code[index] = scancode;
+              index += 1;
+              continue;
+            }
+            code[index] = scancode;
+          }
+          break;
+        default:
+          break;
+      }
+    }
+    else {
+    }
+  }
+
+  if (keyboard_unsubscribe_interrupts() != 0)
+    return 1;
+
+  return 0;
+}
+
+
+
 int(video_test_init)(uint16_t mode, uint8_t delay) {
   /* To be completed */
   // printf("%s(0x%03x, %u): under construction\n", __func__, mode, delay);
@@ -79,47 +125,9 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
     return 1;
   }
   
-    
-
-  // keyboard code
-  int ipc_status;
-  uint8_t irq_set;
-  message msg;
-  uint8_t code[2];
-  int index = 0;
-
-  if (keyboard_subscribe_interrupts(&irq_set) != 0)
+  if (keyboard() != 0) {
     return 1;
-
-  while (scancode != 0x81 /*ESC*/) {
-    if (driver_receive(ANY, &msg, &ipc_status) != 0) {
-      printf("Error");
-      continue;
-    }
-
-    if (is_ipc_notify(ipc_status)) {
-      switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE:
-          if (msg.m_notify.interrupts & irq_set) {
-            kbc_ih();
-            if (scancode == 0xE0 /*TWO_BYTES*/) {
-              code[index] = scancode;
-              index += 1;
-              continue;
-            }
-            code[index] = scancode;
-          }
-          break;
-        default:
-          break;
-      }
-    }
-    else {
-    }
   }
-
-  if (keyboard_unsubscribe_interrupts() != 0)
-    return 1;
 
   if (vg_exit() != 0) {
     printf("Failed at vg_exit\n");
@@ -131,10 +139,42 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
   /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
+  /*printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
+         mode, no_rectangles, first, step);*/
 
-  return 1;
+  if (vg_init(mode) == NULL) {
+    return 1;
+  }
+  
+  uint32_t width = mode_info.XResolution / no_rectangles;
+  uint32_t height = mode_info.YResolution / no_rectangles;
+
+  for (int row = 0; row < no_rectangles; row++) {
+    for (int col = 0; col < no_rectangles; col++) {
+
+      uint32_t color;
+      if (mode_info.MemoryModel == 0x06) {
+        uint32_t r = Red(col, step, first);
+        uint32_t g = Green(col, step, first);
+        uint32_t b = Blue(col, row, step, first);
+
+        color = direct_mode(r,g,b);
+      } else {
+        color = indexed_mode(col, row, step, first, no_rectangles);
+      }
+
+      if (vg_draw_rectangle(row * width, col * height, width, height, color))
+        return 1;
+    }
+  }
+
+  if (keyboard() != 0)
+    return 1;
+
+  if (vg_exit() != 0)
+    return 1;
+
+  return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
