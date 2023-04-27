@@ -9,6 +9,7 @@
         "type.h": "c",
         "sysutil.h": "c",
         "i8042.h": "c",
-        "kbc.h": "c"
+        "kbc.h": "c",
+        "video.h": "c"
     }
 }

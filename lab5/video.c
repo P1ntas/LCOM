@@ -7,6 +7,7 @@ void *video_mem;
 
 void *(vg_init) (uint16_t mode) {
 
+  memset(&mode_info, 0, sizeof(mode_info));
   if (vbe_get_mode_info(mode, &mode_info) != 0) {
     printf("Failed at getting mode info\n.");
     return NULL;
@@ -57,11 +58,11 @@ int(vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   if (x > mode_info.XResolution || y > mode_info.YResolution)
     return 1;
 
-  char *position = video_mem;
+  uint8_t *frame_buffer = video_mem;
 
-  position += (mode_info.XResolution * y + x) + ((mode_info.BitsPerPixel + 7) / 8);
+  unsigned int index = (mode_info.XResolution * y + x) * ((mode_info.BitsPerPixel + 7) / 8);
 
-  if (memcpy(position, &color, ((mode_info.BitsPerPixel + 7) / 8)) == NULL)
+  if (memcpy(&frame_buffer[index], &color, ((mode_info.BitsPerPixel + 7) / 8)) == NULL)
     return 1;
 
   return 0;

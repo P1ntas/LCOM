@@ -2,9 +2,6 @@
 #include <lcom/lcf.h>
 #include <lcom/lab5.h>
 
-#include <stdint.h>
-#include <stdio.h>
-
 // Any header files included below this line should have been created by you
 #include "keyboard.h"
 #include "video.h"
@@ -51,7 +48,7 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
     return 1;
   }
 
-  tickdelay(micros_to_ticks(delay * 1e6));
+  sleep(delay);
 
   if (vg_exit() != 0) {
     printf("Failed at vg_exit\n");
@@ -78,6 +75,7 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
   if (get_color(color, &right_color)) return 1;
 
   if (vg_draw_rectangle(x, y, width, height, color) != 0){
+    vg_exit();
     return 1;
   }
   
