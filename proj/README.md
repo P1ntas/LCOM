@@ -1,4 +1,4 @@
-it # Template
+# Template
 
 Este template reune aspetos relevantes para o projeto final de LCOM, como dicas, algoritmos, orientação na estruturação do código, otimizações possíveis entre outros.
 
