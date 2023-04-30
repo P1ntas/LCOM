@@ -82,15 +82,10 @@ int (keyboard)(void) {
 }
 
 
-
+// lcom_run lab5 "init <mode> delay"
 int(video_test_init)(uint16_t mode, uint8_t delay) {
-  /* To be completed */
-  // printf("%s(0x%03x, %u): under construction\n", __func__, mode, delay);
-
-  // vbe_get_mode_info(mode, &mode_info);
-
-  if (vg_init(mode) == NULL) {
-    printf("Failed at vg_init\n");
+  
+  if (set_mode(mode) != 0) {
     return 1;
   }
 
@@ -108,10 +103,8 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,
                           uint16_t width, uint16_t height, uint32_t color) {
-  /* To be completed */
-  /*printf("%s(0x%03X, %u, %u, %u, %u, 0x%08x): under construction\n",
-         __func__, mode, x, y, width, height, color);*/
 
+  
   if (vg_init(mode) == NULL) {
     printf("Failed at vg_init\n");
     return 1;

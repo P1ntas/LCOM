@@ -43,6 +43,7 @@ void *(vg_init) (uint16_t mode) {
   r86.intno = 0x10;
   r86.ah = 0x4F;
   r86.al = 0x02;
+  //r86.ax = 0x4F02;
   r86.bx = BIT(14) | mode;
 
   fail = sys_int86(&r86);
@@ -53,6 +54,56 @@ void *(vg_init) (uint16_t mode) {
 
   return video_mem;
 }
+
+int(set_frame_buffer)(uint16_t mode) {
+
+  memset(&mode_info, 0, sizeof(mode_info));
+  if (vbe_get_mode_info(mode, &mode_info) != 0) {
+    printf("Failed at getting mode info.\n");
+    return 1;
+  }
+
+  uint16_t vram_base = mode_info.PhysBasePtr;
+  uint16_t vram_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
+
+  struct minix_mem_range mr;
+  mr.mr_base = vram_base;
+  mr.mr_limit = vram_base + vram_size;
+
+  int fail;
+  fail = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr);
+  if (fail) {
+    return 1;
+  }
+
+  video_mem = vm_map_phys(SELF, (void *) mr.mr_base, vram_size);
+  if (video_mem == MAP_FAILED) {
+    // failed
+    return 1;
+  }
+
+  return 0;
+}
+
+int(set_mode)(uint16_t mode) {
+  reg86_t r86;
+  memset(&r86, 0, sizeof(r86));
+
+  r86.intno = 0x10;
+  r86.ah = 0x4F;
+  r86.al = 0x02;
+  //r86.ax = 0x4F02;
+  r86.bx = mode | BIT(14);
+
+  if (sys_int86(&r86) != 0) {
+    //failed
+    return 1;
+  }
+
+  return 0;
+}
+
+
 
 int(vg_draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
   if (x > mode_info.XResolution || y > mode_info.YResolution)
@@ -75,6 +126,15 @@ int(vg_draw_hline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
       return 1;
   }
 
+  return 0;
+}
+
+int(vg_draw_vline)(uint16_t x, uint16_t y, uint16_t len, uint32_t color) {
+
+  for (int i = 0; i < len; i++) {
+    if (vg_draw_pixel(x + i, y , color) != 0)
+      return 1;
+  }
   return 0;
 }
 
@@ -126,8 +186,18 @@ uint32_t (Blue)(unsigned col, unsigned row, uint8_t step, uint32_t first) {
 
 // obtencao dos componentes R, G e B respetivamente
 
+
+
+//     ((1 << 5 - 1 = 100000 - 1 = 011111) & (cor >> Position))
+  // RedMaskSie = 5 & RedFieldPosition = 11 & color 16 bits (mode 0x11A 5:6:5) 0b0000 0|000 000|0 0000
+  //                                                                               R   |   G   |   B
+  // lhs - mask       -> ((1<<5) - 1) = (100000 - 1) = 011111
+
+  // rhs - red field  -> (color >> 11) = red block of color
+
+  // lhs (mask) & rhs (red field) = red component
+
 uint32_t (R)(uint32_t first){
-  //     ((1 << 5 - 1 = 100000 - 1 = 011111) & (cor >> Position))
   return ((1 << mode_info.RedMaskSize) - 1) & (first >> mode_info.RedFieldPosition);
 }
 
