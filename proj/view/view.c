@@ -10,6 +10,7 @@ extern vbe_mode_info_t mode_info;
 extern MouseInfo mouse_info;
 extern real_time_info time_info;
 extern MenuState menuState;
+extern SystemState systemState; 
 
 // Objetos
 extern Sprite *mouse;
@@ -23,6 +24,7 @@ extern Sprite *quit;
 extern Sprite *space;
 extern Sprite *title;
 extern Sprite *game_over;
+extern Sprite *controls_menu;
 
 // Alocação de memória ao(s) buffer(s)
 // Se houver só um buffer, esse é o principal
@@ -62,6 +64,9 @@ void draw_new_frame() {
         case START:
             draw_initial_menu();
             break;
+        case CONTROLS:
+            draw_controls_menu();
+            break;
         case GAME:
             draw_finish_menu();
             break;
@@ -84,6 +89,12 @@ void draw_initial_menu() {
     update_state_menu();
 }
 
+void draw_controls_menu() {
+    draw_sprite_xpm(controls_menu, 0, 0);
+
+    update_state_menu();
+}
+
 // O menu final é apenas um retângulo com tamanho máximo, com um smile ao centro
 void draw_finish_menu() {
     draw_sprite_xpm(game_over, 0, 0);
@@ -94,7 +105,7 @@ void draw_finish_menu() {
 // - "mão", quando está no menu com os botões
 void draw_mouse() {
     switch (menuState) {
-        case START: case END:
+        case START: case END: case CONTROLS:
             draw_sprite_xpm(mouse, mouse_info.x, mouse_info.y);
             break;
         case GAME:
@@ -125,8 +136,13 @@ void update_state_menu() {
 
     if (single_player->pressed == 1) menuState = END;
     else if (multiplayer->pressed == 1) menuState = END;
-    else if (controls->pressed == 1) menuState = END;
-    else if (quit->pressed == 1) menuState = END;
+    else if (controls->pressed == 1) menuState = CONTROLS;
+    else if (quit->pressed == 1) systemState = EXIT;
+
+    single_player->pressed = 0;
+    multiplayer->pressed = 0;
+    controls->pressed = 0;
+    quit->pressed = 0;
 }
 
 // A função recebe um objeto Sprite de cor constante e mostra-o nas coordenadas (x, y)

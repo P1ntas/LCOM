@@ -12,7 +12,7 @@
 
 void draw_new_frame();
 void draw_initial_menu();
-void draw_game_menu();
+void draw_controls_menu();
 void draw_finish_menu();
 void draw_mouse();
 void swap_buffers();
