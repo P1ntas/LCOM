@@ -12,11 +12,15 @@ extern real_time_info time_info;
 // Objetos a construir e manipular com a mudança de estados
 Sprite *mouse;
 Sprite *hand;
-Sprite *smile;
-Sprite *button1;
-Sprite *button2;
-Sprite *button3;
-Sprite *button4;
+Sprite *asteroid;
+Sprite *single_player;
+Sprite *multiplayer;
+Sprite *controls;
+Sprite *menu;
+Sprite *quit;
+Sprite *space;
+Sprite *title;
+Sprite *game_over;
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;
@@ -25,22 +29,30 @@ int timer_interrupts = 0;
 void setup_sprites() {
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
     hand = create_sprite_xpm((xpm_map_t) hand_xpm);
-    smile = create_sprite_xpm((xpm_map_t) smile_xpm);
-    button1 = create_sprite_button(mode_info.XResolution/2, mode_info.YResolution/2, ORANGE);
-    button2 = create_sprite_button(mode_info.XResolution/2, mode_info.YResolution/2, BLUE);
-    button3 = create_sprite_button(mode_info.XResolution/2, mode_info.YResolution/2, GREEN);
-    button4 = create_sprite_button(mode_info.XResolution/2, mode_info.YResolution/2, YELLOW);
+    asteroid = create_sprite_xpm((xpm_map_t) asteroid_xpm);
+    single_player = create_sprite_xpm((xpm_map_t) single_player_xpm);
+    multiplayer = create_sprite_xpm((xpm_map_t) multiplayer_xpm);
+    controls = create_sprite_xpm((xpm_map_t) controls_xpm);
+    menu = create_sprite_xpm((xpm_map_t)menu_xpm);
+    quit = create_sprite_xpm((xpm_map_t) quit_xpm);
+    space = create_sprite_xpm((xpm_map_t) space_xpm);
+    title = create_sprite_xpm((xpm_map_t) title_xpm);
+    game_over = create_sprite_xpm((xpm_map_t) game_over_xpm);
 }
 
 // É boa prática antes de acabar o programa libertar a memória alocada
 void destroy_sprites() {
     destroy_sprite(mouse);
     destroy_sprite(hand);
-    destroy_sprite(smile);
-    destroy_sprite(button1);
-    destroy_sprite(button2);
-    destroy_sprite(button3);
-    destroy_sprite(button4);
+    destroy_sprite(asteroid);
+    destroy_sprite(single_player);
+    destroy_sprite(multiplayer);
+    destroy_sprite(controls);
+    destroy_sprite(menu);
+    destroy_sprite(quit);
+    destroy_sprite(space);
+    destroy_sprite(title);
+    destroy_sprite(game_over);
 }
 
 // Na altura da interrupção há troca dos buffers e incremento do contador
@@ -99,23 +111,26 @@ void update_mouse_state() {
 void update_buttons_state() {
 
     if (mouse_info.left_click) {
+        if (mouse_info.x >= mode_info.XResolution/4 - 100 && mouse_info.y >= mode_info.YResolution/2 - 50
+                && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48))
+            single_player->pressed = 1;
 
-        if (mouse_info.x < mode_info.XResolution/2 && mouse_info.y < mode_info.YResolution/2)
-            button1->pressed = 1;
+        if ((mouse_info.x >= 3 * mode_info.XResolution/4 - 100) && (mouse_info.y >= mode_info.YResolution/2 - 50)
+                && (mouse_info.x <= 3 * mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48))
+            multiplayer->pressed = 1;
 
-        if (mouse_info.x >= mode_info.XResolution/2 && mouse_info.y <= mode_info.YResolution/2)
-            button2->pressed = 1;
+        if ((mouse_info.x >= mode_info.XResolution/4 - 100) && (mouse_info.y >= 3 * mode_info.YResolution/4 - 50)
+                && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= 3 * mode_info.YResolution/4 - 50 + 48))
+            controls->pressed = 1;
 
-        if (mouse_info.x < mode_info.XResolution/2 && mouse_info.y >= mode_info.YResolution/2)
-            button3->pressed = 1;
-
-        if (mouse_info.x >= mode_info.XResolution/2 && mouse_info.y > mode_info.YResolution/2)
-            button4->pressed = 1;
+        if ((mouse_info.x >= 3 * mode_info.XResolution/4 - 100) && (mouse_info.y >= 3 * mode_info.YResolution/4 - 50)
+                && (mouse_info.x <= 3 * mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= 3 * mode_info.YResolution/4 - 50 + 48))
+            quit->pressed = 1;
 
     } else {
-        button1->pressed = 0;
-        button2->pressed = 0;
-        button3->pressed = 0;
-        button4->pressed = 0;
+        single_player->pressed = 0;
+        multiplayer->pressed = 0;
+        controls->pressed = 0;
+        quit->pressed = 0;
     }
 }

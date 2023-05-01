@@ -11,6 +11,7 @@ Sprite *create_sprite_xpm(xpm_map_t sprite){
   sp->colors = (uint32_t *) xpm_load(sprite, XPM_8_8_8_8, &img);
   sp->height = img.height;
   sp->width = img.width;
+  sp->pressed = 0;
 
   if( sp->colors == NULL ) {
     free(sp);
@@ -21,7 +22,7 @@ Sprite *create_sprite_xpm(xpm_map_t sprite){
 
 // Construção de um Sprite retangular com cor constante
 // O Sprite não tem um array de cores, seria gastar memória desnecessariamente
-Sprite *create_sprite_button(uint16_t width, uint16_t height, uint32_t color){
+/*Sprite *create_sprite_button(uint16_t width, uint16_t height, uint32_t color){
   Sprite *sp = (Sprite *) malloc(sizeof(Sprite));
   sp->height = height;
   sp->width = width;
@@ -29,7 +30,7 @@ Sprite *create_sprite_button(uint16_t width, uint16_t height, uint32_t color){
   sp->color = color;
   sp->pressed = 0;
   return sp;
-}
+}*/
 
 // É boa prática antes de acabar o programa libertar a memória alocada
 void destroy_sprite(Sprite *sprite) {

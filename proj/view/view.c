@@ -14,11 +14,15 @@ extern MenuState menuState;
 // Objetos
 extern Sprite *mouse;
 extern Sprite *hand;
-extern Sprite *smile;
-extern Sprite *button1;
-extern Sprite *button2;
-extern Sprite *button3;
-extern Sprite *button4;
+extern Sprite *asteroid;
+extern Sprite *single_player;
+extern Sprite *multiplayer;
+extern Sprite *controls;
+extern Sprite *menu;
+extern Sprite *quit;
+extern Sprite *space;
+extern Sprite *title;
+extern Sprite *game_over;
 
 // Alocação de memória ao(s) buffer(s)
 // Se houver só um buffer, esse é o principal
@@ -59,7 +63,7 @@ void draw_new_frame() {
             draw_initial_menu();
             break;
         case GAME:
-            draw_game_menu();
+            draw_finish_menu();
             break;
         case END:
             draw_finish_menu();
@@ -70,22 +74,19 @@ void draw_new_frame() {
 
 // O menu inicial é apenas um retângulo com tamanho máximo, com um smile ao centro
 void draw_initial_menu() {
-    draw_rectangle(0, 0, mode_info.XResolution, mode_info.YResolution, RED, drawing_frame_buffer);
-    draw_sprite_xpm(smile, mode_info.XResolution/2 - 100, mode_info.YResolution/2 - 100);
-}
+    draw_sprite_xpm(menu, 0, 0);
+    draw_sprite_xpm(title, mode_info.XResolution/4, 20);
+    draw_sprite_xpm(single_player, mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
+    draw_sprite_xpm(controls, mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
+    draw_sprite_xpm(multiplayer, 3 * mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
+    draw_sprite_xpm(quit, 3 * mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
 
-// O menu do jogo é constituído por quatro botões
-void draw_game_menu() {
-    draw_sprite_button(button1, 0, 0);
-    draw_sprite_button(button2, mode_info.XResolution/2, 0);
-    draw_sprite_button(button3, 0, mode_info.YResolution/2);
-    draw_sprite_button(button4, mode_info.XResolution/2, mode_info.YResolution/2);
+    update_state_menu();
 }
 
 // O menu final é apenas um retângulo com tamanho máximo, com um smile ao centro
 void draw_finish_menu() {
-    draw_rectangle(0, 0, mode_info.XResolution, mode_info.YResolution, DARKBLUE, drawing_frame_buffer);
-    draw_sprite_xpm(smile, mode_info.XResolution/2 - 100, mode_info.YResolution/2 - 100);
+    draw_sprite_xpm(game_over, 0, 0);
 }
 
 // O cursor mode ter dois estados:
@@ -116,13 +117,22 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
         if (draw_pixel(x + w, y + h, current_color, drawing_frame_buffer) != 0) return 1;
       }
     }
+    
     return 0; 
+}
+
+void update_state_menu() {
+
+    if (single_player->pressed == 1) menuState = END;
+    else if (multiplayer->pressed == 1) menuState = END;
+    else if (controls->pressed == 1) menuState = END;
+    else if (quit->pressed == 1) menuState = END;
 }
 
 // A função recebe um objeto Sprite de cor constante e mostra-o nas coordenadas (x, y)
 // Usa apenas uma cor, alocada na altura da construção
 // A função ignora a cor transparente do XPM para não modificar o fundo quando não é preciso
-int draw_sprite_button(Sprite *sprite, int x, int y) { 
+/*int draw_sprite_button(Sprite *sprite, int x, int y) { 
     uint16_t height = sprite->height;
     uint16_t width = sprite->width;
     uint32_t color = sprite->pressed ? PRESSED : sprite->color;
@@ -132,7 +142,7 @@ int draw_sprite_button(Sprite *sprite, int x, int y) {
       }
     }
     return 0; 
-}
+}*/
 
 // Faz o display do tempo real num formato amigável
 // No caso do Template esta função apenas retorna uma string para o ficheiro output.txt

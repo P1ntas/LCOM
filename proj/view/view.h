@@ -18,7 +18,8 @@ void draw_mouse();
 void swap_buffers();
 void display_real_time();
 int draw_sprite_xpm(Sprite *sprite, int x, int y);
-int draw_sprite_button(Sprite *sprite, int x, int y);
+//int draw_sprite_button(Sprite *sprite, int x, int y);
 int set_frame_buffers(uint16_t mode);
+void update_state_menu();
 
 #endif
