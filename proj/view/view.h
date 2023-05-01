@@ -13,8 +13,10 @@
 void draw_new_frame();
 void draw_initial_menu();
 void draw_controls_menu();
+void draw_game();
 void draw_finish_menu();
 void draw_mouse();
+int draw_asteroid(int x, int y);
 void swap_buffers();
 void display_real_time();
 int draw_sprite_xpm(Sprite *sprite, int x, int y);

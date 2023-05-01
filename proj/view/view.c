@@ -68,7 +68,7 @@ void draw_new_frame() {
             draw_controls_menu();
             break;
         case GAME:
-            draw_finish_menu();
+            draw_game();
             break;
         case END:
             draw_finish_menu();
@@ -100,6 +100,10 @@ void draw_finish_menu() {
     draw_sprite_xpm(game_over, 0, 0);
 }
 
+void draw_game() {
+    draw_sprite_xpm(space, 0, 0);
+}
+
 // O cursor mode ter dois estados:
 // - "normal", quando está no menu de início ou de fim
 // - "mão", quando está no menu com os botões
@@ -112,6 +116,15 @@ void draw_mouse() {
             draw_sprite_xpm(hand, mouse_info.x, mouse_info.y);
             break;
     }
+}
+
+int draw_asteroid(int x, int y) {
+
+    if (x > mode_info.XResolution || x < 0 || y > mode_info.YResolution || y < 0) return 1;
+
+    draw_sprite_xpm(asteroid, x, y);
+
+    return 0
 }
 
 // A função recebe um objeto Sprite proveniente de um XPM e mostra-o nas coordenadas (x, y)

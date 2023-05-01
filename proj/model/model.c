@@ -80,7 +80,7 @@ void update_keyboard_state() {
         case Q_KEY:
             systemState = EXIT;
             break;
-        case S_KEY:
+        case M_KEY:
             menuState = START;
             break;
         case G_KEY:
