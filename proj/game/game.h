@@ -7,6 +7,22 @@
 #include "controller/video/graphics.h"
 #include "asteroid.h"
 
+typedef enum {
+    GAME_OVER,
+    GAME_RUNNING,
+    GAME_PAUSED,
+    GAME_START
+} GameState;
+
+GameState game_state = GAME_START;
+
+void game_init();       // Inicializa o jogo
+
+void game_update();
+
+void game_draw();       
+
+void game_destroy();    // Do we need this?
 
 
 #endif

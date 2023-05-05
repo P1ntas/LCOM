@@ -22,6 +22,7 @@ Sprite *space;
 Sprite *title;
 Sprite *game_over;
 Sprite *controls_menu;
+Sprite *space_ship;
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;
@@ -40,6 +41,7 @@ void setup_sprites() {
     title = create_sprite_xpm((xpm_map_t) title_xpm);
     game_over = create_sprite_xpm((xpm_map_t) game_over_xpm);
     controls_menu = create_sprite_xpm((xpm_map_t) controls_menu_xpm);
+    space_ship = create_sprite_xpm((xpm_map_t) space_ship_xpm);
 }
 
 // É boa prática antes de acabar o programa libertar a memória alocada
@@ -56,6 +58,7 @@ void destroy_sprites() {
     destroy_sprite(title);
     destroy_sprite(game_over);
     destroy_sprite(controls_menu);
+    destroy_sprite(space_ship);
 }
 
 // Na altura da interrupção há troca dos buffers e incremento do contador

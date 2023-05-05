@@ -25,6 +25,7 @@ extern Sprite *space;
 extern Sprite *title;
 extern Sprite *game_over;
 extern Sprite *controls_menu;
+extern Sprite *space_ship;
 
 // Alocação de memória ao(s) buffer(s)
 // Se houver só um buffer, esse é o principal
@@ -102,6 +103,7 @@ void draw_finish_menu() {
 
 void draw_game() {
     draw_sprite_xpm(space, 0, 0);
+    //draw_sprite_xpm(space_ship, 20, 20); not working :c
 }
 
 // O cursor mode ter dois estados:
@@ -124,7 +126,7 @@ int draw_asteroid(int x, int y) {
 
     draw_sprite_xpm(asteroid, x, y);
 
-    return 0
+    return 0;
 }
 
 // A função recebe um objeto Sprite proveniente de um XPM e mostra-o nas coordenadas (x, y)

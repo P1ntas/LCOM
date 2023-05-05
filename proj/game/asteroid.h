@@ -9,7 +9,7 @@
 typedef struct {
     int xpos, ypos, xspeed, yspeed, i;
     float angle;
-} Asteroid
+} Asteroid;
 
 int create_asteroid(int xpos, int ypos, int angle);
 

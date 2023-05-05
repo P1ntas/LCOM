@@ -19,6 +19,7 @@
 #include "xpm/title.xpm"
 #include "xpm/game-over.xpm"
 #include "xpm/controls_menu.xpm"
+#include "xpm/space_ship.xpm"
 #include "view/view.h"
 #include "model/sprite.h"
 #include "config.h"
@@ -31,6 +32,7 @@ typedef enum {
 typedef enum {
     START,
     GAME,
+    //MULTIPLAYER,
     CONTROLS,
     END
 } MenuState;
