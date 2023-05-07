@@ -9,6 +9,12 @@ extern MouseInfo mouse_info;
 extern vbe_mode_info_t mode_info;
 extern real_time_info time_info;
 
+// Variaveis relacionadas com o jogo
+GameState game_state;
+SpaceShip spaceship;
+Asteroid *asteroids[10];
+Bullet *bullets[10];
+
 // Objetos a construir e manipular com a mudança de estados
 Sprite *mouse;
 Sprite *hand;
@@ -65,8 +71,8 @@ void destroy_sprites() {
 void update_timer_state() {
     if (DOUBLE_BUFFER) swap_buffers();
     timer_interrupts++;
-    //constanstly update the ship position
-    
+    //constanstly update the game state
+    game_update();
 }
 
 // Como o Real Time Clock é um módulo mais pesado, 
@@ -81,6 +87,20 @@ void update_rtc_state() {
 // - o menuState: se S, G, E forem pressionados, leva a um dos menus (start, game, end) disponíveis
 void update_keyboard_state() {
     (kbc_ih)();
+
+    switch (menuState) {
+        case GAME:
+            process_GAME();
+            break;
+        default:
+            process_CODE();
+            break;
+    }
+    draw_new_frame();
+}
+
+
+void process_CODE() {
     switch (scancode) {
         case Q_KEY:
             systemState = EXIT;
@@ -96,7 +116,25 @@ void update_keyboard_state() {
         default:
             break;
     }
-    draw_new_frame();
+}
+
+void process_GAME() {
+    switch (scancode) {
+        case W_KEY:
+            accelerate_spaceship(&spaceship);
+            break;
+        case A_KEY:
+            rotate_spaceship(&spaceship, LEFT);
+            break;
+        case S_KEY:
+            rotate_spaceship(&spaceship, RIGHT);
+            break;
+        case D_KEY:
+            //What should i do?
+            break;
+        default:
+            break;
+    }
 }
 
 // Sempre que há um novo pacote completo do rato

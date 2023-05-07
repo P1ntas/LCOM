@@ -1,20 +1,20 @@
 #include "spaceShip.h"
 
-SpaceShip* create_spaceship(int x, int y, float angle) {
-    SpaceShip *spaceship = (SpaceShip *)malloc(sizeof(SpaceShip));
+int create_spaceship(int x, int y, float angle, SpaceShip* spaceship) {
+    spaceship = (SpaceShip*) malloc(sizeof(SpaceShip));
 
-    if (spaceship == NULL) return NULL;
+    if (spaceship == NULL) return 1;
 
     spaceship->x = x;
     spaceship->y = y;
     spaceship->angle = angle;
     spaceship->speed = 0;
-    spaceship->speedFactor = 1; // responsavel pela aceleracao da nave
-    spaceship->slowFactor = -1; // por default, a nave desacelera -1
-    spaceship->width = 64;
-    spaceship->height = 64;
+    spaceship->speedFactor = 1;
+    spaceship->slowFactor = 0.1;
+    spaceship->width = 60;
+    spaceship->height = 40;
 
-    return spaceship;
+    return 0;
 }
 
 void update_spaceship(SpaceShip* spaceship) {

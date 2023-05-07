@@ -4,8 +4,9 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
-#include "game.h"
-#include "spaceShip.h"
+#include "model/model.h"
+
+extern Bullet* bullets[10];
 
 /** @defgroup bullet Bullet
  * @{
@@ -18,12 +19,12 @@
  * 
  */
 typedef struct {
-    int x; /**< @brief x coordinate of the bullet */
-    int y; /**< @brief y coordinate of the bullet */
-    int xspeed; /**< @brief speed of the bullet */
-    int yspeed; /**< @brief speed of the bullet */
-    int damage; /**< @brief damage of the bullet */
-    SpaceShip owner; /**< @brief id of the owner of the bullet */
+    int x;              /**< @brief x coordinate of the bullet */
+    int y;              /**< @brief y coordinate of the bullet */
+    int xspeed;         /**< @brief speed of the bullet on axis x*/
+    int yspeed;         /**< @brief speed of the bullet on axis y*/
+    int damage;         /**< @brief damage of the bullet */
+    SpaceShip owner;    /**< @brief id of the owner of the bullet */
 } Bullet;
 
 /**

@@ -29,11 +29,11 @@ void update_asteroid() {
             asteroids[i]->x += asteroids[i]->xspeed;
             asteroids[i]->y += asteroids[i]->yspeed;
 
-            if (asteroids[i]->xpos > mode_info.XResolution) asteroids[i]->xpos -= mode_info.XResolution;
-            else if (asteroids[i]->xpos < 0) asteroids[i]->xpos += mode_info.XResolution;
+            if (asteroids[i]->x > mode_info.XResolution) asteroids[i]->x -= mode_info.XResolution;
+            else if (asteroids[i]->x < 0) asteroids[i]->x += mode_info.XResolution;
 
-            if (asteroids[i]->ypos > mode_info.YResolution) asteroids[i]->ypos -= mode_info.YResolution;
-            else if (asteroids[i]->ypos < 0) asteroids[i]->ypos += mode_info.YResolution;
+            if (asteroids[i]->y > mode_info.YResolution) asteroids[i]->y -= mode_info.YResolution;
+            else if (asteroids[i]->y < 0) asteroids[i]->y += mode_info.YResolution;
         }
     }
 }

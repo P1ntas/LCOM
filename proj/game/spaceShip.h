@@ -4,7 +4,6 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
-#include "game.h"
 
 typedef struct {
     int x, y, speed, speedFactor, slowFactor, width, height;
@@ -16,7 +15,9 @@ typedef enum {
     RIGHT
 } Direction;
 
-SpaceShip* create_spaceship(int x, int y, float angle);
+extern SpaceShip* spaceship;
+
+int create_spaceship(int x, int y, float angle, SpaceShip* spaceship);
 
 void update_spaceship(SpaceShip* spaceship);
 

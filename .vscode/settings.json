@@ -9,6 +9,21 @@
         "__locale": "c",
         "istream": "c",
         "locale": "c",
-        "vector": "c"
+        "vector": "c",
+        "bit": "c",
+        "condition_variable": "c",
+        "cstddef": "c",
+        "string": "c",
+        "optional": "c",
+        "limits": "c",
+        "new": "c",
+        "functional": "c",
+        "atomic": "c",
+        "ios": "c",
+        "type_traits": "c",
+        "game.h": "c",
+        "bullet.h": "c",
+        "spaceship.h": "c",
+        "model.h": "c"
     }
 }

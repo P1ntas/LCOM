@@ -24,6 +24,11 @@
 #include "model/sprite.h"
 #include "config.h"
 
+#include "game/game.h"
+#include "game/asteroid.h"
+#include "game/bullet.h"
+#include "game/spaceship.h"
+
 typedef enum {
     RUNNING,
     EXIT,
@@ -37,6 +42,13 @@ typedef enum {
     END
 } MenuState;
 
+typedef enum {
+    GAME_OVER,
+    GAME_RUNNING,
+    GAME_PAUSED,
+    GAME_START
+} GameState;
+
 void update_timer_state();
 void update_keyboard_state();
 void update_mouse_state();
@@ -44,5 +56,8 @@ void update_buttons_state();
 void update_rtc_state();
 void setup_sprites();
 void destroy_sprites();
+
+void process_CODE();
+void process_GAME();
 
 #endif

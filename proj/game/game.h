@@ -5,14 +5,7 @@
 #include <lcom/lcf.h>
 #include "stdbool.h"
 #include "controller/video/graphics.h"
-#include "asteroid.h"
-
-typedef enum {
-    GAME_OVER,
-    GAME_RUNNING,
-    GAME_PAUSED,
-    GAME_START
-} GameState;
+#include "model/model.h"
 
 GameState game_state = GAME_START;
 
