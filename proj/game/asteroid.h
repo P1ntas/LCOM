@@ -7,11 +7,11 @@
 #include "game.h"
 
 typedef struct {
-    int xpos, ypos, xspeed, yspeed, i;
+    int x, y, xspeed, yspeed, i, width, height;
     float angle;
 } Asteroid;
 
-int create_asteroid(int xpos, int ypos, int angle);
+int create_asteroid(int x, int y, int angle);
 
 void update_asteroid();
 

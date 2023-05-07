@@ -1,23 +1,25 @@
 #include "spaceShip.h"
 
-Spaceship* create_spaceship(int xpos, int ypos, float angle) {
-    Spaceship *spaceship = (Spaceship *)malloc(sizeof(Spaceship));
+SpaceShip* create_spaceship(int x, int y, float angle) {
+    SpaceShip *spaceship = (SpaceShip *)malloc(sizeof(SpaceShip));
 
     if (spaceship == NULL) return NULL;
 
-    spaceship->xpos = xpos;
-    spaceship->ypos = ypos;
+    spaceship->x = x;
+    spaceship->y = y;
     spaceship->angle = angle;
     spaceship->speed = 0;
     spaceship->speedFactor = 1; // responsavel pela aceleracao da nave
     spaceship->slowFactor = -1; // por default, a nave desacelera -1
+    spaceship->width = 64;
+    spaceship->height = 64;
 
     return spaceship;
 }
 
-void update_spaceship(Spaceship* spaceship) {
-    spaceship->xpos += cos(spaceship->angle) * spaceship->speed;
-    spaceship->ypos += sin(spaceship->angle) * spaceship->speed;
+void update_spaceship(SpaceShip* spaceship) {
+    spaceship->x += cos(spaceship->angle) * spaceship->speed;
+    spaceship->y += sin(spaceship->angle) * spaceship->speed;
 
     if (spaceship->speed - spaceship->slowFactor < 0) spaceship->speed = 0;
     else spaceship->speed -= spaceship->slowFactor;
@@ -31,18 +33,27 @@ void update_spaceship(Spaceship* spaceship) {
     */
 }
 
-void destroy_spaceship(Spaceship* spaceship) {
+void destroy_spaceship(SpaceShip* spaceship) {
     if (spaceship == NULL) return;
 
     free(spaceship);
     spaceship = NULL;
 }
 
-void rotate_spaceship(Spaceship* spaceship, Direction direction){
+void rotate_spaceship(SpaceShip* spaceship, Direction direction){
     if (direction == LEFT) spaceship->angle -= 1;
     else if (direction == RIGHT) spaceship->angle += 1;
 }
 
-void accelerate_spaceship(Spaceship* spaceship) {
+void accelerate_spaceship(SpaceShip* spaceship) {
     spaceship->speed += spaceship->speedFactor;
+}
+
+bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid) {
+    if (spaceship->x + spaceship->width < asteroid->x) return false;
+    if (spaceship->x > asteroid->x + asteroid->width) return false;
+    if (spaceship->y + spaceship->height < asteroid->y) return false;
+    if (spaceship->y > asteroid->y + asteroid->height) return false;
+
+    return true;
 }

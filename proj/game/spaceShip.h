@@ -7,23 +7,25 @@
 #include "game.h"
 
 typedef struct {
-    int xpos, ypos, speed, speedFactor, slowFactor;
+    int x, y, speed, speedFactor, slowFactor, width, height;
     float angle;
-} Spaceship;
+} SpaceShip;
 
 typedef enum {
     LEFT,
     RIGHT
 } Direction;
 
-Spaceship* create_spaceship(int xpos, int ypos, float angle);
+SpaceShip* create_spaceship(int x, int y, float angle);
 
-void update_spaceship(Spaceship* spaceship);
+void update_spaceship(SpaceShip* spaceship);
 
-void destroy_spaceship(Spaceship* spaceship);
+void destroy_spaceship(SpaceShip* spaceship);
 
-void rotate_spaceship(Spaceship* spaceship, Direction direction);
+void rotate_spaceship(SpaceShip* spaceship, Direction direction);
 
-void accelerate_spaceship(Spaceship* spaceship);
+void accelerate_spaceship(SpaceShip* spaceship);
+
+bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid);
 
 #endif

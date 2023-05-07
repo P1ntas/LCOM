@@ -65,6 +65,8 @@ void destroy_sprites() {
 void update_timer_state() {
     if (DOUBLE_BUFFER) swap_buffers();
     timer_interrupts++;
+    //constanstly update the ship position
+    
 }
 
 // Como o Real Time Clock é um módulo mais pesado, 

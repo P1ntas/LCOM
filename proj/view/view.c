@@ -103,7 +103,7 @@ void draw_finish_menu() {
 
 void draw_game() {
     draw_sprite_xpm(space, 0, 0);
-    //draw_sprite_xpm(space_ship, 20, 20); not working :c
+    draw_sprite_xpm(space_ship, mode_info.XResolution/2, mode_info.YResolution/2);
 }
 
 // O cursor mode ter dois estados:
