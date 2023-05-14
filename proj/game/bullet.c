@@ -1,6 +1,6 @@
 #include "bullet.h"
 
-Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage, SpaceShip owner) {
+Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage/*, SpaceShip owner*/) {
     Bullet* bullet = (Bullet*) malloc(sizeof(Bullet));
 
     if (bullet == NULL) return NULL;
@@ -10,7 +10,7 @@ Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage, SpaceShi
     bullet->xspeed = xspeed;
     bullet->yspeed = yspeed;
     bullet->damage = damage;
-    bullet->owner = owner;
+    //bullet->owner = owner;
 
     return bullet;
 }
@@ -47,7 +47,7 @@ bool bullet_out_of_bounds(Bullet* bullet) {
     if (bullet->x < 0 || bullet->x > mode_info.XResolution || bullet->y < 0 || bullet->y > mode_info.YResolution) return true;
     else return false;
 }
-
+/*
 bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship) {
     if (bullet == NULL || spaceship == NULL) return false;
 
@@ -61,3 +61,4 @@ bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid) {
     if (bullet->x >= asteroid->x && bullet->x <= asteroid->x + asteroid->width && bullet->y >= asteroid->y && bullet->y <= asteroid->y + asteroid->height) return true;
     else return false;
 }
+*/

@@ -9,7 +9,7 @@ int create_spaceship(int x, int y, float angle, SpaceShip* spaceship) {
     spaceship->y = y;
     spaceship->angle = angle;
     spaceship->speed = 0;
-    spaceship->speedFactor = 1;
+    spaceship->speedFactor = 1.0;
     spaceship->slowFactor = 0.1;
     spaceship->width = 60;
     spaceship->height = 40;
@@ -18,8 +18,14 @@ int create_spaceship(int x, int y, float angle, SpaceShip* spaceship) {
 }
 
 void update_spaceship(SpaceShip* spaceship) {
-    spaceship->x += cos(spaceship->angle) * spaceship->speed;
-    spaceship->y += sin(spaceship->angle) * spaceship->speed;
+    float speed_x = cos(spaceship->angle) * spaceship->speed;
+    float speed_y = sin(spaceship->angle) * spaceship->speed;
+
+    int new_x = spaceship->x + speed_x;
+    int new_y = spaceship->y + speed_y;
+
+    spaceship->x = new_x;
+    spaceship->y = new_y;
 
     if (spaceship->speed - spaceship->slowFactor < 0) spaceship->speed = 0;
     else spaceship->speed -= spaceship->slowFactor;
@@ -48,7 +54,7 @@ void rotate_spaceship(SpaceShip* spaceship, Direction direction){
 void accelerate_spaceship(SpaceShip* spaceship) {
     spaceship->speed += spaceship->speedFactor;
 }
-
+/*
 bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid) {
     if (spaceship->x + spaceship->width < asteroid->x) return false;
     if (spaceship->x > asteroid->x + asteroid->width) return false;
@@ -56,4 +62,4 @@ bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid) {
     if (spaceship->y > asteroid->y + asteroid->height) return false;
 
     return true;
-}
+}*/

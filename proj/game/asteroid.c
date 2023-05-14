@@ -40,7 +40,13 @@ void update_asteroid() {
 
 int destroy_asteroid(Asteroid* asteroid) {
     if (asteroid == NULL) return 1;
-
+    int index = -1;
+    for (int i = 0; i < 10; i++) {
+        if (asteroids[i] == asteroid) {
+            index = i;
+            break;
+        }
+    }
     asteroids[index] = NULL;
     free(asteroid);
     asteroid = NULL;

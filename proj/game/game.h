@@ -5,9 +5,16 @@
 #include <lcom/lcf.h>
 #include "stdbool.h"
 #include "controller/video/graphics.h"
-#include "model/model.h"
+#include "spaceShip.h"
 
-GameState game_state = GAME_START;
+typedef enum {
+    GAME_OVER,
+    GAME_RUNNING,
+    GAME_PAUSED,
+    GAME_START
+} GameState;
+
+extern GameState game_state;
 
 void game_init();       // Inicializa o jogo
 

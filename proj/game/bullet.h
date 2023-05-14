@@ -4,9 +4,7 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
-#include "model/model.h"
-
-extern Bullet* bullets[10];
+#include "spaceShip.h"
 
 /** @defgroup bullet Bullet
  * @{
@@ -24,8 +22,10 @@ typedef struct {
     int xspeed;         /**< @brief speed of the bullet on axis x*/
     int yspeed;         /**< @brief speed of the bullet on axis y*/
     int damage;         /**< @brief damage of the bullet */
-    SpaceShip owner;    /**< @brief id of the owner of the bullet */
+    //SpaceShip owner;    /**< @brief id of the owner of the bullet */
 } Bullet;
+
+extern Bullet* bullets[10];
 
 /**
  * @brief Creates a bullet
@@ -38,7 +38,7 @@ typedef struct {
  * @param owner id of the owner of the bullet
  * @return Bullet* pointer to the bullet created
  */
-Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage, SpaceShip owner);
+Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage/*, SpaceShip owner*/);
 
 /**
  * @brief Updates the bullet
@@ -78,7 +78,7 @@ bool bullet_out_of_bounds(Bullet* bullet);
  * @return true if the bullet collides with the spaceship that is not the owner of the bullet
  * @return false if the bullet does not collide with the spaceship
  */
-bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
+//bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
 
 /**
  * @brief Checks if the bullet collides with a asteroid
@@ -88,6 +88,6 @@ bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
  * @return true if the bullet collides with the asteroid
  * @return false if the bullet does not collide with the asteroid
  */
-bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid);
+//bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid);
 
 #endif

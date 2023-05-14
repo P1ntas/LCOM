@@ -151,7 +151,6 @@ void update_state_menu() {
 
     if (single_player->pressed == 1) {
         menuState = GAME;
-        
     }
     else if (multiplayer->pressed == 1) menuState = END;
     else if (controls->pressed == 1) menuState = CONTROLS;

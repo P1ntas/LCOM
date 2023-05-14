@@ -11,10 +11,10 @@ typedef struct {
     float angle;
 } Asteroid;
 
-int create_asteroid(int x, int y, int angle);
+int create_asteroid(int x, int y, float angle);
 
 void update_asteroid();
 
-void destroy_asteroid();
+int destroy_asteroid(Asteroid* asteroid);
 
 #endif

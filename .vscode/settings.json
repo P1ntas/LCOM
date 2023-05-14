@@ -24,6 +24,9 @@
         "game.h": "c",
         "bullet.h": "c",
         "spaceship.h": "c",
-        "model.h": "c"
+        "model.h": "c",
+        "cmath": "c",
+        "complex": "c",
+        "random": "c"
     }
 }

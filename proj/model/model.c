@@ -10,8 +10,8 @@ extern vbe_mode_info_t mode_info;
 extern real_time_info time_info;
 
 // Variaveis relacionadas com o jogo
-GameState game_state;
-SpaceShip spaceship;
+GameState game_state  = GAME_START;
+SpaceShip *spaceship;
 Asteroid *asteroids[10];
 Bullet *bullets[10];
 
@@ -71,8 +71,9 @@ void destroy_sprites() {
 void update_timer_state() {
     if (DOUBLE_BUFFER) swap_buffers();
     timer_interrupts++;
-    //constanstly update the game state
-    game_update();
+    // deve atualizar o estado do jogo a cada interrupção do timer
+    if (game_state == GAME_RUNNING && menuState == GAME)
+        game_update();
 }
 
 // Como o Real Time Clock é um módulo mais pesado, 
@@ -121,18 +122,19 @@ void process_CODE() {
 void process_GAME() {
     switch (scancode) {
         case W_KEY:
-            accelerate_spaceship(&spaceship);
+            accelerate_spaceship(spaceship);
             break;
         case A_KEY:
-            rotate_spaceship(&spaceship, LEFT);
+            rotate_spaceship(spaceship, LEFT);
             break;
         case S_KEY:
-            rotate_spaceship(&spaceship, RIGHT);
-            break;
-        case D_KEY:
             //What should i do?
             break;
+        case D_KEY:
+            rotate_spaceship(spaceship, RIGHT);
+            break;
         default:
+            process_CODE();
             break;
     }
 }

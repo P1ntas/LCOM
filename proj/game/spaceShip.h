@@ -3,11 +3,13 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
+#include <math.h>
 #include "view/view.h"
+#include "asteroid.h"
 
 typedef struct {
-    int x, y, speed, speedFactor, slowFactor, width, height;
-    float angle;
+    int x, y, width, height;
+    float angle, speed, speedFactor, slowFactor;
 } SpaceShip;
 
 typedef enum {
@@ -27,6 +29,6 @@ void rotate_spaceship(SpaceShip* spaceship, Direction direction);
 
 void accelerate_spaceship(SpaceShip* spaceship);
 
-bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid);
+//bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid);
 
 #endif
