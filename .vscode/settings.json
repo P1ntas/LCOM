@@ -27,6 +27,7 @@
         "model.h": "c",
         "cmath": "c",
         "complex": "c",
-        "random": "c"
+        "random": "c",
+        "sysutil.h": "c"
     }
 }

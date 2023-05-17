@@ -1,10 +1,11 @@
 #include "game.h"
 
-extern SpaceShip* spaceship;
+extern SpaceShip *spaceship;
+extern GameState game_state;
 
 void game_init() {
-    game_state = GAME_START;
-    create_spaceship(mode_info.XResolution / 2, mode_info.YResolution / 2, 0, spaceship);
+    game_state = GAME_RUNNING;
+    create_spaceship(mode_info.XResolution / 2, mode_info.YResolution / 2, spaceship);
 }
 
 void game_update() {
@@ -13,5 +14,6 @@ void game_update() {
 
 void game_destroy() {
     destroy_spaceship(spaceship);
+    game_state = GAME_START;
 }
 

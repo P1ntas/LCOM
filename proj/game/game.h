@@ -14,8 +14,6 @@ typedef enum {
     GAME_START
 } GameState;
 
-extern GameState game_state;
-
 void game_init();       // Inicializa o jogo
 
 void game_update();     // Atualiza o jogo a cada interrupção do timer

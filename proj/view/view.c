@@ -103,7 +103,14 @@ void draw_finish_menu() {
 
 void draw_game() {
     draw_sprite_xpm(space, 0, 0);
-    draw_sprite_xpm(space_ship, mode_info.XResolution/2, mode_info.YResolution/2);
+    //draw_sprite_xpm(space_ship, mode_info.XResolution/2, mode_info.YResolution/2);
+
+    
+    if (spaceship->x >= 0) // esta linha trava o programa
+        draw_sprite_xpm(space_ship, mode_info.XResolution/2, mode_info.YResolution/2);
+    else 
+        draw_sprite_xpm(space_ship, 50, 50);
+    //draw_sprite_xpm(space_ship, spaceship->x, spaceship->y);
 }
 
 // O cursor mode ter dois estados:
@@ -151,6 +158,7 @@ void update_state_menu() {
 
     if (single_player->pressed == 1) {
         menuState = GAME;
+        game_init();
     }
     else if (multiplayer->pressed == 1) menuState = END;
     else if (controls->pressed == 1) menuState = CONTROLS;

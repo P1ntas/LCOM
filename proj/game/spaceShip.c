@@ -1,31 +1,37 @@
 #include "spaceShip.h"
 
-int create_spaceship(int x, int y, float angle, SpaceShip* spaceship) {
+int create_spaceship(int x, int y, SpaceShip* spaceship) {
     spaceship = (SpaceShip*) malloc(sizeof(SpaceShip));
 
     if (spaceship == NULL) return 1;
 
-    spaceship->x = x;
-    spaceship->y = y;
-    spaceship->angle = angle;
-    spaceship->speed = 0;
-    spaceship->speedFactor = 1.0;
-    spaceship->slowFactor = 0.1;
+    spaceship->x = x;           // position
+    spaceship->y = y;           // position
+    spaceship->direction = UP;  // direction
+    spaceship->speed = 0;       // speed
+    spaceship->speedFactor = 1; // thruster
+    spaceship->slowFactor = 1;  // slow
     spaceship->width = 60;
     spaceship->height = 40;
 
     return 0;
 }
 
-void update_spaceship(SpaceShip* spaceship) {
-    float speed_x = cos(spaceship->angle) * spaceship->speed;
-    float speed_y = sin(spaceship->angle) * spaceship->speed;
+void update_spaceship() {
+    if (spaceship == NULL) return;
 
-    int new_x = spaceship->x + speed_x;
-    int new_y = spaceship->y + speed_y;
+    // ship moves forward
 
-    spaceship->x = new_x;
-    spaceship->y = new_y;
+    int move[2];
+
+    getVector(spaceship->direction, move);
+
+    printf("x: %d, y: %d\n", spaceship->x, spaceship->y);
+
+    spaceship->x += move[0] * spaceship->speed;
+    spaceship->y += move[1] * spaceship->speed;
+
+    // slow the ship down
 
     if (spaceship->speed - spaceship->slowFactor < 0) spaceship->speed = 0;
     else spaceship->speed -= spaceship->slowFactor;
@@ -39,19 +45,83 @@ void update_spaceship(SpaceShip* spaceship) {
     */
 }
 
-void destroy_spaceship(SpaceShip* spaceship) {
+void destroy_spaceship() {
     if (spaceship == NULL) return;
 
     free(spaceship);
     spaceship = NULL;
 }
 
-void rotate_spaceship(SpaceShip* spaceship, Direction direction){
-    if (direction == LEFT) spaceship->angle -= 1;
-    else if (direction == RIGHT) spaceship->angle += 1;
+void rotate_spaceship(uint8_t scancode){
+    if (spaceship == NULL) return;
+
+    switch (scancode) {
+        case A_KEY:
+            switch (spaceship->direction) {
+                case UP:
+                    spaceship->direction = UP_LEFT;
+                    break;
+                case UP_LEFT:
+                    spaceship->direction = LEFT;
+                    break;
+                case LEFT:
+                    spaceship->direction = DOWN_LEFT;
+                    break;
+                case DOWN_LEFT:
+                    spaceship->direction = DOWN;
+                    break;
+                case DOWN:
+                    spaceship->direction = DOWN_RIGHT;
+                    break;
+                case DOWN_RIGHT:
+                    spaceship->direction = RIGHT;
+                    break;
+                case RIGHT:
+                    spaceship->direction = UP_RIGHT;
+                    break;
+                case UP_RIGHT:
+                    spaceship->direction = UP;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case D_KEY:
+            switch (spaceship->direction) {
+                case UP:
+                    spaceship->direction = UP_RIGHT;
+                    break;
+                case UP_RIGHT:
+                    spaceship->direction = RIGHT;
+                    break;
+                case RIGHT:
+                    spaceship->direction = DOWN_RIGHT;
+                    break;
+                case DOWN_RIGHT:
+                    spaceship->direction = DOWN;
+                    break;
+                case DOWN:
+                    spaceship->direction = DOWN_LEFT;
+                    break;
+                case DOWN_LEFT:
+                    spaceship->direction = LEFT;
+                    break;
+                case LEFT:
+                    spaceship->direction = UP_LEFT;
+                    break;
+                case UP_LEFT:
+                    spaceship->direction = UP;
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
 }
 
-void accelerate_spaceship(SpaceShip* spaceship) {
+void accelerate_spaceship() {
     spaceship->speed += spaceship->speedFactor;
 }
 /*
