@@ -5,21 +5,22 @@ extern vbe_mode_info_t mode_info;
 unsigned int radius;
 extern Asteroid* asteroids[10];
 
-int create_asteroid(int x, int y, float angle, int index) {
+int create_asteroid(int x, int y, int i) {
     Asteroid *asteroid = (Asteroid *)malloc(sizeof(Asteroid));
 
     if (asteroid == NULL) return 1;
 
     asteroid->x = x;
     asteroid->y = y;
-    asteroid->xspeed = rand() % 10;
-    asteroid->yspeed = rand() % 10;
-    asteroid->angle = angle;
+    asteroid->xspeed = (rand() % 21) - 10;
+    asteroid->yspeed = (rand() % 21) - 10;
     asteroid->width = 64;
     asteroid->height = 64;
-    asteroid->index = index;
+    asteroid->i = i;
 
     draw_asteroid(x, y);
+
+    asteroids[i] = asteroid;
 
     return 0;
 }
@@ -36,6 +37,7 @@ int update_asteroid() {
             if (asteroids[i]->y > mode_info.YResolution) asteroids[i]->y -= mode_info.YResolution;
             else if (asteroids[i]->y < 0) asteroids[i]->y += mode_info.YResolution;
         }
+        else create_asteroid((rand() % 2) ? mode_info.XResolution : 0, rand() % mode_info.YResolution, i);
     }
     return 0;
 }
@@ -43,7 +45,7 @@ int update_asteroid() {
 int destroy_asteroid(Asteroid* asteroid) {
     if (asteroid == NULL) return 1;
 
-    asteroids[asteroid->index] = NULL;
+    asteroids[asteroid->i] = NULL;
     free(asteroid);
     asteroid = NULL;
 
