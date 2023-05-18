@@ -4,7 +4,6 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
-#include "game.h"
 
 typedef struct {
     int x, y, xspeed, yspeed, width, height, i;

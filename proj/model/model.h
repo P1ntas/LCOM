@@ -31,6 +31,7 @@
 #include "view/view.h"
 #include "model/sprite.h"
 #include "config.h"
+#include "game/asteroid.h"
 
 typedef enum {
     RUNNING,
