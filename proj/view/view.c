@@ -62,20 +62,22 @@ void swap_buffers() {
 // os objetos em cima, no caso do cursor e / ou dos botões
 void draw_new_frame() {
     switch (menuState) {
-        case START:
+        case MAIN_MENU:
             draw_initial_menu();
+            break;
+        case SINGLE_PLAYER:
+            break;
+        case MULTIPLAYER:
             break;
         case CONTROLS:
             draw_controls_menu();
             break;
-        case GAME:
-            draw_game();
-            break;
         case END:
             draw_finish_menu();
             break;
+        default:
+            break;
     }
-    draw_mouse();
 }
 
 // O menu inicial é apenas um retângulo com tamanho máximo, com um smile ao centro
@@ -101,20 +103,16 @@ void draw_finish_menu() {
     draw_sprite_xpm(game_over, 0, 0);
 }
 
-void draw_game() {
-    draw_sprite_xpm(space, 0, 0);
-    draw_sprite_xpm(space_ship, mode_info.XResolution/2, mode_info.YResolution/2);
-}
 
 // O cursor mode ter dois estados:
 // - "normal", quando está no menu de início ou de fim
 // - "mão", quando está no menu com os botões
 void draw_mouse() {
     switch (menuState) {
-        case START: case END: case CONTROLS:
+        case MAIN_MENU: case END: case CONTROLS:
             draw_sprite_xpm(mouse, mouse_info.x, mouse_info.y);
             break;
-        case GAME:
+        case SINGLE_PLAYER: case MULTIPLAYER: 
             draw_sprite_xpm(hand, mouse_info.x, mouse_info.y);
             break;
     }
@@ -148,9 +146,8 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
 }
 
 void update_state_menu() {
-
-    if (single_player->pressed == 1) menuState = END;
-    else if (multiplayer->pressed == 1) menuState = END;
+    if (single_player->pressed == 1) menuState = SINGLE_PLAYER;
+    else if (multiplayer->pressed == 1) menuState = MULTIPLAYER;
     else if (controls->pressed == 1) menuState = CONTROLS;
     else if (quit->pressed == 1) systemState = EXIT;
 
@@ -181,3 +178,4 @@ void update_state_menu() {
 void display_real_time() {
     printf("NOW: %d/%d/%d @%d:%d:%d\n", 2000 + time_info.year, time_info.month, time_info.day, time_info.hours, time_info.minutes, time_info.seconds);
 }
+

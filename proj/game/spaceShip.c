@@ -1,59 +1,66 @@
 #include "spaceShip.h"
 
-SpaceShip* create_spaceship(int x, int y, float angle) {
-    SpaceShip *spaceship = (SpaceShip *)malloc(sizeof(SpaceShip));
+#define SPEED 5
 
-    if (spaceship == NULL) return NULL;
+// Variáveis externas importantes à construção e manipulação do modelo
+extern uint8_t scancode;
+extern vbe_mode_info_t mode_info;
+extern Sprite *space_ship1;
+extern Sprite *space_ship2;
+extern Sprite *space_ship3;
+extern Sprite *space_ship4;
+extern Sprite *space_ship5;
+extern Sprite *space_ship6;
+extern Sprite *space_ship7;
+extern Sprite *space_ship8;
+extern Sprite *space;
+extern Sprite *hand;
+int x_pos = 0;
+int y_pos = 0;
+int x_speed = 0;
+int y_speed = 0;
 
-    spaceship->x = x;
-    spaceship->y = y;
-    spaceship->angle = angle;
-    spaceship->speed = 0;
-    spaceship->speedFactor = 1; // responsavel pela aceleracao da nave
-    spaceship->slowFactor = -1; // por default, a nave desacelera -1
-    spaceship->width = 64;
-    spaceship->height = 64;
+// spaceship already initialized in main.c at the center of the screen 
 
-    return spaceship;
-}
+void update_spaceship_position() 
+{
+    if (W_MAKE == scancode) y_speed = -SPEED;
+    if (W_BREAK == scancode) 
+    {
+        if (y_speed == -SPEED) y_speed = 0;
+    }
+    if (S_MAKE == scancode) y_speed = SPEED;
+    if (S_BREAK == scancode)
+    {
+        if (y_speed == SPEED) y_speed = 0;
+    }
+    if (A_MAKE == scancode) x_speed = -SPEED;
+    if (A_BREAK == scancode)
+    {
+        if (x_speed == -SPEED) x_speed = 0;
+    }
+    if (D_MAKE == scancode) x_speed = SPEED;
+    if (D_BREAK == scancode)
+    {
+        if (x_speed == SPEED) x_speed = 0;
+    }
 
-void update_spaceship(SpaceShip* spaceship) {
-    spaceship->x += cos(spaceship->angle) * spaceship->speed;
-    spaceship->y += sin(spaceship->angle) * spaceship->speed;
+    x_pos += x_speed;
+    y_pos += y_speed;
 
-    if (spaceship->speed - spaceship->slowFactor < 0) spaceship->speed = 0;
-    else spaceship->speed -= spaceship->slowFactor;
-    
-    /*
-    if (spaceship->xpos > mode_info.XResolution) spaceship->xpos -= mode_info.XResolution;
-    else if (spaceship->xpos < 0) spaceship->xpos += mode_info.XResolution;
+    if (x_pos > mode_info.XResolution) x_pos -= mode_info.XResolution;
+    else if (x_pos < 0) x_pos += mode_info.XResolution;
+    if (y_pos > mode_info.YResolution) y_pos -= mode_info.YResolution;
+    else if (y_pos < 0) y_pos += mode_info.YResolution;
 
-    if (spaceship->ypos > mode_info.YResolution) spaceship->ypos -= mode_info.YResolution;
-    else if (spaceship->ypos < 0) spaceship->ypos += mode_info.YResolution;
-    */
-}
-
-void destroy_spaceship(SpaceShip* spaceship) {
-    if (spaceship == NULL) return;
-
-    free(spaceship);
-    spaceship = NULL;
-}
-
-void rotate_spaceship(SpaceShip* spaceship, Direction direction){
-    if (direction == LEFT) spaceship->angle -= 1;
-    else if (direction == RIGHT) spaceship->angle += 1;
-}
-
-void accelerate_spaceship(SpaceShip* spaceship) {
-    spaceship->speed += spaceship->speedFactor;
-}
-
-bool ship_collides_ast(SpaceShip* spaceship, Asteroid* asteroid) {
-    if (spaceship->x + spaceship->width < asteroid->x) return false;
-    if (spaceship->x > asteroid->x + asteroid->width) return false;
-    if (spaceship->y + spaceship->height < asteroid->y) return false;
-    if (spaceship->y > asteroid->y + asteroid->height) return false;
-
-    return true;
+    draw_sprite_xpm(space, 0, 0);
+    if (x_speed > 0 && y_speed > 0) draw_sprite_xpm(space_ship8, x_pos, y_pos); // diagonal movement to the right and down 
+    else if (x_speed < 0 && y_speed < 0) draw_sprite_xpm(space_ship7, x_pos, y_pos); // diagonal movement to the left and up 
+    else if (x_speed > 0 && y_speed < 0) draw_sprite_xpm(space_ship6, x_pos, y_pos); // diagonal movement to the right and up 
+    else if (x_speed < 0 && y_speed > 0) draw_sprite_xpm(space_ship5, x_pos, y_pos); // diagonal movement to the left and down 
+    else if (x_speed > 0 && y_speed == 0) draw_sprite_xpm(space_ship4, x_pos, y_pos); // horizontal movement to the right 
+    else if (x_speed < 0 && y_speed == 0) draw_sprite_xpm(space_ship3, x_pos, y_pos); // horizontal movement to the left
+    else if (x_speed == 0 && y_speed > 0) draw_sprite_xpm(space_ship2, x_pos, y_pos); // vertical movement down 
+    else if (x_speed == 0 && y_speed < 0) draw_sprite_xpm(space_ship1, x_pos, y_pos); // vertical movement up 
+    else draw_sprite_xpm(space_ship1, x_pos, y_pos); // default sprite
 }

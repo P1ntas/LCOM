@@ -22,6 +22,15 @@
 #define WAIT_KBC        20000
 #define MAX_ATTEMPS     10
 
+#define W_MAKE                 0x11
+#define W_BREAK                0x91
+#define A_MAKE                 0x1E
+#define A_BREAK                0x9E
+#define S_MAKE                 0x1F
+#define S_BREAK                0x9F
+#define D_MAKE                 0x20
+#define D_BREAK                0xA0
+
 #define A_KEY           30
 #define B_KEY           48
 #define C_KEY           46

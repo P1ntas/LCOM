@@ -4,7 +4,7 @@
 extern uint8_t scancode;
 extern uint8_t byte_index;
 SystemState systemState = RUNNING;
-MenuState menuState = START;
+MenuState menuState = MAIN_MENU;
 extern MouseInfo mouse_info;
 extern vbe_mode_info_t mode_info;
 extern real_time_info time_info;
@@ -22,7 +22,14 @@ Sprite *space;
 Sprite *title;
 Sprite *game_over;
 Sprite *controls_menu;
-Sprite *space_ship;
+Sprite *space_ship1;
+Sprite *space_ship2;
+Sprite *space_ship3;
+Sprite *space_ship4;
+Sprite *space_ship5;
+Sprite *space_ship6;
+Sprite *space_ship7;
+Sprite *space_ship8;
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;
@@ -41,7 +48,14 @@ void setup_sprites() {
     title = create_sprite_xpm((xpm_map_t) title_xpm);
     game_over = create_sprite_xpm((xpm_map_t) game_over_xpm);
     controls_menu = create_sprite_xpm((xpm_map_t) controls_menu_xpm);
-    space_ship = create_sprite_xpm((xpm_map_t) space_ship_xpm);
+    space_ship1 = create_sprite_xpm((xpm_map_t) space_ship_xpm_1);
+    space_ship2 = create_sprite_xpm((xpm_map_t) space_ship_xpm_2);
+    space_ship3 = create_sprite_xpm((xpm_map_t) space_ship_xpm_3);
+    space_ship4 = create_sprite_xpm((xpm_map_t) space_ship_xpm_4);
+    space_ship5 = create_sprite_xpm((xpm_map_t) space_ship_xpm_5);
+    space_ship6 = create_sprite_xpm((xpm_map_t) space_ship_xpm_6);
+    space_ship7 = create_sprite_xpm((xpm_map_t) space_ship_xpm_7);
+    space_ship8 = create_sprite_xpm((xpm_map_t) space_ship_xpm_8);
 }
 
 // É boa prática antes de acabar o programa libertar a memória alocada
@@ -58,15 +72,24 @@ void destroy_sprites() {
     destroy_sprite(title);
     destroy_sprite(game_over);
     destroy_sprite(controls_menu);
-    destroy_sprite(space_ship);
+    destroy_sprite(space_ship1);
+    destroy_sprite(space_ship2);
+    destroy_sprite(space_ship3);
+    destroy_sprite(space_ship4);
+    destroy_sprite(space_ship5);
+    destroy_sprite(space_ship6);
+    destroy_sprite(space_ship7);
+    destroy_sprite(space_ship8);
 }
 
 // Na altura da interrupção há troca dos buffers e incremento do contador
 void update_timer_state() {
-    if (DOUBLE_BUFFER) swap_buffers();
     timer_interrupts++;
     //constanstly update the ship position
-    
+    draw_new_frame();
+    if (menuState == SINGLE_PLAYER || menuState == MULTIPLAYER) update_spaceship_position();
+    draw_mouse();
+    if (DOUBLE_BUFFER) swap_buffers();
 }
 
 // Como o Real Time Clock é um módulo mais pesado, 
@@ -85,18 +108,24 @@ void update_keyboard_state() {
         case Q_KEY:
             systemState = EXIT;
             break;
-        case M_KEY:
-            menuState = START;
+        case BREAK_ESC:
+            menuState = MAIN_MENU;
             break;
         case G_KEY:
-            menuState = GAME;
+            menuState = SINGLE_PLAYER;
+            break;
+        case M_KEY:
+            menuState = MULTIPLAYER;
+            break;
+        case C_KEY:
+            menuState = CONTROLS;
             break;
         case E_KEY:
             menuState = END;
-        default:
             break;
+        default:
+            break;  
     }
-    draw_new_frame();
 }
 
 // Sempre que há um novo pacote completo do rato
@@ -108,7 +137,6 @@ void update_mouse_state() {
     if (byte_index == 3) {
         mouse_sync_info();
         update_buttons_state();
-        draw_new_frame();
         byte_index = 0;
     }
 }
@@ -142,3 +170,4 @@ void update_buttons_state() {
         quit->pressed = 0;
     }
 }
+
