@@ -10,7 +10,7 @@ typedef struct {
     int x, y, xspeed, yspeed, width, height, i;
 } Asteroid;
 
-int create_asteroid(int x, int y, int angle, int i);
+int create_asteroid(int x, int y, int i);
 
 int update_asteroid();
 

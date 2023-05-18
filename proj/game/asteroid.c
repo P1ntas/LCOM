@@ -38,6 +38,8 @@ int update_asteroid() {
             else if (asteroids[i]->y < 0) asteroids[i]->y += mode_info.YResolution;
         }
         else create_asteroid((rand() % 2) ? mode_info.XResolution : 0, rand() % mode_info.YResolution, i);
+
+        draw_asteroid(asteroids[i]->x, asteroids[i]->y);
     }
     return 0;
 }
