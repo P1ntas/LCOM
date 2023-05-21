@@ -12,10 +12,10 @@ int create_asteroid(int x, int y, int i) {
 
     asteroid->x = x;
     asteroid->y = y;
-    asteroid->xspeed = (rand() % 21) - 10;
-    asteroid->yspeed = (rand() % 21) - 10;
-    asteroid->width = 64;
-    asteroid->height = 64;
+    asteroid->xspeed = (rand() % 31) - 15;
+    asteroid->yspeed = (rand() % 31) - 15;
+    asteroid->width = 116;
+    asteroid->height = 88;
     asteroid->i = i;
 
     draw_asteroid(x, y);
@@ -31,11 +31,11 @@ int update_asteroid() {
             asteroids[i]->x += asteroids[i]->xspeed;
             asteroids[i]->y += asteroids[i]->yspeed;
 
-            if (asteroids[i]->x > mode_info.XResolution) asteroids[i]->x -= mode_info.XResolution;
-            else if (asteroids[i]->x < 0) asteroids[i]->x += mode_info.XResolution;
+            if (asteroids[i]->x - asteroids[i]->width > mode_info.XResolution) asteroids[i]->x -= mode_info.XResolution;
+            else if (asteroids[i]->x + asteroids[i]->width < 0) asteroids[i]->x += mode_info.XResolution;
 
-            if (asteroids[i]->y > mode_info.YResolution) asteroids[i]->y -= mode_info.YResolution;
-            else if (asteroids[i]->y < 0) asteroids[i]->y += mode_info.YResolution;
+            if (asteroids[i]->y - asteroids[i]->height > mode_info.YResolution) asteroids[i]->y -= mode_info.YResolution;
+            else if (asteroids[i]->y + asteroids[i]->height < 0) asteroids[i]->y += mode_info.YResolution;
         }
         else create_asteroid((rand() % 2) ? mode_info.XResolution : 0, rand() % mode_info.YResolution, i);
 
@@ -52,4 +52,15 @@ int destroy_asteroid(Asteroid* asteroid) {
     asteroid = NULL;
 
     return 0;
+}
+
+int check_collision(Asteroid *asteroid, int ship_x, int ship_y, int ship_width, int ship_height) {
+    // Check if the asteroid and the ship are not overlapping (i.e., no collision)
+    if (asteroid->x > ship_x + ship_width ||
+        asteroid->x + asteroid->width < ship_x ||
+        asteroid->y > ship_y + ship_height ||
+        asteroid->y + asteroid->height < ship_y)
+        return 0; // No collision
+
+    return 1; // Collision
 }
