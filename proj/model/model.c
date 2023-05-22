@@ -120,7 +120,7 @@ void update_keyboard_state() {
             menuState = SINGLE_PLAYER;
             break;
         case M_KEY:
-            menuState = MULTIPLAYER;
+            menuState = MAIN_MENU;
             break;
         case C_KEY:
             menuState = CONTROLS;
