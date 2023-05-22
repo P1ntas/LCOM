@@ -32,6 +32,7 @@
 #include "model/sprite.h"
 #include "config.h"
 #include "game/asteroid.h"
+#include "game/bullet.h"
 
 typedef enum {
     RUNNING,

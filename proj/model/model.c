@@ -32,6 +32,7 @@ Sprite *space_ship7;
 Sprite *space_ship8;
 
 Asteroid* asteroids[1];
+Bullet* bullets[10];
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;
@@ -92,6 +93,8 @@ void update_timer_state() {
     if (menuState == SINGLE_PLAYER || menuState == MULTIPLAYER) {
         update_spaceship_position();
         update_asteroid();
+        shoot();
+        update_bullets();
     }
     draw_mouse();
     if (DOUBLE_BUFFER) swap_buffers();

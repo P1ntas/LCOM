@@ -4,8 +4,8 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
-#include "game.h"
 #include "spaceShip.h"
+#include "controller/video/graphics.h"
 
 /** @defgroup bullet Bullet
  * @{
@@ -22,8 +22,10 @@ typedef struct {
     int y; /**< @brief y coordinate of the bullet */
     int xspeed; /**< @brief speed of the bullet */
     int yspeed; /**< @brief speed of the bullet */
-    int damage; /**< @brief damage of the bullet */
-    SpaceShip owner; /**< @brief id of the owner of the bullet */
+    int width; /**< @brief width of the bullet */
+    int height; /**< @brief height of the bullet */
+    int i; /**< @brief index of the bullet */
+    int timer; /**< @brief timer of the bullet */
 } Bullet;
 
 /**
@@ -33,41 +35,39 @@ typedef struct {
  * @param y y coordinate of the bullet
  * @param xspeed speed of the bullet
  * @param yspeed speed of the bullet
- * @param damage damage of the bullet
- * @param owner id of the owner of the bullet
- * @return Bullet* pointer to the bullet created
+ * @param i index of the bullet
+ * @return int 0 if success, 1 otherwise
  */
-Bullet* create_bullet(int x, int y, int xspeed, int yspeed, int damage, SpaceShip owner);
+int create_bullet(int x, int y, int xspeed, int yspeed, int i);
+
+/**
+ * @brief Shoots a bullet
+ * 
+ * @return int 0 if success, 1 otherwise
+ */
+int shoot();
 
 /**
  * @brief Updates the bullet
  * 
- * @param bullet pointer to the bullet to be updated
+ * @return int 0 if success, 1 otherwise
  */
-void update_bullet(Bullet* bullet);
+int update_bullets();
 
 /**
  * @brief Draws the bullet
  * 
- * @param bullet pointer to the bullet to be drawn
+ * @return int 0 if success, 1 otherwise
  */
-void draw_bullet(Bullet* bullet);
+int draw_bullet(int x, int y);
 
 /**
  * @brief Destroys the bullet
  * 
  * @param bullet pointer to the bullet to be destroyed
  */
-void destroy_bullet(Bullet* bullet);
+int destroy_bullet(Bullet* bullet);
 
-/**
- * @brief Checks if the bullet is out of bounds
- * 
- * @param bullet pointer to the bullet to be checked
- * @return true if the bullet is out of bounds
- * @return false if the bullet is not out of bounds
- */
-bool bullet_out_of_bounds(Bullet* bullet);
 
 /**
  * @brief Checks if the bullet collides with a spaceship
@@ -77,7 +77,7 @@ bool bullet_out_of_bounds(Bullet* bullet);
  * @return true if the bullet collides with the spaceship that is not the owner of the bullet
  * @return false if the bullet does not collide with the spaceship
  */
-bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
+//bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
 
 /**
  * @brief Checks if the bullet collides with a asteroid
@@ -87,6 +87,6 @@ bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
  * @return true if the bullet collides with the asteroid
  * @return false if the bullet does not collide with the asteroid
  */
-bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid);
+//bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid);
 
 #endif

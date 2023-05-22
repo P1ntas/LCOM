@@ -127,6 +127,15 @@ int draw_asteroid(int x, int y) {
     return 0;
 }
 
+int draw_bullet(int x, int y) {
+
+    if (x > mode_info.XResolution || x < 0 || y > mode_info.YResolution || y < 0) return 1;
+
+    draw_rectangle(x, y, 20, 20, 0x0000FFFF, drawing_frame_buffer);
+
+    return 0;
+}
+
 // A função recebe um objeto Sprite proveniente de um XPM e mostra-o nas coordenadas (x, y)
 // Usa as cores dinamicamente alocadas na altura da construção
 // A função ignora a cor transparente do XPM para não modificar o fundo quando não é preciso

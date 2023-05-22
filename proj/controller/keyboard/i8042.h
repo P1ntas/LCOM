@@ -30,6 +30,8 @@
 #define S_BREAK                0x9F
 #define D_MAKE                 0x20
 #define D_BREAK                0xA0
+#define SPACE_MAKE             0x39
+#define SPACE_BREAK            0xB9
 
 #define A_KEY           30
 #define B_KEY           48
