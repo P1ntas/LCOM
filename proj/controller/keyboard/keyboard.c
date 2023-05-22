@@ -16,15 +16,18 @@ void (kbc_ih)() {
 }
 
 int (keyboard_restore)() {
-    uint8_t commandByte;
+    
+    uint8_t commandWord;
 
-    if (write_KBC_command(KBC_IN_CMD, KBC_READ_CMD) != 0) return 1;          
-    if (read_KBC_output(KBC_OUT_CMD, &commandByte, 0) != 0) return 1; 
+  if (write_KBC_command(KBC_IN_CMD, KBC_READ_CMD) != 0) return 1; 
+    
+  if (read_KBC_output(KBC_OUT_CMD, &commandWord, 0) != 0) return 1;
 
-    commandByte |= ENABLE_INT;  
+  commandWord = commandWord | BIT(0);
 
-    if (write_KBC_command(KBC_IN_CMD, KBC_WRITE_CMD) != 0) return 1;    
-    if (write_KBC_command(KBC_WRITE_CMD, commandByte) != 0) return 1;
-
-    return 0;
+  if (write_KBC_command(KBC_IN_CMD, KBC_OUT_CMD) != 0) return 1;
+    
+  if (write_KBC_command(KBC_OUT_CMD, commandWord) != 0) return 1;
+    
+  return 0;
 }

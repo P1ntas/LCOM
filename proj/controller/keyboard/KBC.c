@@ -11,38 +11,32 @@ int read_KBC_output(uint8_t port, uint8_t *output, uint8_t mouse) {
     
     while (attemps) {
 
-        if (read_KBC_status(&status) != 0) {                // lê o status
-            printf("Error: Status not available!\n");
+        if (read_KBC_status(&status) != 0) {             
             return 1;
         }
 
-        if ((status & BIT(0)) != 0) {                       // o output buffer está cheio, posso ler
-            if(util_sys_inb(port, output) != 0){            // leitura do buffer de saída
-                printf("Error: Could not read output!\n");
+        if ((status & BIT(0)) != 0) {                   
+            if (util_sys_inb(port, output) != 0) {          
                 return 1;
             }
-            if((status & BIT(7)) != 0){                     // verifica erro de paridade
-                printf("Error: Parity error!\n");           // se existir, descarta
+            if((status & BIT(7)) != 0){                
                 return 1;
             }
-            if((status & BIT(6)) != 0){                     // verifica erro de timeout
-                printf("Error: Timeout error!\n");          // se existir, descarta
+            if((status & BIT(6)) != 0){           
                 return 1;
             }
-            if (mouse && !(status & BIT(5))) {              // está à espera do output do rato
-                printf("Error: Mouse output not found\n");  // mas o output não é do rato
+            if (mouse && !(status & BIT(5))) {    
                 return 1;
             } 
-            if (!mouse && (status & BIT(5))) {                 // está à espera do output do teclado
-                printf("Error: Keyboard output not found\n"); // mas o output não é do teclado
+            if (!mouse && (status & BIT(5))) {
                 return 1;
             } 
-            return 0; // sucesso: output correto lido sem erros de timeout ou de paridade
+            return 0;
         }
         tickdelay(micros_to_ticks(20000));
         attemps--;
     }
-    return 1; // se ultrapassar o número de tentativas lança um erro
+    return 1; 
 }
 
 int (write_KBC_command)(uint8_t port, uint8_t commandByte) {
@@ -52,18 +46,13 @@ int (write_KBC_command)(uint8_t port, uint8_t commandByte) {
 
     while (attemps) {
 
-        if (read_KBC_status(&status) != 0){
-            printf("Error: Status not available!\n");
-            return 1;
-        }
+        if (read_KBC_status(&status) != 0) return 1;
 
-        if ((status & FULL_IN_BUFFER) == 0){
+        if ((status & BIT(1)) == 0) {
 
-            if(sys_outb(port, commandByte) != 0){
-                printf("Error: Could not write commandByte!\n");
+            if(sys_outb(port, commandByte) != 0) {
                 return 1;
             }
-
             return 0;
         }
         tickdelay(micros_to_ticks(WAIT_KBC));
