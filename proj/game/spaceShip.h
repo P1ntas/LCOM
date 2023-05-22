@@ -4,6 +4,8 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "view/view.h"
+#include "model/model.h"
+#include "game/asteroid.h"
 
 
 void update_spaceship_position();

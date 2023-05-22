@@ -15,4 +15,6 @@ int update_asteroid();
 
 int destroy_asteroid();
 
+int check_collision(Asteroid *asteroid, int ship_x, int ship_y, int ship_width, int ship_height);
+
 #endif

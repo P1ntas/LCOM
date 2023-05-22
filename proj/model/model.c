@@ -31,7 +31,7 @@ Sprite *space_ship6;
 Sprite *space_ship7;
 Sprite *space_ship8;
 
-Asteroid* asteroids[10];
+Asteroid* asteroids[1];
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;

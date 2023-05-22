@@ -20,6 +20,9 @@ int y_pos = 0;
 int x_speed = 0;
 int y_speed = 0;
 
+extern MenuState menuState;
+extern Asteroid* asteroids[1];
+
 // spaceship already initialized in main.c at the center of the screen 
 
 void update_spaceship_position() 
@@ -63,4 +66,12 @@ void update_spaceship_position()
     else if (x_speed == 0 && y_speed > 0) draw_sprite_xpm(space_ship2, x_pos, y_pos); // vertical movement down 
     else if (x_speed == 0 && y_speed < 0) draw_sprite_xpm(space_ship1, x_pos, y_pos); // vertical movement up 
     else draw_sprite_xpm(space_ship1, x_pos, y_pos); // default sprite
+
+    for (int i = 0; i < 1; i++) {
+        if (asteroids[i] != NULL) {
+            if (check_collision(asteroids[i], x_pos, y_pos, space_ship1->width, space_ship1->height)) {
+                menuState = END;
+            }
+        }
+    }
 }
