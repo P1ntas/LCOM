@@ -28,10 +28,12 @@
 #include "xpm/space_ship_6.xpm"
 #include "xpm/space_ship_7.xpm"
 #include "xpm/space_ship_8.xpm"
+#include "xpm/bullet.xpm"
 #include "view/view.h"
 #include "model/sprite.h"
 #include "config.h"
 #include "game/asteroid.h"
+#include "game/bullet.h"
 
 typedef enum {
     RUNNING,

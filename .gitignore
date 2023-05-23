@@ -1,2 +1,4 @@
 lab*
 .vscode*
+*.o
+proj
