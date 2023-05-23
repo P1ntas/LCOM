@@ -7,6 +7,34 @@
 #include "spaceShip.h"
 #include "controller/video/graphics.h"
 
+/** @defgroup Direction Direction
+ * @{
+ * Functions for manipulating the direction of the bullet
+ */
+
+/**
+ * 
+ * @brief Enumerated type for the direction of the bullet
+ * 
+ */
+typedef enum Direction {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
+    UP_LEFT,
+    UP_RIGHT,
+    DOWN_LEFT,
+    DOWN_RIGHT
+} Direction;
+
+/**
+ * @brief Gets the direction of the space ship
+ * 
+ * @return Direction direction of the space ship
+ */
+Direction get_ship_direction();
+
 /** @defgroup bullet Bullet
  * @{
  * Functions for manipulating the bullets
@@ -68,25 +96,11 @@ int draw_bullet(int x, int y);
  */
 int destroy_bullet(Bullet* bullet);
 
-
-/**
- * @brief Checks if the bullet collides with a spaceship
- * 
- * @param bullet pointer to the bullet to be checked
- * @param spaceship pointer to the spaceship to be checked
- * @return true if the bullet collides with the spaceship that is not the owner of the bullet
- * @return false if the bullet does not collide with the spaceship
- */
-//bool bullet_collides_spaceship(Bullet* bullet, SpaceShip* spaceship);
-
 /**
  * @brief Checks if the bullet collides with a asteroid
  * 
- * @param bullet pointer to the bullet to be checked
- * @param asteroid pointer to the asteroid to be checked
- * @return true if the bullet collides with the asteroid
- * @return false if the bullet does not collide with the asteroid
+ * @return int 0 if success, 1 otherwise
  */
-//bool bullet_collides_asteroid(Bullet* bullet, Asteroid* asteroid);
+int check_bullet_collision();
 
 #endif

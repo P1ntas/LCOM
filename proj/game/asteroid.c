@@ -12,8 +12,8 @@ int create_asteroid(int x, int y, int i) {
 
     asteroid->x = x;
     asteroid->y = y;
-    asteroid->xspeed = (rand() % 31) - 15;
-    asteroid->yspeed = (rand() % 31) - 15;
+    asteroid->xspeed = /*(rand() % 31) - 15*/ 1;
+    asteroid->yspeed = /*(rand() % 31) - 15*/ 1;
     asteroid->width = 116;
     asteroid->height = 88;
     asteroid->i = i;

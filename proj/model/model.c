@@ -30,6 +30,7 @@ Sprite *space_ship5;
 Sprite *space_ship6;
 Sprite *space_ship7;
 Sprite *space_ship8;
+Sprite *bullet;
 
 Asteroid* asteroids[1];
 Bullet* bullets[10];
@@ -59,6 +60,7 @@ void setup_sprites() {
     space_ship6 = create_sprite_xpm((xpm_map_t) space_ship_xpm_6);
     space_ship7 = create_sprite_xpm((xpm_map_t) space_ship_xpm_7);
     space_ship8 = create_sprite_xpm((xpm_map_t) space_ship_xpm_8);
+    bullet = create_sprite_xpm((xpm_map_t) bullet_xpm);
 }
 
 // É boa prática antes de acabar o programa libertar a memória alocada
@@ -83,6 +85,7 @@ void destroy_sprites() {
     destroy_sprite(space_ship6);
     destroy_sprite(space_ship7);
     destroy_sprite(space_ship8);
+    destroy_sprite(bullet);
 }
 
 // Na altura da interrupção há troca dos buffers e incremento do contador
@@ -95,6 +98,7 @@ void update_timer_state() {
         update_asteroid();
         shoot();
         update_bullets();
+        check_bullet_collision();
     }
     draw_mouse();
     if (DOUBLE_BUFFER) swap_buffers();

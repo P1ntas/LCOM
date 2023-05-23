@@ -26,6 +26,7 @@ extern Sprite *title;
 extern Sprite *game_over;
 extern Sprite *controls_menu;
 extern Sprite *space_ship;
+extern Sprite *bullet;
 
 // Alocação de memória ao(s) buffer(s)
 // Se houver só um buffer, esse é o principal
@@ -131,7 +132,7 @@ int draw_bullet(int x, int y) {
 
     if (x > mode_info.XResolution || x < 0 || y > mode_info.YResolution || y < 0) return 1;
 
-    draw_rectangle(x, y, 20, 20, 0x0000FFFF, drawing_frame_buffer);
+    draw_sprite_xpm(bullet, x, y);
 
     return 0;
 }
