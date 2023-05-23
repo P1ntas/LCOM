@@ -5,6 +5,7 @@
 extern uint8_t scancode;
 extern Bullet* bullets[5];
 extern Asteroid* asteroids[1];
+extern MouseInfo mouse_info;
 
 //ship attributes
 extern int x_pos;
@@ -105,7 +106,8 @@ int create_bullet(int x, int y, int xspeed, int yspeed, int i) {
 }
 
 int shoot(){
-    if (scancode == SPACE_MAKE && timeSinceLastShot >= SHOT_INTERVAL) {
+    if ((scancode == SPACE_MAKE && timeSinceLastShot >= SHOT_INTERVAL) ||
+    (mouse_info.left_click && timeSinceLastShot >= SHOT_INTERVAL)) {
         for (int i = 0; i < 5; i++) {
             if (bullets[i] == NULL) {
                 create_bullet(x_pos, y_pos, x_speed, y_speed, i);
