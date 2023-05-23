@@ -6,6 +6,7 @@ extern uint8_t scancode;
 extern Bullet* bullets[5];
 extern Asteroid* asteroids[1];
 extern MouseInfo mouse_info;
+extern vbe_mode_info_t mode_info;
 
 //ship attributes
 extern int x_pos;
