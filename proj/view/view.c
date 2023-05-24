@@ -27,6 +27,18 @@ extern Sprite *game_over;
 extern Sprite *controls_menu;
 extern Sprite *space_ship;
 extern Sprite *bullet;
+extern Sprite *num_1;
+extern Sprite *num_2;
+extern Sprite *num_3;
+extern Sprite *num_4;
+extern Sprite *num_5;
+extern Sprite *num_6;
+extern Sprite *num_7;
+extern Sprite *num_8;
+extern Sprite *num_9;
+extern Sprite *num_0;
+
+extern int score;
 
 // Alocação de memória ao(s) buffer(s)
 // Se houver só um buffer, esse é o principal
@@ -156,7 +168,10 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
 }
 
 void update_state_menu() {
-    if (single_player->pressed == 1) menuState = SINGLE_PLAYER;
+    if (single_player->pressed == 1) {
+        menuState = SINGLE_PLAYER;
+        score = 0;
+    }
     else if (multiplayer->pressed == 1) menuState = MULTIPLAYER;
     else if (controls->pressed == 1) menuState = CONTROLS;
     else if (quit->pressed == 1) systemState = EXIT;
@@ -183,9 +198,77 @@ void update_state_menu() {
 }*/
 
 // Faz o display do tempo real num formato amigável
-// No caso do Template esta função apenas retorna uma string para o ficheiro output.txt
+// No caso do Template esta função apenas retorna uma string para o ficheiro output.draw
 // Em projetos pode ser mudada para invocar sprites que coloquem no ecrã os respetivos dígitos
 void display_real_time() {
     printf("NOW: %d/%d/%d @%d:%d:%d\n", 2000 + time_info.year, time_info.month, time_info.day, time_info.hours, time_info.minutes, time_info.seconds);
 }
 
+void draw_score(int x, int y, int score) {
+    draw_rectangle(x, y, 150, 50, 0xFFFFFF, drawing_frame_buffer);
+
+    int digitX = x + 110;
+    int digitY = y + 10;
+
+    int digit;
+    int scoreCopy = score;
+
+    if (score == 0) {
+        draw_number(digitX, digitY, 0);
+    } else {
+        while (scoreCopy > 0) {
+            digit = scoreCopy % 10;
+            scoreCopy /= 10;
+            draw_number(digitX, digitY, digit);
+            digitX -= 30;
+        }
+    }
+}
+
+void draw_number(int x, int y, int number) {
+    switch (number) {
+        case 0:
+            printf("0");
+            draw_sprite_xpm(num_0, x, y);
+            break;
+        case 1:
+            printf("1");
+            draw_sprite_xpm(num_1, x, y);
+            break;
+        case 2:
+            printf("2");
+            draw_sprite_xpm(num_2, x, y);
+            break;
+        case 3:
+            printf("3");
+            draw_sprite_xpm(num_3, x, y);
+            break;
+        case 4:
+            printf("4");
+            draw_sprite_xpm(num_4, x, y);
+            break;
+        case 5:
+            printf("5");
+            draw_sprite_xpm(num_5, x, y);
+            break;
+        case 6: 
+            printf("6");
+            draw_sprite_xpm(num_6, x, y);
+            break;
+        case 7: 
+            printf("7");
+            draw_sprite_xpm(num_7, x, y);
+            break;
+        case 8:
+            printf("8");
+            draw_sprite_xpm(num_8, x, y);
+            break;
+        case 9:
+            printf("9");
+            draw_sprite_xpm(num_9, x, y);
+            break;
+        default:
+            printf("Invalid number");
+            break;
+    }
+}

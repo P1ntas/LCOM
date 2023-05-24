@@ -12,6 +12,9 @@
         "vector": "c",
         "mouse.h": "c",
         "model.h": "c",
-        "spaceship.h": "c"
+        "spaceship.h": "c",
+        "lcf.h": "c",
+        "view.h": "c",
+        "config.h": "c"
     }
 }

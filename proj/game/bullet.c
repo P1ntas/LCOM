@@ -18,6 +18,7 @@ extern int y_speed;
 //extern Direction direction;
 
 int timeSinceLastShot = 0;
+extern int score;
 
 Direction get_ship_direction() {
     if (x_speed == 0 && y_speed == 0) return UP;
@@ -166,6 +167,7 @@ int check_bullet_collision() {
                         bullets[i]->y > asteroids[j]->y + asteroids[j]->height ||
                         bullets[i]->y + bullets[i]->height < asteroids[j]->y) continue;
                     else {
+                        score++;
                         destroy_asteroid(asteroids[j]);
                         destroy_bullet(bullets[i]);
                         return 0;

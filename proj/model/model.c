@@ -31,9 +31,20 @@ Sprite *space_ship6;
 Sprite *space_ship7;
 Sprite *space_ship8;
 Sprite *bullet;
+Sprite *num_1;
+Sprite *num_2;
+Sprite *num_3;
+Sprite *num_4;
+Sprite *num_5;
+Sprite *num_6;
+Sprite *num_7;
+Sprite *num_8;
+Sprite *num_9;
+Sprite *num_0;
 
 Asteroid* asteroids[1];
 Bullet* bullets[10];
+int score = 0;
 
 // Contador de interrupções do timer
 int timer_interrupts = 0;
@@ -61,6 +72,16 @@ void setup_sprites() {
     space_ship7 = create_sprite_xpm((xpm_map_t) space_ship_xpm_7);
     space_ship8 = create_sprite_xpm((xpm_map_t) space_ship_xpm_8);
     bullet = create_sprite_xpm((xpm_map_t) bullet_xpm);
+    num_1 = create_sprite_xpm((xpm_map_t) num_1_xpm);
+    num_2 = create_sprite_xpm((xpm_map_t) num_2_xpm);
+    num_3 = create_sprite_xpm((xpm_map_t) num_3_xpm);
+    num_4 = create_sprite_xpm((xpm_map_t) num_4_xpm);
+    num_5 = create_sprite_xpm((xpm_map_t) num_5_xpm);
+    num_6 = create_sprite_xpm((xpm_map_t) num_6_xpm);
+    num_7 = create_sprite_xpm((xpm_map_t) num_7_xpm);
+    num_8 = create_sprite_xpm((xpm_map_t) num_8_xpm);
+    num_9 = create_sprite_xpm((xpm_map_t) num_9_xpm);
+    num_0 = create_sprite_xpm((xpm_map_t) num_0_xpm);
 }
 
 // É boa prática antes de acabar o programa libertar a memória alocada
@@ -86,6 +107,16 @@ void destroy_sprites() {
     destroy_sprite(space_ship7);
     destroy_sprite(space_ship8);
     destroy_sprite(bullet);
+    destroy_sprite(num_1);
+    destroy_sprite(num_2);
+    destroy_sprite(num_3);
+    destroy_sprite(num_4);
+    destroy_sprite(num_5);
+    destroy_sprite(num_6);
+    destroy_sprite(num_7);
+    destroy_sprite(num_8);
+    destroy_sprite(num_9);
+    destroy_sprite(num_0);
 }
 
 // Na altura da interrupção há troca dos buffers e incremento do contador
@@ -99,6 +130,7 @@ void update_timer_state() {
         shoot();
         update_bullets();
         check_bullet_collision();
+        draw_score(mode_info.XResolution - 150, 0, score);
     }
     draw_mouse();
     if (DOUBLE_BUFFER) swap_buffers();
@@ -125,6 +157,7 @@ void update_keyboard_state() {
             break;
         case G_KEY:
             menuState = SINGLE_PLAYER;
+            score = 0;
             break;
         case M_KEY:
             menuState = MAIN_MENU;

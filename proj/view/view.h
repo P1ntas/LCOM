@@ -23,5 +23,7 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y);
 //int draw_sprite_button(Sprite *sprite, int x, int y);
 int set_frame_buffers(uint16_t mode);
 void update_state_menu();
+void draw_score(int x, int y, int score);
+void draw_number(int x, int y, int number);
 
 #endif
