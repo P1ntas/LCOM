@@ -11,7 +11,6 @@ extern real_time_info time_info;
 
 // Objetos a construir e manipular com a mudança de estados
 Sprite *mouse;
-Sprite *hand;
 Sprite *asteroid;
 Sprite *single_player;
 Sprite *multiplayer;
@@ -52,7 +51,6 @@ int timer_interrupts = 0;
 // Criação dos objetos via XPM e via comum
 void setup_sprites() {
     mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
-    hand = create_sprite_xpm((xpm_map_t) hand_xpm);
     asteroid = create_sprite_xpm((xpm_map_t) asteroid_xpm);
     single_player = create_sprite_xpm((xpm_map_t) single_player_xpm);
     multiplayer = create_sprite_xpm((xpm_map_t) multiplayer_xpm);
@@ -87,7 +85,6 @@ void setup_sprites() {
 // É boa prática antes de acabar o programa libertar a memória alocada
 void destroy_sprites() {
     destroy_sprite(mouse);
-    destroy_sprite(hand);
     destroy_sprite(asteroid);
     destroy_sprite(single_player);
     destroy_sprite(multiplayer);

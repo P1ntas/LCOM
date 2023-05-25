@@ -8,7 +8,6 @@
 #include "controller/video/graphics.h"
 #include "controller/rtc/rtc.h"
 #include "game/spaceShip.h"
-#include "xpm/hand.xpm"
 #include "xpm/mouse.xpm"
 #include "xpm/asteroid.xpm"
 #include "xpm/single_player.xpm"

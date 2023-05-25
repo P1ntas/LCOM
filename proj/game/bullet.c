@@ -136,13 +136,13 @@ int update_bullets(){
             bullets[i]->x += bullets[i]->xspeed;
             bullets[i]->y += bullets[i]->yspeed;
 
-            if (bullets[i]->x > mode_info.XResolution) bullets[i]->x -= mode_info.XResolution;
-            else if (bullets[i]->x < 0) bullets[i]->x += mode_info.XResolution;
+            if (bullets[i]->x > mode_info.XResolution) destroy_bullet(bullets[i]);
+            else if (bullets[i]->x < 0) destroy_bullet(bullets[i]);
 
-            if (bullets[i]->y > mode_info.YResolution) bullets[i]->y -= mode_info.YResolution;
-            else if (bullets[i]->y < 0) bullets[i]->y += mode_info.YResolution;
-        
-            draw_bullet(bullets[i]->x, bullets[i]->y);
+            else if (bullets[i]->y > mode_info.YResolution) destroy_bullet(bullets[i]);
+            else if (bullets[i]->y < 0) destroy_bullet(bullets[i]);
+    
+            else if (bullets[i] != NULL) draw_bullet(bullets[i]->x, bullets[i]->y);
         }
     }
     return 0;

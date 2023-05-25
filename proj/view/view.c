@@ -14,7 +14,6 @@ extern SystemState systemState;
 
 // Objetos
 extern Sprite *mouse;
-extern Sprite *hand;
 extern Sprite *asteroid;
 extern Sprite *single_player;
 extern Sprite *multiplayer;
@@ -125,8 +124,7 @@ void draw_mouse() {
         case MAIN_MENU: case END: case CONTROLS:
             draw_sprite_xpm(mouse, mouse_info.x, mouse_info.y);
             break;
-        case SINGLE_PLAYER: case MULTIPLAYER: 
-            draw_sprite_xpm(hand, mouse_info.x, mouse_info.y);
+        default: 
             break;
     }
 }
