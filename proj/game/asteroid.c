@@ -31,25 +31,25 @@ int update_asteroid() {
             asteroids[i]->x += asteroids[i]->xspeed;
             asteroids[i]->y += asteroids[i]->yspeed;
 
-            if (asteroids[i]->x > mode_info.XResolution) {
-                asteroids[i]->x -= mode_info.XResolution;
-                asteroids[i]->xspeed = (rand() % 21) - 10;
-                asteroids[i]->yspeed = (rand() % 21) - 10;
+            if (asteroids[i]->x - asteroids[i]->width > mode_info.XResolution) {
+                asteroids[i]->x -= mode_info.XResolution - asteroids[i]->width;
+                asteroids[i]->xspeed = (rand() % 15) - 7;
+                asteroids[i]->yspeed = (rand() % 15) - 7;
             }
-            else if (asteroids[i]->x < 0) {
-                asteroids[i]->x += mode_info.XResolution;
-                asteroids[i]->xspeed = (rand() % 21) - 10;
-                asteroids[i]->yspeed = (rand() % 21) - 10;
+            else if (asteroids[i]->x + asteroids[i]->width < 0) {
+                asteroids[i]->x += mode_info.XResolution + asteroids[i]->width;
+                asteroids[i]->xspeed = (rand() % 15) - 7;
+                asteroids[i]->yspeed = (rand() % 15) - 7;
             }
-            if (asteroids[i]->y > mode_info.YResolution) {
-                asteroids[i]->y -= mode_info.YResolution;
-                asteroids[i]->xspeed = (rand() % 21) - 10;
-                asteroids[i]->yspeed = (rand() % 21) - 10;
+            if (asteroids[i]->y - asteroids[i]->height > mode_info.YResolution) {
+                asteroids[i]->y -= mode_info.YResolution - asteroids[i]->height;
+                asteroids[i]->xspeed = (rand() % 15) - 7;
+                asteroids[i]->yspeed = (rand() % 15) - 7;
             }
-            else if (asteroids[i]->y < 0) {
-                asteroids[i]->y += mode_info.YResolution;
-                asteroids[i]->xspeed = (rand() % 21) - 10;
-                asteroids[i]->yspeed = (rand() % 21) - 10;
+            else if (asteroids[i]->y + asteroids[i]->height < 0) {
+                asteroids[i]->y += mode_info.YResolution + asteroids[i]->height;
+                asteroids[i]->xspeed = (rand() % 15) - 7;
+                asteroids[i]->yspeed = (rand() % 15) - 7;
             }
         }
         else create_asteroid((rand() % 2) ? mode_info.XResolution : 0, rand() % mode_info.YResolution, i);
