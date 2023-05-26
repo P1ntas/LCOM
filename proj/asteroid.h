@@ -6,7 +6,13 @@
 #include "view.h"
 
 typedef struct {
-    int x, y, xspeed, yspeed, width, height, i;
+    int x;
+    int y;
+    int xspeed;
+    int yspeed;
+    int width;
+    int height;
+    int i;
 } Asteroid;
 
 int create_asteroid(int x, int y, int i);
