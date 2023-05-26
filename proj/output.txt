@@ -1,0 +1,24 @@
+video mem: 0xef9eb000
+primary vm buffer: 0xef9eb000
+frame buffer size: 1440000
+Double buffering enabled
+secondary vm buffer: 0x884e000
+drawing vm buffer: 0x884e000
+Drawing new frame
+Drawing main menu
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Drawing new frame
+Drawing main menu
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Sprite drawn
+Swapping buffers

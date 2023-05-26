@@ -72,7 +72,7 @@ int (set_frame_buffer)(uint16_t mode) {
   }
 
   uint16_t vram_base = mode_info.PhysBasePtr;
-  uint16_t vram_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
+  uint16_t vram_size = (mode_info.XResolution * mode_info.YResolution * mode_info.BitsPerPixel) / 8;
 
   struct minix_mem_range mr;
   mr.mr_base = vram_base;
@@ -90,19 +90,21 @@ int (set_frame_buffer)(uint16_t mode) {
     // failed
     return 1;
   }
-
+  printf("video mem: %p\n", video_mem);
   primary_vm_buffer = (uint8_t *) video_mem;
+  printf("primary vm buffer: %p\n", primary_vm_buffer);
   return 0;
 }
 
 int (draw_pixel)(uint16_t x, uint16_t y, uint32_t color) {
-  if (x > mode_info.XResolution || y > mode_info.YResolution)
+  if (x >= mode_info.XResolution || y >= mode_info.YResolution)
     return 1;
 
-  unsigned int index = (mode_info.XResolution * y + x) * ((mode_info.BitsPerPixel + 7) / 8);
+  unsigned bpp = (mode_info.BitsPerPixel + 7) / 8;
 
-  if (memcpy(&drawing_vm_buffer[index], &color, ((mode_info.BitsPerPixel + 7) / 8)) == NULL)
-    return 1;
+  unsigned int index = (mode_info.XResolution * y + x) * bpp;
+
+  memcpy(&drawing_vm_buffer[index], &color, bpp);
 
   return 0;
 
@@ -128,32 +130,46 @@ int (draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, ui
 int set_frame_buffers(uint16_t mode) {
     if (set_frame_buffer(mode)) return 1;
     frame_buffer_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
+    printf("frame buffer size: %d\n", frame_buffer_size);
     if (Double_Buffering) {
+        printf("Double buffering enabled\n");
         secondary_vm_buffer = (uint8_t *) malloc(frame_buffer_size);
         drawing_vm_buffer = secondary_vm_buffer;
+        printf("secondary vm buffer: %p\n", secondary_vm_buffer);
+        printf("drawing vm buffer: %p\n", drawing_vm_buffer);
     } else {
+        printf("Double buffering disabled\n");
         drawing_vm_buffer = primary_vm_buffer;
+        printf("drawing vm buffer: %p\n", drawing_vm_buffer);
     }
     return 0;
 }
 
 void swap_buffers() {
+    printf("Swapping buffers\n");
     memcpy(primary_vm_buffer, secondary_vm_buffer, frame_buffer_size);
+    printf("Buffers swapped\n");
 }
 
 void draw_new_frame() {
+    printf("Drawing new frame\n");
     switch (menuState) {
         case MAIN_MENU:
+            printf("Drawing main menu\n");
             draw_initial_menu();
             break;
         case SINGLE_PLAYER:
+            printf("Drawing single player\n");
             break;
         case MULTIPLAYER:
+            printf("Drawing multiplayer\n");
             break;
         case CONTROLS:
+            printf("Drawing controls\n");
             draw_controls_menu();
             break;
         case END:
+            printf("Drawing end\n");
             draw_finish_menu();
             break;
         default:
@@ -220,10 +236,13 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
       for (int w = 0 ; w < width ; w++) {
         current_color = sprite->colors[w + h*width];
         if (current_color == TRANSPARENT) continue;
-        if (draw_pixel(x + w, y + h, current_color) != 0) return 1;
+        if (draw_pixel(x + w, y + h, current_color) != 0) {
+          printf("Failed to draw pixel\n");
+          return 1;
+        }
       }
     }
-    
+    printf("Sprite drawn\n");
     return 0; 
 }
 

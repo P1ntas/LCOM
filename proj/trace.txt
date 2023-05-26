@@ -35,155 +35,173 @@
   < timer_set_frequency(0, 60) -> (ret: 0)
   @video.c:69, set_frame_buffer
     vbe_get_mode_info(mode, &mode_info)
-  > vbe_get_mode_info(0x115, addr: 0x88385b0)
-  < vbe_get_mode_info(0x115, addr: 0x88385b0 [0xe0000000, 800x600, 8:8:8 (24) <1.37329 MiB>]) -> (ret: 0)
+  > vbe_get_mode_info(0x115, addr: 0x8837da0)
+  < vbe_get_mode_info(0x115, addr: 0x8837da0 [0xe0000000, 800x600, 8:8:8 (24) <1.37329 MiB>]) -> (ret: 0)
   @video.c:82, set_frame_buffer
     sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
-  > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff6f8 [0x00000000 - 0x0000f900 <62.25 KiB>])
+  > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0xeffff6e0 [0x00000000 - 0x0000f900 <62.25 KiB>])
   < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
   @video.c:88, set_frame_buffer
     vm_map_phys(SELF, (void *) mr.mr_base, vram_size)
   < vm_map_phys(SELF, addr: 0x0, 62.25 KiB) -> (ret: 0xef9eb000)
+  @video.c:93, set_frame_buffer
+    printf("video mem: %p\n", video_mem)
+    "video mem: 0xef9eb000"
+  @video.c:95, set_frame_buffer
+    printf("primary vm buffer: %p\n", primary_vm_buffer)
+    "primary vm buffer: 0xef9eb000"
+  @video.c:133, set_frame_buffers
+    printf("frame buffer size: %d\n", frame_buffer_size)
+    "frame buffer size: 1440000"
+  @video.c:135, set_frame_buffers
+    printf("Double buffering enabled\n")
+    "Double buffering enabled"
+  @video.c:138, set_frame_buffers
+    printf("secondary vm buffer: %p\n", secondary_vm_buffer)
+    "secondary vm buffer: 0x884e000"
+  @video.c:139, set_frame_buffers
+    printf("drawing vm buffer: %p\n", drawing_vm_buffer)
+    "drawing vm buffer: 0x884e000"
   @video.c:58, set_mode
     sys_int86(&r86)
   > sys_int86(addr: 0xeffff6e0 [AX: 4f02, BX: 4115, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
   < sys_int86(addr: 0xeffff6e0 [AX: 004f, BX: 4115, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b19f0, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b19f0, XPM_8_8_8_8, addr: 0xeffff6e8 [12x19 : 912 bytes]) -> (ret: 0x883e000)
+  > xpm_load(addr: 0x87b11e4, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b11e4, XPM_8_8_8_8, addr: 0xeffff6e8 [12x19 : 912 bytes]) -> (ret: 0x883f000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b1a4c, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b1a4c, XPM_8_8_8_8, addr: 0xeffff6e8 [116x88 : 40832 bytes]) -> (ret: 0x8843000)
+  > xpm_load(addr: 0x87b1240, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b1240, XPM_8_8_8_8, addr: 0xeffff6e8 [116x88 : 40832 bytes]) -> (ret: 0x8844000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b2468, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b2468, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89ae000)
+  > xpm_load(addr: 0x87b1c5c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b1c5c, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89ae000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b29bc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b29bc, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89be000)
+  > xpm_load(addr: 0x87b21b0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b21b0, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89be000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b2e28, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b2e28, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89c7000)
+  > xpm_load(addr: 0x87b261c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b261c, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89c7000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87b32b8, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87b32b8, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8b46000)
+  > xpm_load(addr: 0x87b2aac, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87b2aac, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8b47000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87e3bc4, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87e3bc4, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89d0000)
+  > xpm_load(addr: 0x87e33b8, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87e33b8, XPM_8_8_8_8, addr: 0xeffff6e8 [192x48 : 36864 bytes]) -> (ret: 0x89d0000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87e3f98, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87e3f98, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8d1b000)
+  > xpm_load(addr: 0x87e378c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87e378c, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8d1c000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87e4cfc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87e4cfc, XPM_8_8_8_8, addr: 0xeffff6e8 [390x226 : 352560 bytes]) -> (ret: 0x89d9000)
+  > xpm_load(addr: 0x87e44f0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87e44f0, XPM_8_8_8_8, addr: 0xeffff6e8 [390x226 : 352560 bytes]) -> (ret: 0x89d9000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87e5ddc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87e5ddc, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8ef0000)
+  > xpm_load(addr: 0x87e55d0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87e55d0, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x8ef1000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x87e6b40, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x87e6b40, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x913a000)
+  > xpm_load(addr: 0x87e6334, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x87e6334, XPM_8_8_8_8, addr: 0xeffff6e8 [800x600 : 1920000 bytes]) -> (ret: 0x913b000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x8819d40, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x8819d40, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x89b7000)
+  > xpm_load(addr: 0x8819534, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x8819534, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x89b7000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x8819e7c, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x8819e7c, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a30000)
+  > xpm_load(addr: 0x8819670, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x8819670, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a30000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x8819fb8, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x8819fb8, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a34000)
+  > xpm_load(addr: 0x88197ac, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x88197ac, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a34000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881a0f4, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881a0f4, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a38000)
+  > xpm_load(addr: 0x88198e8, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x88198e8, XPM_8_8_8_8, addr: 0xeffff6e8 [64x64 : 16384 bytes]) -> (ret: 0x8a38000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881a230, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881a230, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a3c000)
+  > xpm_load(addr: 0x8819a24, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x8819a24, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a3c000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881a6f4, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881a6f4, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a44000)
+  > xpm_load(addr: 0x8819ee8, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x8819ee8, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a44000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881abbc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881abbc, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a4c000)
+  > xpm_load(addr: 0x881a3b0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881a3b0, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a4c000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b018, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b018, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a54000)
+  > xpm_load(addr: 0x881a80c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881a80c, XPM_8_8_8_8, addr: 0xeffff6e8 [90x90 : 32400 bytes]) -> (ret: 0x8a54000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b468, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b468, XPM_8_8_8_8, addr: 0xeffff6e8 [20x20 : 1600 bytes]) -> (ret: 0x8840000)
+  > xpm_load(addr: 0x881ac5c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881ac5c, XPM_8_8_8_8, addr: 0xeffff6e8 [20x20 : 1600 bytes]) -> (ret: 0x8841000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b4cc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b4cc, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8841000)
+  > xpm_load(addr: 0x881acc0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881acc0, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8842000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b564, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b564, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8842000)
+  > xpm_load(addr: 0x881ad58, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881ad58, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8843000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b5fc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b5fc, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x884d000)
+  > xpm_load(addr: 0x881adf0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881adf0, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bb000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b698, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b698, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bb000)
+  > xpm_load(addr: 0x881ae8c, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881ae8c, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bc000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b734, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b734, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bc000)
+  > xpm_load(addr: 0x881af28, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881af28, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bd000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b7d0, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b7d0, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x89bd000)
+  > xpm_load(addr: 0x881afc4, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881afc4, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5c000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b86c, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b86c, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5c000)
+  > xpm_load(addr: 0x881b060, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881b060, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5d000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b908, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b908, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5d000)
+  > xpm_load(addr: 0x881b0fc, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881b0fc, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5e000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881b9a4, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881b9a4, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5e000)
+  > xpm_load(addr: 0x881b198, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881b198, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5f000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881ba40, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881ba40, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a5f000)
+  > xpm_load(addr: 0x881b234, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881b234, XPM_8_8_8_8, addr: 0xeffff6e8 [27x35 : 3780 bytes]) -> (ret: 0x8a60000)
   @sprite.c:9, create_sprite_xpm
     xpm_load(sprite, XPM_8_8_8_8, &img)
-  > xpm_load(addr: 0x881badc, XPM_8_8_8_8, addr: 0xeffff6e8)
-  < xpm_load(addr: 0x881badc, XPM_8_8_8_8, addr: 0xeffff6e8 [135x35 : 18900 bytes]) -> (ret: 0x8a60000)
+  > xpm_load(addr: 0x881b2d0, XPM_8_8_8_8, addr: 0xeffff6e8)
+  < xpm_load(addr: 0x881b2d0, XPM_8_8_8_8, addr: 0xeffff6e8 [135x35 : 18900 bytes]) -> (ret: 0x8a61000)
   @timer.c:47, timer_subscribe_interrupts
     sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id)
-  > sys_irqsetpolicy(0, 1, addr: 0x881c7e8 [0])
-  < sys_irqsetpolicy(0, 1, addr: 0x881c7e8 [10]) -> (ret: 0)
+  > sys_irqsetpolicy(0, 1, addr: 0x881bfd8 [0])
+  < sys_irqsetpolicy(0, 1, addr: 0x881bfd8 [10]) -> (ret: 0)
   @/home/lcom/labs/proj/controller/keyboard/keyboard.c:7, keyboard_subscribe_interrupts
     sys_irqsetpolicy(IRQ_KEYBOARD, IRQ_REENABLE | IRQ_EXCLUSIVE, &keyboard_hook_id)
-  > sys_irqsetpolicy(1, 3, addr: 0x87b19d8 [1])
-  < sys_irqsetpolicy(1, 3, addr: 0x87b19d8 [11]) -> (ret: 0)
+  > sys_irqsetpolicy(1, 3, addr: 0x87b11cc [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x87b11cc [11]) -> (ret: 0)
   @/home/lcom/labs/proj/controller/mouse/mouse.c:14, mouse_subscribe_interrupts
     sys_irqsetpolicy(IRQ_MOUSE, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id_mouse)
-  > sys_irqsetpolicy(12, 3, addr: 0x87b19dc [2])
-  < sys_irqsetpolicy(12, 3, addr: 0x87b19dc [12]) -> (ret: 0)
+  > sys_irqsetpolicy(12, 3, addr: 0x87b11d0 [2])
+  < sys_irqsetpolicy(12, 3, addr: 0x87b11d0 [12]) -> (ret: 0)
   @utils.c:29, util_sys_inb
     sys_inb(port, &port_val)
   > sys_inb(0x64, addr: 0xeffff6ac)
@@ -230,7 +248,61 @@
     sys_inb(port, &port_val)
   > sys_inb(0x60, addr: 0xeffff6dc)
   < sys_inb(0x60, addr: 0xeffff6dc [0xfa = 0b11111010])
+  @video.c:155, draw_new_frame
+    printf("Drawing new frame\n")
+    "Drawing new frame"
+  @video.c:158, draw_new_frame
+    printf("Drawing main menu\n")
+    "Drawing main menu"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
   @main.c:53, proj_main_loop
     driver_receive(ANY, &msg, &ipc_status)
   > driver_receive(ANY, addr: 0xeffff760, addr: 0xeffff7a8)
   < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000101]>)
+  @video.c:155, draw_new_frame
+    printf("Drawing new frame\n")
+    "Drawing new frame"
+  @video.c:158, draw_new_frame
+    printf("Drawing main menu\n")
+    "Drawing main menu"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:245, draw_sprite_xpm
+    printf("Sprite drawn\n")
+    "Sprite drawn"
+  @video.c:149, swap_buffers
+    printf("Swapping buffers\n")
+    "Swapping buffers"
