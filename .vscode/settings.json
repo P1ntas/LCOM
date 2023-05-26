@@ -15,6 +15,7 @@
         "spaceship.h": "c",
         "lcf.h": "c",
         "view.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "sprite.h": "c"
     }
 }

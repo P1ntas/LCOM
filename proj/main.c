@@ -4,7 +4,6 @@
 #include "controller/keyboard/keyboard.h"
 #include "controller/mouse/mouse.h"
 #include "game.h"
-#include "view.h"
 
 extern SystemState systemState;
 
@@ -20,7 +19,7 @@ int (main)(int argc, char *argv[]) {
 int setup() {
   if (timer_set_frequency(TIMER, 60) != 0) return 1;
   if (set_frame_buffers(0x115) != 0) return 1;
-  if (set_graphic_mode(0x115) != 0) return 1;
+  if (set_mode(0x115) != 0) return 1;
   setup_sprites();
   if (timer_subscribe_interrupts() != 0) return 1;
   if (keyboard_subscribe_interrupts() != 0) return 1;

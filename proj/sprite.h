@@ -1,7 +1,8 @@
 #ifndef _LCOM_SPRITE_H_
 #define _LCOM_SPRITE_H_
 
-#include "video.h"
+#include <minix/sysutil.h>
+#include <lcom/lcf.h>
 
 typedef struct {
     uint16_t height;

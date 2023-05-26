@@ -37,10 +37,18 @@ Sprite *num_7;
 Sprite *num_8;
 Sprite *num_9;
 Sprite *num_0;
+Sprite *score_sprite;
 
+// Game attributes
 Asteroid* asteroids[1];
 Bullet* bullets[10];
 int score = 0;
+
+// Spaceship attributes
+int x_pos = 400;
+int y_pos = 300;
+int x_speed = 0;
+int y_speed = 0;
 
 int timer_interrupts = 0;
 
@@ -75,6 +83,7 @@ void setup_sprites() {
     num_8 = create_sprite_xpm((xpm_map_t) num_8_xpm);
     num_9 = create_sprite_xpm((xpm_map_t) num_9_xpm);
     num_0 = create_sprite_xpm((xpm_map_t) num_0_xpm);
+    score_sprite = create_sprite_xpm((xpm_map_t) score_xpm);
 }
 
 void destroy_sprites() {
@@ -108,6 +117,7 @@ void destroy_sprites() {
     destroy_sprite(num_8);
     destroy_sprite(num_9);
     destroy_sprite(num_0);
+    destroy_sprite(score_sprite);
 }
 
 void update_timer_state() {
@@ -120,7 +130,7 @@ void update_timer_state() {
         shoot();
         update_bullets();
         check_bullet_collision();
-        draw_score(mode_info.XResolution - 150, 0, score);
+        draw_score(mode_info.XResolution - 300, 0, score);
     }
     draw_mouse();
     swap_buffers();
@@ -138,6 +148,14 @@ void update_keyboard_state() {
         case G_KEY:
             menuState = SINGLE_PLAYER;
             score = 0;
+            for (int i = 0; i < 10; i++) {
+                if (bullets[i] != NULL)
+                    destroy_bullet(bullets[i]);
+            }
+            for (int i = 0; i < 1; i++) {
+                if (asteroids[i] != NULL)
+                    destroy_asteroid(asteroids[i]);
+            }
             break;
         case M_KEY:
             menuState = MAIN_MENU;

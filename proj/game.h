@@ -37,7 +37,7 @@
 #include "xpm/num8.xpm"
 #include "xpm/num9.xpm"
 #include "xpm/num0.xpm"
-#include "view.h"
+#include "xpm/score.xpm"
 #include "sprite.h"
 #include "asteroid.h"
 #include "bullet.h"

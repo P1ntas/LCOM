@@ -3,9 +3,8 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
-#include "view.h"
-#include "spaceShip.h"
 #include "video.h"
+#include "spaceShip.h"
 
 /** @defgroup Direction Direction
  * @{

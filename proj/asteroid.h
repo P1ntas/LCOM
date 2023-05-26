@@ -3,7 +3,7 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
-#include "view.h"
+#include "video.h"
 
 typedef struct {
     int x;

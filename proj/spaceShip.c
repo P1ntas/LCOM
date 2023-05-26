@@ -13,10 +13,10 @@ extern Sprite *space_ship6;
 extern Sprite *space_ship7;
 extern Sprite *space_ship8;
 extern Sprite *space;
-int x_pos = 400;
-int y_pos = 300;
-int x_speed = 0;
-int y_speed = 0;
+extern int x_pos;
+extern int y_pos;
+extern int x_speed;
+extern int y_speed;
 
 extern MenuState menuState;
 extern Asteroid* asteroids[1];
