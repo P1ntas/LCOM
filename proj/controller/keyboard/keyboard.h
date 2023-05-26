@@ -1,8 +1,6 @@
 #ifndef _LCOM_KEYBOARD_H_
 #define _LCOM_KEYBOARD_H_
 
-#define KEYBOARD_MASK BIT(1)
-
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "i8042.h"
