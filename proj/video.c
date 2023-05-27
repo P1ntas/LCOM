@@ -184,6 +184,7 @@ void draw_controls_menu() {
 
 void draw_finish_menu() {
     draw_sprite_xpm(game_over, 0, 0);
+    draw_score(mode_info.XResolution/3 - 15, 3 * mode_info.YResolution/4, score);
 }
 
 void draw_mouse() {
@@ -234,7 +235,7 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
 void update_state_menu() {
     if (single_player->pressed == 1) {
         menuState = SINGLE_PLAYER;
-        score = 0;
+        game_reset();
     }
     else if (multiplayer->pressed == 1) menuState = MULTIPLAYER;
     else if (controls->pressed == 1) menuState = CONTROLS;

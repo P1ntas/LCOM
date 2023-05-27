@@ -42,11 +42,22 @@
 #include "asteroid.h"
 #include "bullet.h"
 
+/**
+ * 
+ * @brief Enumerated type for the state of the system
+ * 
+ */
 typedef enum {
     RUNNING,
     EXIT,
 } SystemState;
 
+
+/**
+ * 
+ * @brief Enumerated type for the state of the menu
+ * 
+ */
 typedef enum {
     MAIN_MENU,
     SINGLE_PLAYER,
@@ -55,12 +66,40 @@ typedef enum {
     END
 } MenuState;
 
+/**
+ * @brief Actions to perform whenever a timer interrupt occurs
+ */
 void update_timer_state();
+
+/**
+ * @brief Actions to perform whenever a keyboard interrupt occurs
+ */
 void update_keyboard_state();
+
+/**
+ * @brief Actions to perform whenever a mouse interrupt occurs
+ */
 void update_mouse_state();
+
+/**
+ * @brief Updates the state of the menu
+ */
 void update_buttons_state();
+
+/**
+ * @brief Predefine the sprites used in the game
+ */
 void setup_sprites();
+
+/**
+ * @brief Destroys the sprites used in the game
+ */
 void destroy_sprites();
+
+/**
+ * @brief Resets the game attributes, like the score, the spaceship position, etc.
+ */
+void game_reset();
 
 #endif
 

@@ -147,15 +147,7 @@ void update_keyboard_state() {
             break;
         case G_KEY:
             menuState = SINGLE_PLAYER;
-            score = 0;
-            for (int i = 0; i < 10; i++) {
-                if (bullets[i] != NULL)
-                    destroy_bullet(bullets[i]);
-            }
-            for (int i = 0; i < 1; i++) {
-                if (asteroids[i] != NULL)
-                    destroy_asteroid(asteroids[i]);
-            }
+            game_reset();
             break;
         case M_KEY:
             menuState = MAIN_MENU;
@@ -208,3 +200,16 @@ void update_buttons_state() {
     }
 }
 
+void game_reset(){
+    score = 0;
+    for (int i = 0; i < 10; i++) {
+        if (bullets[i] != NULL)
+            destroy_bullet(bullets[i]);
+    }
+    for (int i = 0; i < 1; i++) {
+        if (asteroids[i] != NULL)
+            destroy_asteroid(asteroids[i]);
+    }
+    x_pos = 400;
+    y_pos = 300;
+}

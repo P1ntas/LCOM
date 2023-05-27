@@ -68,7 +68,7 @@ typedef struct {
 int create_bullet(int x, int y, int xspeed, int yspeed, int i);
 
 /**
- * @brief Shoots a bullet
+ * @brief Shoots a bullet, creating it and adding it to the array of bullets
  * 
  * @return int 0 if success, 1 otherwise
  */

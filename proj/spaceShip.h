@@ -7,9 +7,11 @@
 #include "asteroid.h"
 #include "video.h"
 
-
+/**
+ * @brief Periodically updates the spaceship according to the keyboard input, draws it and checks for collisions with asteroids 
+ */
 void update_spaceship_position();
 
-void destroy_spaceship();
+//void destroy_spaceship();
 
 #endif
