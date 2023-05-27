@@ -8,7 +8,6 @@ uint8_t *secondary_vm_buffer;
 uint8_t *drawing_vm_buffer;
 uint32_t frame_buffer_size;
 extern int timer_interrupts;
-extern vbe_mode_info_t mode_info;
 extern MouseInfo mouse_info;
 extern MenuState menuState;
 extern SystemState systemState; 
@@ -71,12 +70,11 @@ int (set_frame_buffer)(uint16_t mode) {
     return 1;
   }
 
-  uint16_t vram_base = mode_info.PhysBasePtr;
-  uint16_t vram_size = (mode_info.XResolution * mode_info.YResolution * mode_info.BitsPerPixel) / 8;
+  unsigned int vram_size = (mode_info.XResolution * mode_info.YResolution * mode_info.BitsPerPixel) / 8;
 
   struct minix_mem_range mr;
-  mr.mr_base = vram_base;
-  mr.mr_limit = vram_base + vram_size;
+  mr.mr_base = mode_info.PhysBasePtr;
+  mr.mr_limit = mr.mr_base + vram_size;
 
   int fail;
   fail = sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr);
@@ -84,15 +82,12 @@ int (set_frame_buffer)(uint16_t mode) {
     return 1;
   }
 
-  void *video_mem;
-  video_mem = vm_map_phys(SELF, (void *) mr.mr_base, vram_size);
-  if (video_mem == MAP_FAILED) {
+  
+  primary_vm_buffer = (uint8_t *) vm_map_phys(SELF, (void *) mr.mr_base, vram_size);
+  if (primary_vm_buffer == NULL) {
     // failed
     return 1;
   }
-  printf("video mem: %p\n", video_mem);
-  primary_vm_buffer = (uint8_t *) video_mem;
-  printf("primary vm buffer: %p\n", primary_vm_buffer);
   return 0;
 }
 
@@ -130,46 +125,38 @@ int (draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, ui
 int set_frame_buffers(uint16_t mode) {
     if (set_frame_buffer(mode)) return 1;
     frame_buffer_size = mode_info.XResolution * mode_info.YResolution * ((mode_info.BitsPerPixel + 7) / 8);
-    printf("frame buffer size: %d\n", frame_buffer_size);
     if (Double_Buffering) {
-        printf("Double buffering enabled\n");
         secondary_vm_buffer = (uint8_t *) malloc(frame_buffer_size);
         drawing_vm_buffer = secondary_vm_buffer;
-        printf("secondary vm buffer: %p\n", secondary_vm_buffer);
-        printf("drawing vm buffer: %p\n", drawing_vm_buffer);
     } else {
-        printf("Double buffering disabled\n");
         drawing_vm_buffer = primary_vm_buffer;
-        printf("drawing vm buffer: %p\n", drawing_vm_buffer);
     }
     return 0;
 }
 
 void swap_buffers() {
-    printf("Swapping buffers\n");
     memcpy(primary_vm_buffer, secondary_vm_buffer, frame_buffer_size);
-    printf("Buffers swapped\n");
 }
 
 void draw_new_frame() {
-    printf("Drawing new frame\n");
+    //printf("Drawing new frame\n");
     switch (menuState) {
         case MAIN_MENU:
-            printf("Drawing main menu\n");
+            //printf("Drawing main menu\n");
             draw_initial_menu();
             break;
         case SINGLE_PLAYER:
-            printf("Drawing single player\n");
+            //printf("Drawing single player\n");
             break;
         case MULTIPLAYER:
-            printf("Drawing multiplayer\n");
+            //printf("Drawing multiplayer\n");
             break;
         case CONTROLS:
-            printf("Drawing controls\n");
+            //printf("Drawing controls\n");
             draw_controls_menu();
             break;
         case END:
-            printf("Drawing end\n");
+            //printf("Drawing end\n");
             draw_finish_menu();
             break;
         default:
@@ -237,12 +224,10 @@ int draw_sprite_xpm(Sprite *sprite, int x, int y) {
         current_color = sprite->colors[w + h*width];
         if (current_color == TRANSPARENT) continue;
         if (draw_pixel(x + w, y + h, current_color) != 0) {
-          printf("Failed to draw pixel\n");
           return 1;
         }
       }
     }
-    printf("Sprite drawn\n");
     return 0; 
 }
 
@@ -286,47 +271,36 @@ void draw_score(int x, int y, int score) {
 void draw_number(int x, int y, int number) {
     switch (number) {
         case 0:
-            printf("0");
             draw_sprite_xpm(num_0, x, y);
             break;
         case 1:
-            printf("1");
             draw_sprite_xpm(num_1, x, y);
             break;
         case 2:
-            printf("2");
             draw_sprite_xpm(num_2, x, y);
             break;
         case 3:
-            printf("3");
             draw_sprite_xpm(num_3, x, y);
             break;
         case 4:
-            printf("4");
             draw_sprite_xpm(num_4, x, y);
             break;
         case 5:
-            printf("5");
             draw_sprite_xpm(num_5, x, y);
             break;
         case 6: 
-            printf("6");
             draw_sprite_xpm(num_6, x, y);
             break;
         case 7: 
-            printf("7");
             draw_sprite_xpm(num_7, x, y);
             break;
         case 8:
-            printf("8");
             draw_sprite_xpm(num_8, x, y);
             break;
         case 9:
-            printf("9");
             draw_sprite_xpm(num_9, x, y);
             break;
         default:
-            printf("Invalid number");
             break;
     }
 }
