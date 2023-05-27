@@ -38,6 +38,7 @@ Sprite *num_8;
 Sprite *num_9;
 Sprite *num_0;
 Sprite *score_sprite;
+Sprite *msg;
 
 // Game attributes
 Asteroid* asteroids[1];
@@ -84,6 +85,7 @@ void setup_sprites() {
     num_9 = create_sprite_xpm((xpm_map_t) num_9_xpm);
     num_0 = create_sprite_xpm((xpm_map_t) num_0_xpm);
     score_sprite = create_sprite_xpm((xpm_map_t) score_xpm);
+    msg = create_sprite_xpm((xpm_map_t) msg_xpm);
 }
 
 void destroy_sprites() {
@@ -118,6 +120,7 @@ void destroy_sprites() {
     destroy_sprite(num_9);
     destroy_sprite(num_0);
     destroy_sprite(score_sprite);
+    destroy_sprite(msg);
 }
 
 void update_timer_state() {

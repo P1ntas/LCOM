@@ -39,6 +39,7 @@ extern Sprite *num_8;
 extern Sprite *num_9;
 extern Sprite *num_0;
 extern Sprite *score_sprite;
+extern Sprite *msg;
 
 // Game attributes
 extern int score;
@@ -185,6 +186,7 @@ void draw_controls_menu() {
 void draw_finish_menu() {
     draw_sprite_xpm(game_over, 0, 0);
     draw_score(mode_info.XResolution/3 - 15, 3 * mode_info.YResolution/4, score);
+    draw_sprite_xpm(msg, mode_info.XResolution/4, 3 * mode_info.YResolution/4 + 60);
 }
 
 void draw_mouse() {

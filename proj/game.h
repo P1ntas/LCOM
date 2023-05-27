@@ -38,6 +38,7 @@
 #include "xpm/num9.xpm"
 #include "xpm/num0.xpm"
 #include "xpm/score.xpm"
+#include "xpm/msg.xpm"
 #include "sprite.h"
 #include "asteroid.h"
 #include "bullet.h"
