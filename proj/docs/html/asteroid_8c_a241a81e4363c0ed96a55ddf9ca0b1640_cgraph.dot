@@ -1,0 +1,16 @@
+digraph "update_asteroid"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_asteroid",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the asteroids."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="create_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asteroid_8c.html#ab461d5f7ee911d59c927cf642a385060",tooltip="Creates an asteroid."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="draw_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#af56df24f61a1d64987b572659b8d8e82",tooltip="Draws an asteroid in the specified coordinates."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="draw_bitmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a3597226a5796abf71ed931b4bf88bcc9",tooltip="Draws a sprite in the specified coordinates."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa75d96618132cccec2c977ae043d31fe",tooltip="Draws a pixel in the specified coordinates with the specified color."];
+}

@@ -1,0 +1,22 @@
+digraph "draw_line"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="draw_line",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a line in the specified coordinates with the specified length and color."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="draw_rectangle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a31178cc71e7af0d6045707842517b225",tooltip="Draws a rectangle in the specified coordinates with the specified width, height and color."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="draw_score",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#ad4db50e84100b110372c12cfdb41a3f3",tooltip="Draws the score field in the specified coordinates."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="draw_game_over",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa37e76033505d7f48a87284bd85c48a2",tooltip="Draws the finish menu."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="refresh_screen",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a09274e99ae82fefc69ea9388bc245b8d",tooltip="Draws a new frame, depending on the current state of the menu."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="update_timer_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a2e7983abedd3fae94a24b4775a97210f",tooltip="Actions to perform whenever a timer interrupt occurs."];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,0 +1,27 @@
+digraph "destroy_bullet"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="destroy_bullet",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Destroys the bullet."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="check_bullet_collision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga382a297cb513f604c8454b568483bbcf",tooltip="Checks if the bullet collides with a asteroid."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="update_timer_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a2e7983abedd3fae94a24b4775a97210f",tooltip="Actions to perform whenever a timer interrupt occurs."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="game_reset",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a1a5640b92afc268e7635f2b57ad1172a",tooltip="Resets the game attributes, like the score, the spaceship position, etc."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="update_gameState",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a8752fe09dfb8f14e87756d9cefa5467d",tooltip="Actions to perform whenever a keyboard interrupt occurs."];
+  Node6 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="update_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a04a6d2a31e79c09343524b363d57fe7a",tooltip="Updates the state of the menu."];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="update_mouse_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#aa577e78e2462033d486b5d8fa64c7bec",tooltip="Actions to perform whenever a mouse interrupt occurs."];
+  Node8 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="update_bullets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#gafaf27910ed3e0f09abba76c775399d97",tooltip="Updates the bullet."];
+  Node9 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

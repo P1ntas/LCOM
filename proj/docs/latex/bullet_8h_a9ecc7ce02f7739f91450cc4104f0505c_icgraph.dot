@@ -1,0 +1,16 @@
+digraph "get_ship_direction"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="get_ship_direction",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Gets the direction of the space ship."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="create_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga806447d2b81c280b6fd2cf1399b13161",tooltip="Creates a bullet."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="shoot",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga11e11a24b8eea7952c31294bbfd74435",tooltip="Shoots a bullet, creating it and adding it to the array of bullets."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="update_timer_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a2e7983abedd3fae94a24b4775a97210f",tooltip="Actions to perform whenever a timer interrupt occurs."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+}

@@ -3,6 +3,8 @@
 {\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+Include dependency graph for timer.\+c\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,6 +46,10 @@ Gets the configuration of the timer.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}\label{timer_8c_af2c04fa8e97ffa748fd3f612886a92a7}} 
 \index{timer.c@{timer.c}!timer\_set\_frequency@{timer\_set\_frequency}}
 \index{timer\_set\_frequency@{timer\_set\_frequency}!timer.c@{timer.c}}
@@ -64,6 +70,10 @@ Sets the frequency of the timer.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{timer_8c_ad5933b04569bc9d2833f4706e3fea541}\label{timer_8c_ad5933b04569bc9d2833f4706e3fea541}} 
 \index{timer.c@{timer.c}!timer\_subscribe\_inte@{timer\_subscribe\_inte}}
 \index{timer\_subscribe\_inte@{timer\_subscribe\_inte}!timer.c@{timer.c}}
@@ -77,6 +87,8 @@ Subscribes the timer interrupts, using sys\+\_\+irqsetpolicy.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 5
 \mbox{\Hypertarget{timer_8c_afabd21de449be154dd65d5fdb2d8045d}\label{timer_8c_afabd21de449be154dd65d5fdb2d8045d}} 
 \index{timer.c@{timer.c}!timer\_unsubscribe\_int@{timer\_unsubscribe\_int}}
 \index{timer\_unsubscribe\_int@{timer\_unsubscribe\_int}!timer.c@{timer.c}}
@@ -90,6 +102,8 @@ Unsubscribes the timer interrupts, using sys\+\_\+irqrmpolicy.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 6
 
 
 \doxysubsection{Variable Documentation}

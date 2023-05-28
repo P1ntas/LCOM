@@ -1,6 +1,8 @@
 \hypertarget{mouse_8c}{}\doxysection{mouse.\+c File Reference}
 \label{mouse_8c}\index{mouse.c@{mouse.c}}
 {\ttfamily \#include \char`\"{}mouse.\+h\char`\"{}}\newline
+Include dependency graph for mouse.\+c\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -60,6 +62,10 @@ Reads a byte from a specified port related to mouse input.
 \begin{DoxyReturn}{Returns}
 The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{mouse_8c_a2de06722549d4a1fbb3ed1f3746d0ef8}\label{mouse_8c_a2de06722549d4a1fbb3ed1f3746d0ef8}} 
 \index{mouse.c@{mouse.c}!aux\_mouse\_write@{aux\_mouse\_write}}
 \index{aux\_mouse\_write@{aux\_mouse\_write}!mouse.c@{mouse.c}}
@@ -80,6 +86,10 @@ Writes a command byte to a specified port related to mouse input.
 \begin{DoxyReturn}{Returns}
 The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{mouse_8c_a210374b50462acdedab00df64d5cea3c}\label{mouse_8c_a210374b50462acdedab00df64d5cea3c}} 
 \index{mouse.c@{mouse.c}!mouse\_ih@{mouse\_ih}}
 \index{mouse\_ih@{mouse\_ih}!mouse.c@{mouse.c}}
@@ -90,7 +100,11 @@ The result of the operation. A return value of 0 typically indicates success, wh
 
 Mouse interrupt handler. 
 
-This function should be executed on each mouse interrupt. It\textquotesingle{}s responsible for handling the interrupt and processing its data. \mbox{\Hypertarget{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}\label{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}} 
+This function should be executed on each mouse interrupt. It\textquotesingle{}s responsible for handling the interrupt and processing its data. Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
+\mbox{\Hypertarget{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}\label{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}} 
 \index{mouse.c@{mouse.c}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
 \index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.c@{mouse.c}}
 \doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
@@ -103,6 +117,8 @@ Subscribes and enables mouse interrupts.
 \begin{DoxyReturn}{Returns}
 Returns bit order in interrupt mask; negative value on failure. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 7
 \mbox{\Hypertarget{mouse_8c_a8d6ee7592c47e8f3830a140c1c36587d}\label{mouse_8c_a8d6ee7592c47e8f3830a140c1c36587d}} 
 \index{mouse.c@{mouse.c}!mouse\_sync\_bytes@{mouse\_sync\_bytes}}
 \index{mouse\_sync\_bytes@{mouse\_sync\_bytes}!mouse.c@{mouse.c}}
@@ -113,7 +129,9 @@ Returns bit order in interrupt mask; negative value on failure.
 
 Sync bytes related to the mouse. 
 
-This function ensures that mouse-\/related bytes are correctly aligned and in sync. \mbox{\Hypertarget{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}\label{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}} 
+This function ensures that mouse-\/related bytes are correctly aligned and in sync. Here is the caller graph for this function\+:
+% FIG 8
+\mbox{\Hypertarget{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}\label{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}} 
 \index{mouse.c@{mouse.c}!mouse\_sync\_info@{mouse\_sync\_info}}
 \index{mouse\_sync\_info@{mouse\_sync\_info}!mouse.c@{mouse.c}}
 \doxysubsubsection{\texorpdfstring{mouse\_sync\_info()}{mouse\_sync\_info()}}
@@ -123,7 +141,9 @@ This function ensures that mouse-\/related bytes are correctly aligned and in sy
 
 Sync mouse-\/related information. 
 
-This function ensures that mouse-\/related information is correctly aligned, in sync and processed accordingly. \mbox{\Hypertarget{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}} 
+This function ensures that mouse-\/related information is correctly aligned, in sync and processed accordingly. Here is the caller graph for this function\+:
+% FIG 9
+\mbox{\Hypertarget{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}} 
 \index{mouse.c@{mouse.c}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
 \index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.c@{mouse.c}}
 \doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
@@ -136,6 +156,8 @@ Unsubscribes mouse interrupts.
 \begin{DoxyReturn}{Returns}
 Return 0 upon success and non-\/zero otherwise. 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 10
 \mbox{\Hypertarget{mouse_8c_a1703c3c5b61eef30d724b15cafd1d75e}\label{mouse_8c_a1703c3c5b61eef30d724b15cafd1d75e}} 
 \index{mouse.c@{mouse.c}!mouse\_write@{mouse\_write}}
 \index{mouse\_write@{mouse\_write}!mouse.c@{mouse.c}}
@@ -154,6 +176,10 @@ Writes a command to the mouse.
 \begin{DoxyReturn}{Returns}
 The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 11
+Here is the caller graph for this function\+:
+% FIG 12
 
 
 \doxysubsection{Variable Documentation}

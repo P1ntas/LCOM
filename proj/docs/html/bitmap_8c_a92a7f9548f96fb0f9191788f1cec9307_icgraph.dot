@@ -1,0 +1,14 @@
+digraph "create_bitmap"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="create_bitmap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Creates a bitmap."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="create_bitmaps",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#addc8a9450a2f61f0c8bc0f4f819b1f52",tooltip="Predefine the sprites used in the game."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="setup",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a099d48038e444c2f3e69904477527798",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+}

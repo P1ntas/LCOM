@@ -1,6 +1,8 @@
 \hypertarget{keyboard_8c}{}\doxysection{keyboard.\+c File Reference}
 \label{keyboard_8c}\index{keyboard.c@{keyboard.c}}
 {\ttfamily \#include \char`\"{}keyboard.\+h\char`\"{}}\newline
+Include dependency graph for keyboard.\+c\+:
+% FIG 0
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -48,6 +50,10 @@ This function attempts to read a byte from a port of the auxiliary keyboard. If 
 \begin{DoxyReturn}{Returns}
 The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 1
+Here is the caller graph for this function\+:
+% FIG 2
 \mbox{\Hypertarget{keyboard_8c_ac3c92b523a1d9f6afa9f0d8b60d26c92}\label{keyboard_8c_ac3c92b523a1d9f6afa9f0d8b60d26c92}} 
 \index{keyboard.c@{keyboard.c}!aux\_keyboard\_write@{aux\_keyboard\_write}}
 \index{aux\_keyboard\_write@{aux\_keyboard\_write}!keyboard.c@{keyboard.c}}
@@ -70,6 +76,10 @@ This function attempts to write a command byte to a port of the auxiliary keyboa
 \begin{DoxyReturn}{Returns}
 The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 3
+Here is the caller graph for this function\+:
+% FIG 4
 \mbox{\Hypertarget{keyboard_8c_aea970a154161a35f6894898a092ed70a}\label{keyboard_8c_aea970a154161a35f6894898a092ed70a}} 
 \index{keyboard.c@{keyboard.c}!kbc\_ih@{kbc\_ih}}
 \index{kbc\_ih@{kbc\_ih}!keyboard.c@{keyboard.c}}
@@ -80,6 +90,10 @@ The result of the operation. A return value of 0 typically indicates success, wh
 
 Keyboard interrupt handler. 
 
+Here is the call graph for this function\+:
+% FIG 5
+Here is the caller graph for this function\+:
+% FIG 6
 \mbox{\Hypertarget{keyboard_8c_a58017421d19bb2004825d339ebb600fa}\label{keyboard_8c_a58017421d19bb2004825d339ebb600fa}} 
 \index{keyboard.c@{keyboard.c}!keyboard\_restore@{keyboard\_restore}}
 \index{keyboard\_restore@{keyboard\_restore}!keyboard.c@{keyboard.c}}
@@ -93,6 +107,8 @@ Restores the Keyboard configuration by enabling interrupts.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the call graph for this function\+:
+% FIG 7
 \mbox{\Hypertarget{keyboard_8c_aa23b07fa2192ce772fe143de1bc99695}\label{keyboard_8c_aa23b07fa2192ce772fe143de1bc99695}} 
 \index{keyboard.c@{keyboard.c}!keyboard\_subscribe\_int@{keyboard\_subscribe\_int}}
 \index{keyboard\_subscribe\_int@{keyboard\_subscribe\_int}!keyboard.c@{keyboard.c}}
@@ -106,6 +122,8 @@ Subscribes and enables Keyboard interrupts.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 8
 \mbox{\Hypertarget{keyboard_8c_a32cc4de66854f8a7bd909e7aa8b901ed}\label{keyboard_8c_a32cc4de66854f8a7bd909e7aa8b901ed}} 
 \index{keyboard.c@{keyboard.c}!keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}}
 \index{keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}!keyboard.c@{keyboard.c}}
@@ -119,6 +137,8 @@ Unsubscribes Keyboard interrupts.
 \begin{DoxyReturn}{Returns}
 int 0 if successful, 1 otherwise 
 \end{DoxyReturn}
+Here is the caller graph for this function\+:
+% FIG 9
 
 
 \doxysubsection{Variable Documentation}

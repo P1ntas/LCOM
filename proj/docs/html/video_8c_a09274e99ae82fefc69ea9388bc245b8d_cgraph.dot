@@ -1,0 +1,29 @@
+digraph "refresh_screen"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="refresh_screen",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a new frame, depending on the current state of the menu."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="draw_bitmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a3597226a5796abf71ed931b4bf88bcc9",tooltip="Draws a sprite in the specified coordinates."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa75d96618132cccec2c977ae043d31fe",tooltip="Draws a pixel in the specified coordinates with the specified color."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="draw_game_over",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa37e76033505d7f48a87284bd85c48a2",tooltip="Draws the finish menu."];
+  Node4 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="draw_score",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#ad4db50e84100b110372c12cfdb41a3f3",tooltip="Draws the score field in the specified coordinates."];
+  Node5 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="draw_number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aea59e5669edc12d0b9ac1dc5a83a9969",tooltip="Draws the number in the specified coordinates."];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="draw_rectangle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a31178cc71e7af0d6045707842517b225",tooltip="Draws a rectangle in the specified coordinates with the specified width, height and color."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="draw_line",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#ac09489dd9ea607a80cbc34da200bd0c8",tooltip="Draws a line in the specified coordinates with the specified length and color."];
+  Node8 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="draw_initial_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a2e293823f22abda1c98f45d8035282d8",tooltip="Draws the initial menu."];
+  Node9 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

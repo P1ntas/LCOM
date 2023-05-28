@@ -1,0 +1,26 @@
+digraph "update_mouse_state"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_mouse_state",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Actions to perform whenever a mouse interrupt occurs."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="mouse_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#a210374b50462acdedab00df64d5cea3c",tooltip="Mouse interrupt handler."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="aux_mouse_read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#ab0e507f0d249dfe170378cb97c7f003c",tooltip="Reads a byte from a specified port related to mouse input."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip=" "];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="mouse_sync_bytes",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#a8d6ee7592c47e8f3830a140c1c36587d",tooltip="Sync bytes related to the mouse."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="mouse_sync_info",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#aa832040dd305ba3a8401cc3a4e6a4cc4",tooltip="Sync mouse-related information."];
+  Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="update_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a04a6d2a31e79c09343524b363d57fe7a",tooltip="Updates the state of the menu."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="game_reset",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a1a5640b92afc268e7635f2b57ad1172a",tooltip="Resets the game attributes, like the score, the spaceship position, etc."];
+  Node8 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="destroy_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asteroid_8c.html#a6be86d5630fa1cf9a2a682a5e351a5b2",tooltip="Destroys the asteroid."];
+  Node8 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="destroy_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga45449723feed27f8b5f902bcba3b6465",tooltip="Destroys the bullet."];
+}

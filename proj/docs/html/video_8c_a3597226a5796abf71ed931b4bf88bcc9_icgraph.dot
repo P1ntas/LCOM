@@ -1,0 +1,44 @@
+digraph "draw_bitmap"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="draw_bitmap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a sprite in the specified coordinates."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="draw_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#af56df24f61a1d64987b572659b8d8e82",tooltip="Draws an asteroid in the specified coordinates."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="update_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asteroid_8c.html#a241a81e4363c0ed96a55ddf9ca0b1640",tooltip="Updates the asteroids."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="update_timer_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a2e7983abedd3fae94a24b4775a97210f",tooltip="Actions to perform whenever a timer interrupt occurs."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="draw_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a29ee461f6134a3e4fb1e72dd0bf72bcf",tooltip="Draws a bullet in the specified coordinates."];
+  Node6 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="update_bullets",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#gafaf27910ed3e0f09abba76c775399d97",tooltip="Updates the bullet."];
+  Node7 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="draw_game_over",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa37e76033505d7f48a87284bd85c48a2",tooltip="Draws the finish menu."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="refresh_screen",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a09274e99ae82fefc69ea9388bc245b8d",tooltip="Draws a new frame, depending on the current state of the menu."];
+  Node9 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="draw_initial_menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a2e293823f22abda1c98f45d8035282d8",tooltip="Draws the initial menu."];
+  Node10 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="draw_mouse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a42f4903ab89aff9e3ee0206c52cf710a",tooltip="Draws the mouse."];
+  Node11 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="draw_number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aea59e5669edc12d0b9ac1dc5a83a9969",tooltip="Draws the number in the specified coordinates."];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="draw_score",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#ad4db50e84100b110372c12cfdb41a3f3",tooltip="Draws the score field in the specified coordinates."];
+  Node13 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="update_spaceship_position",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$space_ship_8c.html#a2bd9208cb0ad654d30a9a0e05bf16f26",tooltip="Periodically updates the spaceship according to the keyboard input, draws it and checks for collision..."];
+  Node14 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

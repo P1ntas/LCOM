@@ -1,0 +1,20 @@
+digraph "update_gameState"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_gameState",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Actions to perform whenever a keyboard interrupt occurs."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="game_reset",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a1a5640b92afc268e7635f2b57ad1172a",tooltip="Resets the game attributes, like the score, the spaceship position, etc."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="destroy_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asteroid_8c.html#a6be86d5630fa1cf9a2a682a5e351a5b2",tooltip="Destroys the asteroid."];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="destroy_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga45449723feed27f8b5f902bcba3b6465",tooltip="Destroys the bullet."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="kbc_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$keyboard_8c.html#aea970a154161a35f6894898a092ed70a",tooltip="Keyboard interrupt handler."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="aux_keyboard_read",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$keyboard_8c.html#a8dbcd66b0e7cbac6b890b2b993102f38",tooltip="Reads a byte from a specified port."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4",tooltip=" "];
+}

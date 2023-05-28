@@ -1,0 +1,16 @@
+digraph "update_bullets"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="update_bullets",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Updates the bullet."];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="destroy_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group__bullet.html#ga45449723feed27f8b5f902bcba3b6465",tooltip="Destroys the bullet."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="draw_bullet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a29ee461f6134a3e4fb1e72dd0bf72bcf",tooltip="Draws a bullet in the specified coordinates."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="draw_bitmap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#a3597226a5796abf71ed931b4bf88bcc9",tooltip="Draws a sprite in the specified coordinates."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="draw_pixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$video_8c.html#aa75d96618132cccec2c977ae043d31fe",tooltip="Draws a pixel in the specified coordinates with the specified color."];
+}

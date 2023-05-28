@@ -1,0 +1,14 @@
+digraph "create_asteroid"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="create_asteroid",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Creates an asteroid."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="update_asteroid",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$asteroid_8c.html#a241a81e4363c0ed96a55ddf9ca0b1640",tooltip="Updates the asteroids."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="update_timer_state",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$game_8c.html#a2e7983abedd3fae94a24b4775a97210f",tooltip="Actions to perform whenever a timer interrupt occurs."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$main_8c.html#a2a16f651eccbd248e1ad3b3b924b143b",tooltip=" "];
+}
