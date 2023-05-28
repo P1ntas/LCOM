@@ -3,7 +3,7 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
-#include "controller/keyboard/KBC.h"
+#include "KBC.h"
 #include "controller/mouse/mouse.h"
 #include "video.h"
 #include "spaceShip.h"

@@ -16,6 +16,7 @@
         "lcf.h": "c",
         "view.h": "c",
         "config.h": "c",
-        "sprite.h": "c"
+        "sprite.h": "c",
+        "keyboard.h": "c"
     }
 }
