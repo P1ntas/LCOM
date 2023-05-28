@@ -1,0 +1,158 @@
+\hypertarget{bullet_8c}{}\doxysection{bullet.\+c File Reference}
+\label{bullet_8c}\index{bullet.c@{bullet.c}}
+{\ttfamily \#include \char`\"{}bullet.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{bullet_8c_a32546ddfc8b19ee1cfb6f84cf2506770}{SHOT\+\_\+\+INTERVAL}}~20
+\item 
+\#define \mbox{\hyperlink{bullet_8c_ae986fbe55c87e6470ce26129fe08f3aa}{SPACE\+\_\+\+MAKE}}~0x39
+\item 
+\#define \mbox{\hyperlink{bullet_8c_a95d6e4b61bac77469ecc47b205709af6}{SPACE\+\_\+\+BREAK}}~0x\+B9
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{bullet_8c_a9ecc7ce02f7739f91450cc4104f0505c}{get\+\_\+ship\+\_\+direction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the direction of the space ship. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}{create\+\_\+bullet}} (int x, int y, int xspeed, int yspeed, int i)
+\begin{DoxyCompactList}\small\item\em Creates a bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}{shoot}} ()
+\begin{DoxyCompactList}\small\item\em Shoots a bullet, creating it and adding it to the array of bullets. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gafaf27910ed3e0f09abba76c775399d97}{update\+\_\+bullets}} ()
+\begin{DoxyCompactList}\small\item\em Updates the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga45449723feed27f8b5f902bcba3b6465}{destroy\+\_\+bullet}} (\mbox{\hyperlink{struct_bullet}{Bullet}} $\ast$\mbox{\hyperlink{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}{bullet}})
+\begin{DoxyCompactList}\small\item\em Destroys the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga382a297cb513f604c8454b568483bbcf}{check\+\_\+bullet\+\_\+collision}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the bullet collides with a asteroid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{bullet_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}
+\item 
+\mbox{\hyperlink{struct_bullet}{Bullet}} $\ast$ \mbox{\hyperlink{bullet_8c_a37c3465877cf16c7a9b6b7a3d9e26667}{bullets}} \mbox{[}5\mbox{]}
+\item 
+\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$ \mbox{\hyperlink{bullet_8c_a18dcfe3b4e8b9ca538a381c643332b65}{asteroids}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} \mbox{\hyperlink{bullet_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}{mouse\+\_\+info}}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{bullet_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info}}
+\item 
+int \mbox{\hyperlink{bullet_8c_af1617c91937fbd9d9d670940427d9b44}{x\+\_\+pos}}
+\item 
+int \mbox{\hyperlink{bullet_8c_a375120430014d7e06dcc37d9ca4fcdb8}{y\+\_\+pos}}
+\item 
+int \mbox{\hyperlink{bullet_8c_a56d83ad8a1afb318706057c1ec72f797}{x\+\_\+speed}}
+\item 
+int \mbox{\hyperlink{bullet_8c_a081c2d7f9619a32bd806baa1831ce1c1}{y\+\_\+speed}}
+\item 
+int \mbox{\hyperlink{bullet_8c_ad39dd67672cc86f153ad3f77769f4dd2}{time\+Since\+Last\+Shot}} = 0
+\item 
+int \mbox{\hyperlink{bullet_8c_aef160b7437d94056f1dc59646cd5b87d}{score}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{bullet_8c_a32546ddfc8b19ee1cfb6f84cf2506770}\label{bullet_8c_a32546ddfc8b19ee1cfb6f84cf2506770}} 
+\index{bullet.c@{bullet.c}!SHOT\_INTERVAL@{SHOT\_INTERVAL}}
+\index{SHOT\_INTERVAL@{SHOT\_INTERVAL}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{SHOT\_INTERVAL}{SHOT\_INTERVAL}}
+{\footnotesize\ttfamily \#define SHOT\+\_\+\+INTERVAL~20}
+
+\mbox{\Hypertarget{bullet_8c_a95d6e4b61bac77469ecc47b205709af6}\label{bullet_8c_a95d6e4b61bac77469ecc47b205709af6}} 
+\index{bullet.c@{bullet.c}!SPACE\_BREAK@{SPACE\_BREAK}}
+\index{SPACE\_BREAK@{SPACE\_BREAK}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{SPACE\_BREAK}{SPACE\_BREAK}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+BREAK~0x\+B9}
+
+\mbox{\Hypertarget{bullet_8c_ae986fbe55c87e6470ce26129fe08f3aa}\label{bullet_8c_ae986fbe55c87e6470ce26129fe08f3aa}} 
+\index{bullet.c@{bullet.c}!SPACE\_MAKE@{SPACE\_MAKE}}
+\index{SPACE\_MAKE@{SPACE\_MAKE}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{SPACE\_MAKE}{SPACE\_MAKE}}
+{\footnotesize\ttfamily \#define SPACE\+\_\+\+MAKE~0x39}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bullet_8c_a9ecc7ce02f7739f91450cc4104f0505c}\label{bullet_8c_a9ecc7ce02f7739f91450cc4104f0505c}} 
+\index{bullet.c@{bullet.c}!get\_ship\_direction@{get\_ship\_direction}}
+\index{get\_ship\_direction@{get\_ship\_direction}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{get\_ship\_direction()}{get\_ship\_direction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} get\+\_\+ship\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the direction of the space ship. 
+
+\begin{DoxyReturn}{Returns}
+Direction direction of the space ship 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{bullet_8c_a18dcfe3b4e8b9ca538a381c643332b65}\label{bullet_8c_a18dcfe3b4e8b9ca538a381c643332b65}} 
+\index{bullet.c@{bullet.c}!asteroids@{asteroids}}
+\index{asteroids@{asteroids}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{asteroids}{asteroids}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_asteroid}{Asteroid}}$\ast$ asteroids\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_a37c3465877cf16c7a9b6b7a3d9e26667}\label{bullet_8c_a37c3465877cf16c7a9b6b7a3d9e26667}} 
+\index{bullet.c@{bullet.c}!bullets@{bullets}}
+\index{bullets@{bullets}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{bullets}{bullets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bullet}{Bullet}}$\ast$ bullets\mbox{[}5\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_a9fcc2243068f8e628648febc0909c509}\label{bullet_8c_a9fcc2243068f8e628648febc0909c509}} 
+\index{bullet.c@{bullet.c}!mode\_info@{mode\_info}}
+\index{mode\_info@{mode\_info}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{mode\_info}{mode\_info}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t mode\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}\label{bullet_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}} 
+\index{bullet.c@{bullet.c}!mouse\_info@{mouse\_info}}
+\index{mouse\_info@{mouse\_info}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_info}{mouse\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} mouse\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_aa1de7a5557e9d96b83cf03f73c92163f}\label{bullet_8c_aa1de7a5557e9d96b83cf03f73c92163f}} 
+\index{bullet.c@{bullet.c}!scancode@{scancode}}
+\index{scancode@{scancode}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily uint8\+\_\+t scancode\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_aef160b7437d94056f1dc59646cd5b87d}\label{bullet_8c_aef160b7437d94056f1dc59646cd5b87d}} 
+\index{bullet.c@{bullet.c}!score@{score}}
+\index{score@{score}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int score\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_ad39dd67672cc86f153ad3f77769f4dd2}\label{bullet_8c_ad39dd67672cc86f153ad3f77769f4dd2}} 
+\index{bullet.c@{bullet.c}!timeSinceLastShot@{timeSinceLastShot}}
+\index{timeSinceLastShot@{timeSinceLastShot}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{timeSinceLastShot}{timeSinceLastShot}}
+{\footnotesize\ttfamily int time\+Since\+Last\+Shot = 0}
+
+\mbox{\Hypertarget{bullet_8c_af1617c91937fbd9d9d670940427d9b44}\label{bullet_8c_af1617c91937fbd9d9d670940427d9b44}} 
+\index{bullet.c@{bullet.c}!x\_pos@{x\_pos}}
+\index{x\_pos@{x\_pos}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{x\_pos}{x\_pos}}
+{\footnotesize\ttfamily int x\+\_\+pos\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_a56d83ad8a1afb318706057c1ec72f797}\label{bullet_8c_a56d83ad8a1afb318706057c1ec72f797}} 
+\index{bullet.c@{bullet.c}!x\_speed@{x\_speed}}
+\index{x\_speed@{x\_speed}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{x\_speed}{x\_speed}}
+{\footnotesize\ttfamily int x\+\_\+speed\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_a375120430014d7e06dcc37d9ca4fcdb8}\label{bullet_8c_a375120430014d7e06dcc37d9ca4fcdb8}} 
+\index{bullet.c@{bullet.c}!y\_pos@{y\_pos}}
+\index{y\_pos@{y\_pos}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{y\_pos}{y\_pos}}
+{\footnotesize\ttfamily int y\+\_\+pos\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{bullet_8c_a081c2d7f9619a32bd806baa1831ce1c1}\label{bullet_8c_a081c2d7f9619a32bd806baa1831ce1c1}} 
+\index{bullet.c@{bullet.c}!y\_speed@{y\_speed}}
+\index{y\_speed@{y\_speed}!bullet.c@{bullet.c}}
+\doxysubsubsection{\texorpdfstring{y\_speed}{y\_speed}}
+{\footnotesize\ttfamily int y\+\_\+speed\hspace{0.3cm}{\ttfamily [extern]}}
+

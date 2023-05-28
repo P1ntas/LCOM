@@ -1,0 +1,177 @@
+\hypertarget{space_ship_8c}{}\doxysection{space\+Ship.\+c File Reference}
+\label{space_ship_8c}\index{spaceShip.c@{spaceShip.c}}
+{\ttfamily \#include \char`\"{}space\+Ship.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{space_ship_8c_aac3553b3932cbfeeac4526ce7ca0336b}{SPEED}}~5
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{space_ship_8c_a2bd9208cb0ad654d30a9a0e05bf16f26}{update\+\_\+spaceship\+\_\+position}} ()
+\begin{DoxyCompactList}\small\item\em Periodically updates the spaceship according to the keyboard input, draws it and checks for collisions with asteroids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{space_ship_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{space_ship_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a577b3ecd4a2079e2fabb7dd7b16a8214}{space\+\_\+ship1}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a30e0bd3f9d80970608aa25d2f1f8133c}{space\+\_\+ship2}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_ac9e8152e70962c81f721efdc865adbc1}{space\+\_\+ship3}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a91a23ebe907c4a6ed41dff1e2d50694f}{space\+\_\+ship4}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a40d513e1aa9c78a8fcbf3562a2791d27}{space\+\_\+ship5}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_aa9de5cbf73371bc9e92f4164729ae5e0}{space\+\_\+ship6}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a8fc908163f0e6e95b6fc61f223f428aa}{space\+\_\+ship7}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_ab8db19a53c90e80fe95957245664b683}{space\+\_\+ship8}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{space_ship_8c_a93e90baf74c82f78aedcbd658771a0cf}{space}}
+\item 
+int \mbox{\hyperlink{space_ship_8c_af1617c91937fbd9d9d670940427d9b44}{x\+\_\+pos}}
+\item 
+int \mbox{\hyperlink{space_ship_8c_a375120430014d7e06dcc37d9ca4fcdb8}{y\+\_\+pos}}
+\item 
+int \mbox{\hyperlink{space_ship_8c_a56d83ad8a1afb318706057c1ec72f797}{x\+\_\+speed}}
+\item 
+int \mbox{\hyperlink{space_ship_8c_a081c2d7f9619a32bd806baa1831ce1c1}{y\+\_\+speed}}
+\item 
+\mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} \mbox{\hyperlink{space_ship_8c_a80336997efb5d09caab1ff2666d9e1dd}{menu\+State}}
+\item 
+\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$ \mbox{\hyperlink{space_ship_8c_a18dcfe3b4e8b9ca538a381c643332b65}{asteroids}} \mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{space_ship_8c_aac3553b3932cbfeeac4526ce7ca0336b}\label{space_ship_8c_aac3553b3932cbfeeac4526ce7ca0336b}} 
+\index{spaceShip.c@{spaceShip.c}!SPEED@{SPEED}}
+\index{SPEED@{SPEED}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{SPEED}{SPEED}}
+{\footnotesize\ttfamily \#define SPEED~5}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{space_ship_8c_a2bd9208cb0ad654d30a9a0e05bf16f26}\label{space_ship_8c_a2bd9208cb0ad654d30a9a0e05bf16f26}} 
+\index{spaceShip.c@{spaceShip.c}!update\_spaceship\_position@{update\_spaceship\_position}}
+\index{update\_spaceship\_position@{update\_spaceship\_position}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{update\_spaceship\_position()}{update\_spaceship\_position()}}
+{\footnotesize\ttfamily void update\+\_\+spaceship\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Periodically updates the spaceship according to the keyboard input, draws it and checks for collisions with asteroids. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{space_ship_8c_a18dcfe3b4e8b9ca538a381c643332b65}\label{space_ship_8c_a18dcfe3b4e8b9ca538a381c643332b65}} 
+\index{spaceShip.c@{spaceShip.c}!asteroids@{asteroids}}
+\index{asteroids@{asteroids}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{asteroids}{asteroids}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_asteroid}{Asteroid}}$\ast$ asteroids\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a80336997efb5d09caab1ff2666d9e1dd}\label{space_ship_8c_a80336997efb5d09caab1ff2666d9e1dd}} 
+\index{spaceShip.c@{spaceShip.c}!menuState@{menuState}}
+\index{menuState@{menuState}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{menuState}{menuState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} menu\+State\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a9fcc2243068f8e628648febc0909c509}\label{space_ship_8c_a9fcc2243068f8e628648febc0909c509}} 
+\index{spaceShip.c@{spaceShip.c}!mode\_info@{mode\_info}}
+\index{mode\_info@{mode\_info}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{mode\_info}{mode\_info}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t mode\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_aa1de7a5557e9d96b83cf03f73c92163f}\label{space_ship_8c_aa1de7a5557e9d96b83cf03f73c92163f}} 
+\index{spaceShip.c@{spaceShip.c}!scancode@{scancode}}
+\index{scancode@{scancode}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily uint8\+\_\+t scancode\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a93e90baf74c82f78aedcbd658771a0cf}\label{space_ship_8c_a93e90baf74c82f78aedcbd658771a0cf}} 
+\index{spaceShip.c@{spaceShip.c}!space@{space}}
+\index{space@{space}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space}{space}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a577b3ecd4a2079e2fabb7dd7b16a8214}\label{space_ship_8c_a577b3ecd4a2079e2fabb7dd7b16a8214}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship1@{space\_ship1}}
+\index{space\_ship1@{space\_ship1}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship1}{space\_ship1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship1\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a30e0bd3f9d80970608aa25d2f1f8133c}\label{space_ship_8c_a30e0bd3f9d80970608aa25d2f1f8133c}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship2@{space\_ship2}}
+\index{space\_ship2@{space\_ship2}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship2}{space\_ship2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship2\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_ac9e8152e70962c81f721efdc865adbc1}\label{space_ship_8c_ac9e8152e70962c81f721efdc865adbc1}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship3@{space\_ship3}}
+\index{space\_ship3@{space\_ship3}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship3}{space\_ship3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship3\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a91a23ebe907c4a6ed41dff1e2d50694f}\label{space_ship_8c_a91a23ebe907c4a6ed41dff1e2d50694f}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship4@{space\_ship4}}
+\index{space\_ship4@{space\_ship4}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship4}{space\_ship4}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship4\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a40d513e1aa9c78a8fcbf3562a2791d27}\label{space_ship_8c_a40d513e1aa9c78a8fcbf3562a2791d27}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship5@{space\_ship5}}
+\index{space\_ship5@{space\_ship5}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship5}{space\_ship5}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship5\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_aa9de5cbf73371bc9e92f4164729ae5e0}\label{space_ship_8c_aa9de5cbf73371bc9e92f4164729ae5e0}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship6@{space\_ship6}}
+\index{space\_ship6@{space\_ship6}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship6}{space\_ship6}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship6\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a8fc908163f0e6e95b6fc61f223f428aa}\label{space_ship_8c_a8fc908163f0e6e95b6fc61f223f428aa}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship7@{space\_ship7}}
+\index{space\_ship7@{space\_ship7}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship7}{space\_ship7}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship7\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_ab8db19a53c90e80fe95957245664b683}\label{space_ship_8c_ab8db19a53c90e80fe95957245664b683}} 
+\index{spaceShip.c@{spaceShip.c}!space\_ship8@{space\_ship8}}
+\index{space\_ship8@{space\_ship8}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship8}{space\_ship8}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship8\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_af1617c91937fbd9d9d670940427d9b44}\label{space_ship_8c_af1617c91937fbd9d9d670940427d9b44}} 
+\index{spaceShip.c@{spaceShip.c}!x\_pos@{x\_pos}}
+\index{x\_pos@{x\_pos}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{x\_pos}{x\_pos}}
+{\footnotesize\ttfamily int x\+\_\+pos\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a56d83ad8a1afb318706057c1ec72f797}\label{space_ship_8c_a56d83ad8a1afb318706057c1ec72f797}} 
+\index{spaceShip.c@{spaceShip.c}!x\_speed@{x\_speed}}
+\index{x\_speed@{x\_speed}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{x\_speed}{x\_speed}}
+{\footnotesize\ttfamily int x\+\_\+speed\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a375120430014d7e06dcc37d9ca4fcdb8}\label{space_ship_8c_a375120430014d7e06dcc37d9ca4fcdb8}} 
+\index{spaceShip.c@{spaceShip.c}!y\_pos@{y\_pos}}
+\index{y\_pos@{y\_pos}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{y\_pos}{y\_pos}}
+{\footnotesize\ttfamily int y\+\_\+pos\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{space_ship_8c_a081c2d7f9619a32bd806baa1831ce1c1}\label{space_ship_8c_a081c2d7f9619a32bd806baa1831ce1c1}} 
+\index{spaceShip.c@{spaceShip.c}!y\_speed@{y\_speed}}
+\index{y\_speed@{y\_speed}!spaceShip.c@{spaceShip.c}}
+\doxysubsubsection{\texorpdfstring{y\_speed}{y\_speed}}
+{\footnotesize\ttfamily int y\+\_\+speed\hspace{0.3cm}{\ttfamily [extern]}}
+

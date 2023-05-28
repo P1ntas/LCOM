@@ -1,0 +1,101 @@
+\hypertarget{asteroid_8h}{}\doxysection{asteroid.\+h File Reference}
+\label{asteroid_8h}\index{asteroid.h@{asteroid.h}}
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_asteroid}{Asteroid}}
+\begin{DoxyCompactList}\small\item\em Struct that represents an asteroid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{asteroid_8h_ab461d5f7ee911d59c927cf642a385060}{create\+\_\+asteroid}} (int x, int y, int i)
+\begin{DoxyCompactList}\small\item\em Creates an asteroid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{asteroid_8h_a241a81e4363c0ed96a55ddf9ca0b1640}{update\+\_\+asteroid}} ()
+\begin{DoxyCompactList}\small\item\em Updates the asteroids. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{asteroid_8h_a6be86d5630fa1cf9a2a682a5e351a5b2}{destroy\+\_\+asteroid}} (\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$\mbox{\hyperlink{video_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}{asteroid}})
+\begin{DoxyCompactList}\small\item\em Destroys the asteroid. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{asteroid_8h_a8597ef1b20830645480c6a1a4a3e7dbe}{check\+\_\+collision}} (\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$\mbox{\hyperlink{video_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}{asteroid}}, int ship\+\_\+x, int ship\+\_\+y, int ship\+\_\+width, int ship\+\_\+height)
+\begin{DoxyCompactList}\small\item\em Checks if the asteroid collides with the spaceship. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{asteroid_8h_a8597ef1b20830645480c6a1a4a3e7dbe}\label{asteroid_8h_a8597ef1b20830645480c6a1a4a3e7dbe}} 
+\index{asteroid.h@{asteroid.h}!check\_collision@{check\_collision}}
+\index{check\_collision@{check\_collision}!asteroid.h@{asteroid.h}}
+\doxysubsubsection{\texorpdfstring{check\_collision()}{check\_collision()}}
+{\footnotesize\ttfamily int check\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$}]{asteroid,  }\item[{int}]{ship\+\_\+x,  }\item[{int}]{ship\+\_\+y,  }\item[{int}]{ship\+\_\+width,  }\item[{int}]{ship\+\_\+height }\end{DoxyParamCaption})}
+
+
+
+Checks if the asteroid collides with the spaceship. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ship\+\_\+x} & X coordinate of the spaceship \\
+\hline
+{\em ship\+\_\+y} & Y coordinate of the spaceship \\
+\hline
+{\em ship\+\_\+width} & Width of the spaceship \\
+\hline
+{\em ship\+\_\+height} & Height of the spaceship \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{asteroid_8h_ab461d5f7ee911d59c927cf642a385060}\label{asteroid_8h_ab461d5f7ee911d59c927cf642a385060}} 
+\index{asteroid.h@{asteroid.h}!create\_asteroid@{create\_asteroid}}
+\index{create\_asteroid@{create\_asteroid}!asteroid.h@{asteroid.h}}
+\doxysubsubsection{\texorpdfstring{create\_asteroid()}{create\_asteroid()}}
+{\footnotesize\ttfamily int create\+\_\+asteroid (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Creates an asteroid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the asteroid \\
+\hline
+{\em y} & Y coordinate of the asteroid \\
+\hline
+{\em i} & Index of the asteroid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{asteroid_8h_a6be86d5630fa1cf9a2a682a5e351a5b2}\label{asteroid_8h_a6be86d5630fa1cf9a2a682a5e351a5b2}} 
+\index{asteroid.h@{asteroid.h}!destroy\_asteroid@{destroy\_asteroid}}
+\index{destroy\_asteroid@{destroy\_asteroid}!asteroid.h@{asteroid.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_asteroid()}{destroy\_asteroid()}}
+{\footnotesize\ttfamily int destroy\+\_\+asteroid (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_asteroid}{Asteroid}} $\ast$}]{asteroid }\end{DoxyParamCaption})}
+
+
+
+Destroys the asteroid. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em asteroid} & pointer to the asteroid to be destroyed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{asteroid_8h_a241a81e4363c0ed96a55ddf9ca0b1640}\label{asteroid_8h_a241a81e4363c0ed96a55ddf9ca0b1640}} 
+\index{asteroid.h@{asteroid.h}!update\_asteroid@{update\_asteroid}}
+\index{update\_asteroid@{update\_asteroid}!asteroid.h@{asteroid.h}}
+\doxysubsubsection{\texorpdfstring{update\_asteroid()}{update\_asteroid()}}
+{\footnotesize\ttfamily int update\+\_\+asteroid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the asteroids. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}

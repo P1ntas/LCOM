@@ -1,0 +1,52 @@
+\hypertarget{bitmap_8h}{}\doxysection{bitmap.\+h File Reference}
+\label{bitmap_8h}\index{bitmap.h@{bitmap.h}}
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}
+\begin{DoxyCompactList}\small\item\em Struct that represents a bitmap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{bitmap_8h_a92a7f9548f96fb0f9191788f1cec9307}{create\+\_\+bitmap}} (xpm\+\_\+map\+\_\+t bitmap)
+\begin{DoxyCompactList}\small\item\em Creates a bitmap. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bitmap_8h_a8b664e88d6056e4004d8c9a9aa048973}{destroy\+\_\+bitmap}} (\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$bitmap)
+\begin{DoxyCompactList}\small\item\em Destroys a bitmap. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bitmap_8h_a92a7f9548f96fb0f9191788f1cec9307}\label{bitmap_8h_a92a7f9548f96fb0f9191788f1cec9307}} 
+\index{bitmap.h@{bitmap.h}!create\_bitmap@{create\_bitmap}}
+\index{create\_bitmap@{create\_bitmap}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{create\_bitmap()}{create\_bitmap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ create\+\_\+bitmap (\begin{DoxyParamCaption}\item[{xpm\+\_\+map\+\_\+t}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Creates a bitmap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & xpm\+\_\+map\+\_\+t of the bitmap \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Bit\+Map$\ast$ pointer to the bitmap 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bitmap_8h_a8b664e88d6056e4004d8c9a9aa048973}\label{bitmap_8h_a8b664e88d6056e4004d8c9a9aa048973}} 
+\index{bitmap.h@{bitmap.h}!destroy\_bitmap@{destroy\_bitmap}}
+\index{destroy\_bitmap@{destroy\_bitmap}!bitmap.h@{bitmap.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_bitmap()}{destroy\_bitmap()}}
+{\footnotesize\ttfamily void destroy\+\_\+bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$}]{bitmap }\end{DoxyParamCaption})}
+
+
+
+Destroys a bitmap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & pointer to the bitmap \\
+\hline
+\end{DoxyParams}

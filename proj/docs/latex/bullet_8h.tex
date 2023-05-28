@@ -1,0 +1,122 @@
+\hypertarget{bullet_8h}{}\doxysection{bullet.\+h File Reference}
+\label{bullet_8h}\index{bullet.h@{bullet.h}}
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}space\+Ship.\+h\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_bullet}{Bullet}}
+\begin{DoxyCompactList}\small\item\em Struct that represents a bullet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{bullet_8h_ad196bf510b28a9ba4c872e96dfd16f92}{Direction}}
+\begin{DoxyCompactList}\small\item\em Enumerated type for the direction of the bullet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{ \newline
+\mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}{LEFT}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}{RIGHT}}
+, \newline
+\mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}{UP\+\_\+\+LEFT}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}{UP\+\_\+\+RIGHT}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}{DOWN\+\_\+\+LEFT}}
+, \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}{DOWN\+\_\+\+RIGHT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated type for the direction of the bullet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{bullet_8h_a9ecc7ce02f7739f91450cc4104f0505c}{get\+\_\+ship\+\_\+direction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the direction of the space ship. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}{create\+\_\+bullet}} (int x, int y, int xspeed, int yspeed, int i)
+\begin{DoxyCompactList}\small\item\em Creates a bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}{shoot}} ()
+\begin{DoxyCompactList}\small\item\em Shoots a bullet, creating it and adding it to the array of bullets. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gafaf27910ed3e0f09abba76c775399d97}{update\+\_\+bullets}} ()
+\begin{DoxyCompactList}\small\item\em Updates the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga45449723feed27f8b5f902bcba3b6465}{destroy\+\_\+bullet}} (\mbox{\hyperlink{struct_bullet}{Bullet}} $\ast$\mbox{\hyperlink{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}{bullet}})
+\begin{DoxyCompactList}\small\item\em Destroys the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga382a297cb513f604c8454b568483bbcf}{check\+\_\+bullet\+\_\+collision}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the bullet collides with a asteroid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{bullet_8h_ad196bf510b28a9ba4c872e96dfd16f92}\label{bullet_8h_ad196bf510b28a9ba4c872e96dfd16f92}} 
+\index{bullet.h@{bullet.h}!Direction@{Direction}}
+\index{Direction@{Direction}!bullet.h@{bullet.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Enumerated type for the direction of the bullet. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}\label{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}} 
+\index{bullet.h@{bullet.h}!Direction@{Direction}}
+\index{Direction@{Direction}!bullet.h@{bullet.h}}
+\doxysubsubsection{\texorpdfstring{Direction}{Direction}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}}}
+
+
+
+Enumerated type for the direction of the bullet. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!UP@{UP}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!DOWN@{DOWN}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}} 
+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!LEFT@{LEFT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}} 
+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!RIGHT@{RIGHT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}} 
+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP\_LEFT@{UP\_LEFT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!UP\_LEFT@{UP\_LEFT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}} 
+UP\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP\_RIGHT@{UP\_RIGHT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!UP\_RIGHT@{UP\_RIGHT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}} 
+UP\+\_\+\+RIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN\_LEFT@{DOWN\_LEFT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!DOWN\_LEFT@{DOWN\_LEFT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}} 
+DOWN\+\_\+\+LEFT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN\_RIGHT@{DOWN\_RIGHT}!bullet.h@{bullet.h}}\index{bullet.h@{bullet.h}!DOWN\_RIGHT@{DOWN\_RIGHT}}}\mbox{\Hypertarget{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}\label{bullet_8h_ga224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}} 
+DOWN\+\_\+\+RIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bullet_8h_a9ecc7ce02f7739f91450cc4104f0505c}\label{bullet_8h_a9ecc7ce02f7739f91450cc4104f0505c}} 
+\index{bullet.h@{bullet.h}!get\_ship\_direction@{get\_ship\_direction}}
+\index{get\_ship\_direction@{get\_ship\_direction}!bullet.h@{bullet.h}}
+\doxysubsubsection{\texorpdfstring{get\_ship\_direction()}{get\_ship\_direction()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} get\+\_\+ship\+\_\+direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the direction of the space ship. 
+
+\begin{DoxyReturn}{Returns}
+Direction direction of the space ship 
+\end{DoxyReturn}

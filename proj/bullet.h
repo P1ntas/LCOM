@@ -6,11 +6,6 @@
 #include "video.h"
 #include "spaceShip.h"
 
-/** @defgroup Direction Direction
- * @{
- * Functions for manipulating the direction of the bullet
- */
-
 /**
  * 
  * @brief Enumerated type for the direction of the bullet

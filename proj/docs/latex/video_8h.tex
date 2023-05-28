@@ -1,0 +1,325 @@
+\hypertarget{video_8h}{}\doxysection{video.\+h File Reference}
+\label{video_8h}\index{video.h@{video.h}}
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bitmap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{video_8h_ada3e20ea63a4f7e572c329f56f8dda44}{set\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the graphic mode to the one specified in the argument. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8h_a55bb0148c696baca125c2c03bd585ae5}{set\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the frame buffer to the one specified in the argument. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8h_aa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel in the specified coordinates with the specified color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8h_ac09489dd9ea607a80cbc34da200bd0c8}{draw\+\_\+line}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a line in the specified coordinates with the specified length and color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8h_a31178cc71e7af0d6045707842517b225}{draw\+\_\+rectangle}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle in the specified coordinates with the specified width, height and color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8h_a3ad9f04212e7602618a0dd7ad4afbd4e}{set\+\_\+frame\+\_\+buffers}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Prepares the frame buffers, using a single buffer or a double buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a09274e99ae82fefc69ea9388bc245b8d}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Draws a new frame, depending on the current state of the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a2e293823f22abda1c98f45d8035282d8}{draw\+\_\+initial\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the initial menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_aa37e76033505d7f48a87284bd85c48a2}{draw\+\_\+game\+\_\+over}} ()
+\begin{DoxyCompactList}\small\item\em Draws the finish menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_a42f4903ab89aff9e3ee0206c52cf710a}{draw\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Draws the mouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8h_af56df24f61a1d64987b572659b8d8e82}{draw\+\_\+asteroid}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws an asteroid in the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8h_a29ee461f6134a3e4fb1e72dd0bf72bcf}{draw\+\_\+bullet}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a bullet in the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8h_af59451533fcbdaa57b5c4c84d84774a7}{draw\+\_\+bitmap}} (\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$bitmap, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a sprite in the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_ad4db50e84100b110372c12cfdb41a3f3}{draw\+\_\+score}} (int x, int y, int \mbox{\hyperlink{video_8c_aef160b7437d94056f1dc59646cd5b87d}{score}})
+\begin{DoxyCompactList}\small\item\em Draws the score field in the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8h_aea59e5669edc12d0b9ac1dc5a83a9969}{draw\+\_\+number}} (int x, int y, int number)
+\begin{DoxyCompactList}\small\item\em Draws the number in the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{video_8h_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{video_8h_af56df24f61a1d64987b572659b8d8e82}\label{video_8h_af56df24f61a1d64987b572659b8d8e82}} 
+\index{video.h@{video.h}!draw\_asteroid@{draw\_asteroid}}
+\index{draw\_asteroid@{draw\_asteroid}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_asteroid()}{draw\_asteroid()}}
+{\footnotesize\ttfamily int draw\+\_\+asteroid (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws an asteroid in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the asteroid \\
+\hline
+{\em y} & Y coordinate of the asteroid\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_af59451533fcbdaa57b5c4c84d84774a7}\label{video_8h_af59451533fcbdaa57b5c4c84d84774a7}} 
+\index{video.h@{video.h}!draw\_bitmap@{draw\_bitmap}}
+\index{draw\_bitmap@{draw\_bitmap}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bitmap()}{draw\_bitmap()}}
+{\footnotesize\ttfamily int draw\+\_\+bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$}]{bitmap,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a sprite in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & \mbox{\hyperlink{struct_bit_map}{Bit\+Map}} to be drawn \\
+\hline
+{\em x} & X coordinate of the sprite \\
+\hline
+{\em y} & Y coordinate of the sprite\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_a29ee461f6134a3e4fb1e72dd0bf72bcf}\label{video_8h_a29ee461f6134a3e4fb1e72dd0bf72bcf}} 
+\index{video.h@{video.h}!draw\_bullet@{draw\_bullet}}
+\index{draw\_bullet@{draw\_bullet}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_bullet()}{draw\_bullet()}}
+{\footnotesize\ttfamily int draw\+\_\+bullet (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a bullet in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the bullet \\
+\hline
+{\em y} & Y coordinate of the bullet\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_aa37e76033505d7f48a87284bd85c48a2}\label{video_8h_aa37e76033505d7f48a87284bd85c48a2}} 
+\index{video.h@{video.h}!draw\_game\_over@{draw\_game\_over}}
+\index{draw\_game\_over@{draw\_game\_over}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_over()}{draw\_game\_over()}}
+{\footnotesize\ttfamily void draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the finish menu. 
+
+\mbox{\Hypertarget{video_8h_a2e293823f22abda1c98f45d8035282d8}\label{video_8h_a2e293823f22abda1c98f45d8035282d8}} 
+\index{video.h@{video.h}!draw\_initial\_menu@{draw\_initial\_menu}}
+\index{draw\_initial\_menu@{draw\_initial\_menu}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_initial\_menu()}{draw\_initial\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+initial\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the initial menu. 
+
+\mbox{\Hypertarget{video_8h_ac09489dd9ea607a80cbc34da200bd0c8}\label{video_8h_ac09489dd9ea607a80cbc34da200bd0c8}} 
+\index{video.h@{video.h}!draw\_line@{draw\_line}}
+\index{draw\_line@{draw\_line}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_line()}{draw\_line()}}
+{\footnotesize\ttfamily int() draw\+\_\+line (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a line in the specified coordinates with the specified length and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the line \\
+\hline
+{\em y} & Y coordinate of the line \\
+\hline
+{\em len} & Length of the line \\
+\hline
+{\em color} & Color of the line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_a42f4903ab89aff9e3ee0206c52cf710a}\label{video_8h_a42f4903ab89aff9e3ee0206c52cf710a}} 
+\index{video.h@{video.h}!draw\_mouse@{draw\_mouse}}
+\index{draw\_mouse@{draw\_mouse}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_mouse()}{draw\_mouse()}}
+{\footnotesize\ttfamily void draw\+\_\+mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the mouse. 
+
+\mbox{\Hypertarget{video_8h_aea59e5669edc12d0b9ac1dc5a83a9969}\label{video_8h_aea59e5669edc12d0b9ac1dc5a83a9969}} 
+\index{video.h@{video.h}!draw\_number@{draw\_number}}
+\index{draw\_number@{draw\_number}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_number()}{draw\_number()}}
+{\footnotesize\ttfamily void draw\+\_\+number (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+
+
+Draws the number in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the number \\
+\hline
+{\em y} & Y coordinate of the number \\
+\hline
+{\em number} & Number to be drawn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8h_aa75d96618132cccec2c977ae043d31fe}\label{video_8h_aa75d96618132cccec2c977ae043d31fe}} 
+\index{video.h@{video.h}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily int() draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel in the specified coordinates with the specified color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the pixel \\
+\hline
+{\em y} & Y coordinate of the pixel \\
+\hline
+{\em color} & Color of the pixel \\
+\hline
+{\em frame\+\_\+buffer} & Frame buffer to draw the pixel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_a31178cc71e7af0d6045707842517b225}\label{video_8h_a31178cc71e7af0d6045707842517b225}} 
+\index{video.h@{video.h}!draw\_rectangle@{draw\_rectangle}}
+\index{draw\_rectangle@{draw\_rectangle}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_rectangle()}{draw\_rectangle()}}
+{\footnotesize\ttfamily int() draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle in the specified coordinates with the specified width, height and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the rectangle \\
+\hline
+{\em y} & Y coordinate of the rectangle \\
+\hline
+{\em width} & Width of the rectangle \\
+\hline
+{\em height} & Height of the rectangle \\
+\hline
+{\em color} & Color of the rectangle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_ad4db50e84100b110372c12cfdb41a3f3}\label{video_8h_ad4db50e84100b110372c12cfdb41a3f3}} 
+\index{video.h@{video.h}!draw\_score@{draw\_score}}
+\index{draw\_score@{draw\_score}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{draw\_score()}{draw\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+score (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Draws the score field in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the score \\
+\hline
+{\em y} & Y coordinate of the score \\
+\hline
+{\em score} & Score to be drawn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8h_a09274e99ae82fefc69ea9388bc245b8d}\label{video_8h_a09274e99ae82fefc69ea9388bc245b8d}} 
+\index{video.h@{video.h}!refresh\_screen@{refresh\_screen}}
+\index{refresh\_screen@{refresh\_screen}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{refresh\_screen()}{refresh\_screen()}}
+{\footnotesize\ttfamily void refresh\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws a new frame, depending on the current state of the menu. 
+
+\mbox{\Hypertarget{video_8h_a55bb0148c696baca125c2c03bd585ae5}\label{video_8h_a55bb0148c696baca125c2c03bd585ae5}} 
+\index{video.h@{video.h}!set\_frame\_buffer@{set\_frame\_buffer}}
+\index{set\_frame\_buffer@{set\_frame\_buffer}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{set\_frame\_buffer()}{set\_frame\_buffer()}}
+{\footnotesize\ttfamily int() set\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the frame buffer to the one specified in the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode of the frame buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_a3ad9f04212e7602618a0dd7ad4afbd4e}\label{video_8h_a3ad9f04212e7602618a0dd7ad4afbd4e}} 
+\index{video.h@{video.h}!set\_frame\_buffers@{set\_frame\_buffers}}
+\index{set\_frame\_buffers@{set\_frame\_buffers}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{set\_frame\_buffers()}{set\_frame\_buffers()}}
+{\footnotesize\ttfamily int set\+\_\+frame\+\_\+buffers (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Prepares the frame buffers, using a single buffer or a double buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode of the frame buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8h_ada3e20ea63a4f7e572c329f56f8dda44}\label{video_8h_ada3e20ea63a4f7e572c329f56f8dda44}} 
+\index{video.h@{video.h}!set\_mode@{set\_mode}}
+\index{set\_mode@{set\_mode}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{set\_mode()}{set\_mode()}}
+{\footnotesize\ttfamily int() set\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the graphic mode to the one specified in the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Submode of the graphic mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{video_8h_a9fcc2243068f8e628648febc0909c509}\label{video_8h_a9fcc2243068f8e628648febc0909c509}} 
+\index{video.h@{video.h}!mode\_info@{mode\_info}}
+\index{mode\_info@{mode\_info}!video.h@{video.h}}
+\doxysubsubsection{\texorpdfstring{mode\_info}{mode\_info}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t mode\+\_\+info}
+

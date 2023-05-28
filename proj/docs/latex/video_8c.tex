@@ -1,0 +1,601 @@
+\hypertarget{video_8c}{}\doxysection{video.\+c File Reference}
+\label{video_8c}\index{video.c@{video.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}video.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{video_8c_a41a0b43c1d45917d0703abb687db3d54}{Double\+\_\+\+Buffering}}~1
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{video_8c_ada3e20ea63a4f7e572c329f56f8dda44}{set\+\_\+mode}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the graphic mode to the one specified in the argument. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8c_a55bb0148c696baca125c2c03bd585ae5}{set\+\_\+frame\+\_\+buffer}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Sets the frame buffer to the one specified in the argument. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8c_aa75d96618132cccec2c977ae043d31fe}{draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a pixel in the specified coordinates with the specified color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8c_ac09489dd9ea607a80cbc34da200bd0c8}{draw\+\_\+line}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a line in the specified coordinates with the specified length and color. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{video_8c_a31178cc71e7af0d6045707842517b225}{draw\+\_\+rectangle}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint32\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draws a rectangle in the specified coordinates with the specified width, height and color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8c_a3ad9f04212e7602618a0dd7ad4afbd4e}{set\+\_\+frame\+\_\+buffers}} (uint16\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em Prepares the frame buffers, using a single buffer or a double buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_a09274e99ae82fefc69ea9388bc245b8d}{refresh\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Draws a new frame, depending on the current state of the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_a2e293823f22abda1c98f45d8035282d8}{draw\+\_\+initial\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Draws the initial menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_aa37e76033505d7f48a87284bd85c48a2}{draw\+\_\+game\+\_\+over}} ()
+\begin{DoxyCompactList}\small\item\em Draws the finish menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_a42f4903ab89aff9e3ee0206c52cf710a}{draw\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Draws the mouse. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8c_af56df24f61a1d64987b572659b8d8e82}{draw\+\_\+asteroid}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws an asteroid in the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8c_a29ee461f6134a3e4fb1e72dd0bf72bcf}{draw\+\_\+bullet}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a bullet in the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{video_8c_a3597226a5796abf71ed931b4bf88bcc9}{draw\+\_\+bitmap}} (\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$sprite, int x, int y)
+\begin{DoxyCompactList}\small\item\em Draws a sprite in the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_ad4db50e84100b110372c12cfdb41a3f3}{draw\+\_\+score}} (int x, int y, int \mbox{\hyperlink{video_8c_aef160b7437d94056f1dc59646cd5b87d}{score}})
+\begin{DoxyCompactList}\small\item\em Draws the score field in the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{video_8c_aea59e5669edc12d0b9ac1dc5a83a9969}{draw\+\_\+number}} (int x, int y, int number)
+\begin{DoxyCompactList}\small\item\em Draws the number in the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{video_8c_ac5e77aef3212a1793ddf2dff11fb798b}{primary\+\_\+vm\+\_\+buffer}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{video_8c_ad5a25d46c1fa99a1c58328a935a6fcac}{secondary\+\_\+vm\+\_\+buffer}}
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{video_8c_ab523dcb1484f1cfd46ac366807c6f7ac}{drawing\+\_\+vm\+\_\+buffer}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{video_8c_a0edf3f8c28b403daaa9927c7e883696a}{frame\+\_\+buffer\+\_\+size}}
+\item 
+int \mbox{\hyperlink{video_8c_abdd2eef1d70041de463214f2f9469f4d}{counter\+\_\+timer}}
+\item 
+\mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} \mbox{\hyperlink{video_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}{mouse\+\_\+info}}
+\item 
+\mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} \mbox{\hyperlink{video_8c_a80336997efb5d09caab1ff2666d9e1dd}{menu\+State}}
+\item 
+bool \mbox{\hyperlink{video_8c_a36f7b6be7108281af77939ceaec42fd6}{running}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a0e52e361a5978e28c5dc32fee30d62c5}{mouse}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}{asteroid}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a287d14818a2c405975df154752aa53a0}{single\+\_\+player}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a8c9661318faf68717ee991132ffa5db5}{multiplayer}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a278a6cce30b183fe43e72a1479bf7025}{controls}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a7ef2e1c70802a893c17638da3c8add33}{menu}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a0f83ceef41792021dfc328fa3445fe64}{quit}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a93e90baf74c82f78aedcbd658771a0cf}{space}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_ae5faf3e8f21fd786597e5f77c1780cc1}{title}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_af9cd7b8080bc412469c19d10bfb351d6}{game\+\_\+over}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a5403810a54f4e0c32d57e3b3a083ab3d}{controls\+\_\+menu}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a1d94ed5a3e48eeffba3893764b80728c}{space\+\_\+ship}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}{bullet}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_aa61d22e56fc8c91d566c87661eed1b6c}{num\+\_\+1}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_af3c9ced5dee5cc18ceef752914f8bc08}{num\+\_\+2}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a8c5116f4abda9e2f6667243cccef8460}{num\+\_\+3}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a173e549e5393fe047a1060fe7d92a52e}{num\+\_\+4}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_aa959075e94958464f8fa854d3d4a9911}{num\+\_\+5}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_abaeac0078d932267e675eb68f87b36f4}{num\+\_\+6}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a093c16c9ad502dda5a43602977a8e083}{num\+\_\+7}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a35fb563aada9da190802206a0203866b}{num\+\_\+8}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_ad15ee88b7f3899e9bd95f2498d312b63}{num\+\_\+9}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a73d913c1a20e45d225a110d1fb49122a}{num\+\_\+0}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a199b78cb759dc47e0a7ed4ab4ca4b753}{score\+\_\+sprite}}
+\item 
+\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$ \mbox{\hyperlink{video_8c_a401d633d5f10bc8c2f9d067f8700c899}{msg}}
+\item 
+int \mbox{\hyperlink{video_8c_aef160b7437d94056f1dc59646cd5b87d}{score}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{video_8c_a41a0b43c1d45917d0703abb687db3d54}\label{video_8c_a41a0b43c1d45917d0703abb687db3d54}} 
+\index{video.c@{video.c}!Double\_Buffering@{Double\_Buffering}}
+\index{Double\_Buffering@{Double\_Buffering}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{Double\_Buffering}{Double\_Buffering}}
+{\footnotesize\ttfamily \#define Double\+\_\+\+Buffering~1}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{video_8c_af56df24f61a1d64987b572659b8d8e82}\label{video_8c_af56df24f61a1d64987b572659b8d8e82}} 
+\index{video.c@{video.c}!draw\_asteroid@{draw\_asteroid}}
+\index{draw\_asteroid@{draw\_asteroid}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_asteroid()}{draw\_asteroid()}}
+{\footnotesize\ttfamily int draw\+\_\+asteroid (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws an asteroid in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the asteroid \\
+\hline
+{\em y} & Y coordinate of the asteroid\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_a3597226a5796abf71ed931b4bf88bcc9}\label{video_8c_a3597226a5796abf71ed931b4bf88bcc9}} 
+\index{video.c@{video.c}!draw\_bitmap@{draw\_bitmap}}
+\index{draw\_bitmap@{draw\_bitmap}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_bitmap()}{draw\_bitmap()}}
+{\footnotesize\ttfamily int draw\+\_\+bitmap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_bit_map}{Bit\+Map}} $\ast$}]{bitmap,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a sprite in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bitmap} & \mbox{\hyperlink{struct_bit_map}{Bit\+Map}} to be drawn \\
+\hline
+{\em x} & X coordinate of the sprite \\
+\hline
+{\em y} & Y coordinate of the sprite\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_a29ee461f6134a3e4fb1e72dd0bf72bcf}\label{video_8c_a29ee461f6134a3e4fb1e72dd0bf72bcf}} 
+\index{video.c@{video.c}!draw\_bullet@{draw\_bullet}}
+\index{draw\_bullet@{draw\_bullet}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_bullet()}{draw\_bullet()}}
+{\footnotesize\ttfamily int draw\+\_\+bullet (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws a bullet in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the bullet \\
+\hline
+{\em y} & Y coordinate of the bullet\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_aa37e76033505d7f48a87284bd85c48a2}\label{video_8c_aa37e76033505d7f48a87284bd85c48a2}} 
+\index{video.c@{video.c}!draw\_game\_over@{draw\_game\_over}}
+\index{draw\_game\_over@{draw\_game\_over}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_over()}{draw\_game\_over()}}
+{\footnotesize\ttfamily void draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the finish menu. 
+
+\mbox{\Hypertarget{video_8c_a2e293823f22abda1c98f45d8035282d8}\label{video_8c_a2e293823f22abda1c98f45d8035282d8}} 
+\index{video.c@{video.c}!draw\_initial\_menu@{draw\_initial\_menu}}
+\index{draw\_initial\_menu@{draw\_initial\_menu}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_initial\_menu()}{draw\_initial\_menu()}}
+{\footnotesize\ttfamily void draw\+\_\+initial\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the initial menu. 
+
+\mbox{\Hypertarget{video_8c_ac09489dd9ea607a80cbc34da200bd0c8}\label{video_8c_ac09489dd9ea607a80cbc34da200bd0c8}} 
+\index{video.c@{video.c}!draw\_line@{draw\_line}}
+\index{draw\_line@{draw\_line}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_line()}{draw\_line()}}
+{\footnotesize\ttfamily int() draw\+\_\+line (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a line in the specified coordinates with the specified length and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the line \\
+\hline
+{\em y} & Y coordinate of the line \\
+\hline
+{\em len} & Length of the line \\
+\hline
+{\em color} & Color of the line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_a42f4903ab89aff9e3ee0206c52cf710a}\label{video_8c_a42f4903ab89aff9e3ee0206c52cf710a}} 
+\index{video.c@{video.c}!draw\_mouse@{draw\_mouse}}
+\index{draw\_mouse@{draw\_mouse}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_mouse()}{draw\_mouse()}}
+{\footnotesize\ttfamily void draw\+\_\+mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the mouse. 
+
+\mbox{\Hypertarget{video_8c_aea59e5669edc12d0b9ac1dc5a83a9969}\label{video_8c_aea59e5669edc12d0b9ac1dc5a83a9969}} 
+\index{video.c@{video.c}!draw\_number@{draw\_number}}
+\index{draw\_number@{draw\_number}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_number()}{draw\_number()}}
+{\footnotesize\ttfamily void draw\+\_\+number (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{number }\end{DoxyParamCaption})}
+
+
+
+Draws the number in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the number \\
+\hline
+{\em y} & Y coordinate of the number \\
+\hline
+{\em number} & Number to be drawn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8c_aa75d96618132cccec2c977ae043d31fe}\label{video_8c_aa75d96618132cccec2c977ae043d31fe}} 
+\index{video.c@{video.c}!draw\_pixel@{draw\_pixel}}
+\index{draw\_pixel@{draw\_pixel}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_pixel()}{draw\_pixel()}}
+{\footnotesize\ttfamily int() draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a pixel in the specified coordinates with the specified color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the pixel \\
+\hline
+{\em y} & Y coordinate of the pixel \\
+\hline
+{\em color} & Color of the pixel \\
+\hline
+{\em frame\+\_\+buffer} & Frame buffer to draw the pixel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_a31178cc71e7af0d6045707842517b225}\label{video_8c_a31178cc71e7af0d6045707842517b225}} 
+\index{video.c@{video.c}!draw\_rectangle@{draw\_rectangle}}
+\index{draw\_rectangle@{draw\_rectangle}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_rectangle()}{draw\_rectangle()}}
+{\footnotesize\ttfamily int() draw\+\_\+rectangle (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint32\+\_\+t}]{color }\end{DoxyParamCaption})}
+
+
+
+Draws a rectangle in the specified coordinates with the specified width, height and color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the rectangle \\
+\hline
+{\em y} & Y coordinate of the rectangle \\
+\hline
+{\em width} & Width of the rectangle \\
+\hline
+{\em height} & Height of the rectangle \\
+\hline
+{\em color} & Color of the rectangle\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_ad4db50e84100b110372c12cfdb41a3f3}\label{video_8c_ad4db50e84100b110372c12cfdb41a3f3}} 
+\index{video.c@{video.c}!draw\_score@{draw\_score}}
+\index{draw\_score@{draw\_score}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_score()}{draw\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+score (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Draws the score field in the specified coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X coordinate of the score \\
+\hline
+{\em y} & Y coordinate of the score \\
+\hline
+{\em score} & Score to be drawn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{video_8c_a09274e99ae82fefc69ea9388bc245b8d}\label{video_8c_a09274e99ae82fefc69ea9388bc245b8d}} 
+\index{video.c@{video.c}!refresh\_screen@{refresh\_screen}}
+\index{refresh\_screen@{refresh\_screen}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{refresh\_screen()}{refresh\_screen()}}
+{\footnotesize\ttfamily void refresh\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws a new frame, depending on the current state of the menu. 
+
+\mbox{\Hypertarget{video_8c_a55bb0148c696baca125c2c03bd585ae5}\label{video_8c_a55bb0148c696baca125c2c03bd585ae5}} 
+\index{video.c@{video.c}!set\_frame\_buffer@{set\_frame\_buffer}}
+\index{set\_frame\_buffer@{set\_frame\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{set\_frame\_buffer()}{set\_frame\_buffer()}}
+{\footnotesize\ttfamily int() set\+\_\+frame\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the frame buffer to the one specified in the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode of the frame buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_a3ad9f04212e7602618a0dd7ad4afbd4e}\label{video_8c_a3ad9f04212e7602618a0dd7ad4afbd4e}} 
+\index{video.c@{video.c}!set\_frame\_buffers@{set\_frame\_buffers}}
+\index{set\_frame\_buffers@{set\_frame\_buffers}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{set\_frame\_buffers()}{set\_frame\_buffers()}}
+{\footnotesize\ttfamily int set\+\_\+frame\+\_\+buffers (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Prepares the frame buffers, using a single buffer or a double buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Mode of the frame buffer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{video_8c_ada3e20ea63a4f7e572c329f56f8dda44}\label{video_8c_ada3e20ea63a4f7e572c329f56f8dda44}} 
+\index{video.c@{video.c}!set\_mode@{set\_mode}}
+\index{set\_mode@{set\_mode}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{set\_mode()}{set\_mode()}}
+{\footnotesize\ttfamily int() set\+\_\+mode (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Sets the graphic mode to the one specified in the argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Submode of the graphic mode\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{video_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}\label{video_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}} 
+\index{video.c@{video.c}!asteroid@{asteroid}}
+\index{asteroid@{asteroid}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{asteroid}{asteroid}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ asteroid\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}\label{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}} 
+\index{video.c@{video.c}!bullet@{bullet}}
+\index{bullet@{bullet}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{bullet}{bullet}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ bullet\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a278a6cce30b183fe43e72a1479bf7025}\label{video_8c_a278a6cce30b183fe43e72a1479bf7025}} 
+\index{video.c@{video.c}!controls@{controls}}
+\index{controls@{controls}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{controls}{controls}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ controls\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a5403810a54f4e0c32d57e3b3a083ab3d}\label{video_8c_a5403810a54f4e0c32d57e3b3a083ab3d}} 
+\index{video.c@{video.c}!controls\_menu@{controls\_menu}}
+\index{controls\_menu@{controls\_menu}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{controls\_menu}{controls\_menu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ controls\+\_\+menu\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_abdd2eef1d70041de463214f2f9469f4d}\label{video_8c_abdd2eef1d70041de463214f2f9469f4d}} 
+\index{video.c@{video.c}!counter\_timer@{counter\_timer}}
+\index{counter\_timer@{counter\_timer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{counter\_timer}{counter\_timer}}
+{\footnotesize\ttfamily int counter\+\_\+timer\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_ab523dcb1484f1cfd46ac366807c6f7ac}\label{video_8c_ab523dcb1484f1cfd46ac366807c6f7ac}} 
+\index{video.c@{video.c}!drawing\_vm\_buffer@{drawing\_vm\_buffer}}
+\index{drawing\_vm\_buffer@{drawing\_vm\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{drawing\_vm\_buffer}{drawing\_vm\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ drawing\+\_\+vm\+\_\+buffer}
+
+\mbox{\Hypertarget{video_8c_a0edf3f8c28b403daaa9927c7e883696a}\label{video_8c_a0edf3f8c28b403daaa9927c7e883696a}} 
+\index{video.c@{video.c}!frame\_buffer\_size@{frame\_buffer\_size}}
+\index{frame\_buffer\_size@{frame\_buffer\_size}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{frame\_buffer\_size}{frame\_buffer\_size}}
+{\footnotesize\ttfamily uint32\+\_\+t frame\+\_\+buffer\+\_\+size}
+
+\mbox{\Hypertarget{video_8c_af9cd7b8080bc412469c19d10bfb351d6}\label{video_8c_af9cd7b8080bc412469c19d10bfb351d6}} 
+\index{video.c@{video.c}!game\_over@{game\_over}}
+\index{game\_over@{game\_over}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{game\_over}{game\_over}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ game\+\_\+over\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a7ef2e1c70802a893c17638da3c8add33}\label{video_8c_a7ef2e1c70802a893c17638da3c8add33}} 
+\index{video.c@{video.c}!menu@{menu}}
+\index{menu@{menu}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{menu}{menu}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ menu\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a80336997efb5d09caab1ff2666d9e1dd}\label{video_8c_a80336997efb5d09caab1ff2666d9e1dd}} 
+\index{video.c@{video.c}!menuState@{menuState}}
+\index{menuState@{menuState}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{menuState}{menuState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} menu\+State\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a0e52e361a5978e28c5dc32fee30d62c5}\label{video_8c_a0e52e361a5978e28c5dc32fee30d62c5}} 
+\index{video.c@{video.c}!mouse@{mouse}}
+\index{mouse@{mouse}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{mouse}{mouse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}\label{video_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}} 
+\index{video.c@{video.c}!mouse\_info@{mouse\_info}}
+\index{mouse\_info@{mouse\_info}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_info}{mouse\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} mouse\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a401d633d5f10bc8c2f9d067f8700c899}\label{video_8c_a401d633d5f10bc8c2f9d067f8700c899}} 
+\index{video.c@{video.c}!msg@{msg}}
+\index{msg@{msg}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{msg}{msg}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ msg\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a8c9661318faf68717ee991132ffa5db5}\label{video_8c_a8c9661318faf68717ee991132ffa5db5}} 
+\index{video.c@{video.c}!multiplayer@{multiplayer}}
+\index{multiplayer@{multiplayer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{multiplayer}{multiplayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ multiplayer\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a73d913c1a20e45d225a110d1fb49122a}\label{video_8c_a73d913c1a20e45d225a110d1fb49122a}} 
+\index{video.c@{video.c}!num\_0@{num\_0}}
+\index{num\_0@{num\_0}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_0}{num\_0}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+0\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_aa61d22e56fc8c91d566c87661eed1b6c}\label{video_8c_aa61d22e56fc8c91d566c87661eed1b6c}} 
+\index{video.c@{video.c}!num\_1@{num\_1}}
+\index{num\_1@{num\_1}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_1}{num\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_af3c9ced5dee5cc18ceef752914f8bc08}\label{video_8c_af3c9ced5dee5cc18ceef752914f8bc08}} 
+\index{video.c@{video.c}!num\_2@{num\_2}}
+\index{num\_2@{num\_2}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_2}{num\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+2\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a8c5116f4abda9e2f6667243cccef8460}\label{video_8c_a8c5116f4abda9e2f6667243cccef8460}} 
+\index{video.c@{video.c}!num\_3@{num\_3}}
+\index{num\_3@{num\_3}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_3}{num\_3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+3\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a173e549e5393fe047a1060fe7d92a52e}\label{video_8c_a173e549e5393fe047a1060fe7d92a52e}} 
+\index{video.c@{video.c}!num\_4@{num\_4}}
+\index{num\_4@{num\_4}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_4}{num\_4}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+4\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_aa959075e94958464f8fa854d3d4a9911}\label{video_8c_aa959075e94958464f8fa854d3d4a9911}} 
+\index{video.c@{video.c}!num\_5@{num\_5}}
+\index{num\_5@{num\_5}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_5}{num\_5}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+5\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_abaeac0078d932267e675eb68f87b36f4}\label{video_8c_abaeac0078d932267e675eb68f87b36f4}} 
+\index{video.c@{video.c}!num\_6@{num\_6}}
+\index{num\_6@{num\_6}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_6}{num\_6}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+6\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a093c16c9ad502dda5a43602977a8e083}\label{video_8c_a093c16c9ad502dda5a43602977a8e083}} 
+\index{video.c@{video.c}!num\_7@{num\_7}}
+\index{num\_7@{num\_7}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_7}{num\_7}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+7\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a35fb563aada9da190802206a0203866b}\label{video_8c_a35fb563aada9da190802206a0203866b}} 
+\index{video.c@{video.c}!num\_8@{num\_8}}
+\index{num\_8@{num\_8}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_8}{num\_8}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+8\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_ad15ee88b7f3899e9bd95f2498d312b63}\label{video_8c_ad15ee88b7f3899e9bd95f2498d312b63}} 
+\index{video.c@{video.c}!num\_9@{num\_9}}
+\index{num\_9@{num\_9}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{num\_9}{num\_9}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ num\+\_\+9\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_ac5e77aef3212a1793ddf2dff11fb798b}\label{video_8c_ac5e77aef3212a1793ddf2dff11fb798b}} 
+\index{video.c@{video.c}!primary\_vm\_buffer@{primary\_vm\_buffer}}
+\index{primary\_vm\_buffer@{primary\_vm\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{primary\_vm\_buffer}{primary\_vm\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ primary\+\_\+vm\+\_\+buffer}
+
+\mbox{\Hypertarget{video_8c_a0f83ceef41792021dfc328fa3445fe64}\label{video_8c_a0f83ceef41792021dfc328fa3445fe64}} 
+\index{video.c@{video.c}!quit@{quit}}
+\index{quit@{quit}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{quit}{quit}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ quit\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a36f7b6be7108281af77939ceaec42fd6}\label{video_8c_a36f7b6be7108281af77939ceaec42fd6}} 
+\index{video.c@{video.c}!running@{running}}
+\index{running@{running}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily bool running\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_aef160b7437d94056f1dc59646cd5b87d}\label{video_8c_aef160b7437d94056f1dc59646cd5b87d}} 
+\index{video.c@{video.c}!score@{score}}
+\index{score@{score}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{score}{score}}
+{\footnotesize\ttfamily int score\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a199b78cb759dc47e0a7ed4ab4ca4b753}\label{video_8c_a199b78cb759dc47e0a7ed4ab4ca4b753}} 
+\index{video.c@{video.c}!score\_sprite@{score\_sprite}}
+\index{score\_sprite@{score\_sprite}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{score\_sprite}{score\_sprite}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ score\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_ad5a25d46c1fa99a1c58328a935a6fcac}\label{video_8c_ad5a25d46c1fa99a1c58328a935a6fcac}} 
+\index{video.c@{video.c}!secondary\_vm\_buffer@{secondary\_vm\_buffer}}
+\index{secondary\_vm\_buffer@{secondary\_vm\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{secondary\_vm\_buffer}{secondary\_vm\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ secondary\+\_\+vm\+\_\+buffer}
+
+\mbox{\Hypertarget{video_8c_a287d14818a2c405975df154752aa53a0}\label{video_8c_a287d14818a2c405975df154752aa53a0}} 
+\index{video.c@{video.c}!single\_player@{single\_player}}
+\index{single\_player@{single\_player}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{single\_player}{single\_player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ single\+\_\+player\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a93e90baf74c82f78aedcbd658771a0cf}\label{video_8c_a93e90baf74c82f78aedcbd658771a0cf}} 
+\index{video.c@{video.c}!space@{space}}
+\index{space@{space}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{space}{space}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_a1d94ed5a3e48eeffba3893764b80728c}\label{video_8c_a1d94ed5a3e48eeffba3893764b80728c}} 
+\index{video.c@{video.c}!space\_ship@{space\_ship}}
+\index{space\_ship@{space\_ship}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{space\_ship}{space\_ship}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ space\+\_\+ship\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{video_8c_ae5faf3e8f21fd786597e5f77c1780cc1}\label{video_8c_ae5faf3e8f21fd786597e5f77c1780cc1}} 
+\index{video.c@{video.c}!title@{title}}
+\index{title@{title}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{title}{title}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_bit_map}{Bit\+Map}}$\ast$ title\hspace{0.3cm}{\ttfamily [extern]}}
+

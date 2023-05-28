@@ -1,0 +1,73 @@
+\hypertarget{game_8h_source}{}\doxysection{game.\+h}
+\mbox{\hyperlink{game_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_LCOM\_GAME\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_LCOM\_GAME\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <minix/sysutil.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mouse_8h}{mouse.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{video_8h}{video.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{space_ship_8h}{spaceShip.h}}"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}xpm/mouse.xpm"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}xpm/asteroid.xpm"{}}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}xpm/single\_player.xpm"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}xpm/multiplayer.xpm"{}}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include "{}xpm/controls.xpm"{}}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}xpm/menu.xpm"{}}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}xpm/quit.xpm"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}xpm/space.xpm"{}}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include "{}xpm/title.xpm"{}}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include "{}xpm/game-\/over.xpm"{}}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include "{}xpm/controls\_menu.xpm"{}}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_1.xpm"{}}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_2.xpm"{}}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_3.xpm"{}}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_4.xpm"{}}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_5.xpm"{}}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_6.xpm"{}}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_7.xpm"{}}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include "{}xpm/space\_ship\_8.xpm"{}}}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#include "{}xpm/bullet.xpm"{}}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include "{}xpm/num1.xpm"{}}}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#include "{}xpm/num2.xpm"{}}}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#include "{}xpm/num3.xpm"{}}}
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#include "{}xpm/num4.xpm"{}}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#include "{}xpm/num5.xpm"{}}}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#include "{}xpm/num6.xpm"{}}}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#include "{}xpm/num7.xpm"{}}}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#include "{}xpm/num8.xpm"{}}}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#include "{}xpm/num9.xpm"{}}}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#include "{}xpm/num0.xpm"{}}}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#include "{}xpm/score.xpm"{}}}
+\DoxyCodeLine{40 \textcolor{preprocessor}{\#include "{}xpm/msg.xpm"{}}}
+\DoxyCodeLine{41 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{bitmap_8h}{bitmap.h}}"{}}}
+\DoxyCodeLine{42 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{asteroid_8h}{asteroid.h}}"{}}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{bullet_8h}{bullet.h}}"{}}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{50 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{51     \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a4c40e60bc71a32b924ce1f08d57f9721}{MENU}},}
+\DoxyCodeLine{52     \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62ae0c9d3e5c71ae4b23a63b36eaac2f918}{SINGLE\_PLAYER}},}
+\DoxyCodeLine{53     \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a403778345700cbd36b5b26352b144f78}{MULTIPLAYER}},}
+\DoxyCodeLine{54     \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a9fd926c53f93b60670d93d2d15c36539}{CONTROLS}},}
+\DoxyCodeLine{55     \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62adc6f24fd6915a3f2786a1b7045406924}{END}}}
+\DoxyCodeLine{56 \} \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{gameState}};}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{61 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_addc8a9450a2f61f0c8bc0f4f819b1f52}{create\_bitmaps}}();}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_afc4aef311af2a6a00f278d8072328692}{destroy\_bitmaps}}();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_a2e7983abedd3fae94a24b4775a97210f}{update\_timer\_state}}();}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_a8752fe09dfb8f14e87756d9cefa5467d}{update\_gameState}}();}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{81 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_aa577e78e2462033d486b5d8fa64c7bec}{update\_mouse\_state}}();}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{86 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_a04a6d2a31e79c09343524b363d57fe7a}{update\_menu}}();}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{91 \textcolor{keywordtype}{void} \mbox{\hyperlink{game_8h_a1a5640b92afc268e7635f2b57ad1172a}{game\_reset}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{94 }
+
+\end{DoxyCode}

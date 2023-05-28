@@ -1,0 +1,195 @@
+\hypertarget{mouse_8c}{}\doxysection{mouse.\+c File Reference}
+\label{mouse_8c}\index{mouse.c@{mouse.c}}
+{\ttfamily \#include \char`\"{}mouse.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}{mouse\+\_\+subscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes and enables mouse interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes mouse interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_ab0e507f0d249dfe170378cb97c7f003c}{aux\+\_\+mouse\+\_\+read}} (uint8\+\_\+t port, uint8\+\_\+t $\ast$output, uint8\+\_\+t \mbox{\hyperlink{video_8c_a0e52e361a5978e28c5dc32fee30d62c5}{mouse}})
+\begin{DoxyCompactList}\small\item\em Reads a byte from a specified port related to mouse input. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8c_a210374b50462acdedab00df64d5cea3c}{mouse\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Mouse interrupt handler. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a8d6ee7592c47e8f3830a140c1c36587d}{mouse\+\_\+sync\+\_\+bytes}} ()
+\begin{DoxyCompactList}\small\item\em Sync bytes related to the mouse. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}{mouse\+\_\+sync\+\_\+info}} ()
+\begin{DoxyCompactList}\small\item\em Sync mouse-\/related information. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a2de06722549d4a1fbb3ed1f3746d0ef8}{aux\+\_\+mouse\+\_\+write}} (uint8\+\_\+t port, uint8\+\_\+t command\+Byte)
+\begin{DoxyCompactList}\small\item\em Writes a command byte to a specified port related to mouse input. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{mouse_8c_a1703c3c5b61eef30d724b15cafd1d75e}{mouse\+\_\+write}} (uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Writes a command to the mouse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\+\_\+id\+\_\+mouse}} = 2
+\item 
+uint8\+\_\+t \mbox{\hyperlink{mouse_8c_a8884dab9d88cd6c24f21afc6c7144a7b}{byte\+\_\+index}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{mouse_8c_a65b988e1163cc65c6d3e5562fbc36a98}{current\+\_\+byte}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{mouse_8c_addea07e4cbaf9574f38de24dcf0bf3cb}{mouse\+\_\+bytes}} \mbox{[}3\mbox{]}
+\item 
+\mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} \mbox{\hyperlink{mouse_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}{mouse\+\_\+info}} = \{0, 0, 100, 100\}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{mouse_8c_a9fcc2243068f8e628648febc0909c509}{mode\+\_\+info}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{mouse_8c_ab0e507f0d249dfe170378cb97c7f003c}\label{mouse_8c_ab0e507f0d249dfe170378cb97c7f003c}} 
+\index{mouse.c@{mouse.c}!aux\_mouse\_read@{aux\_mouse\_read}}
+\index{aux\_mouse\_read@{aux\_mouse\_read}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{aux\_mouse\_read()}{aux\_mouse\_read()}}
+{\footnotesize\ttfamily int aux\+\_\+mouse\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t $\ast$}]{output,  }\item[{uint8\+\_\+t}]{mouse }\end{DoxyParamCaption})}
+
+
+
+Reads a byte from a specified port related to mouse input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port from which to read the byte. \\
+\hline
+{\em output} & Pointer to a variable where the result of the read will be stored. \\
+\hline
+{\em mouse} & Boolean value that, if set, signifies that the mouse input should be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_a2de06722549d4a1fbb3ed1f3746d0ef8}\label{mouse_8c_a2de06722549d4a1fbb3ed1f3746d0ef8}} 
+\index{mouse.c@{mouse.c}!aux\_mouse\_write@{aux\_mouse\_write}}
+\index{aux\_mouse\_write@{aux\_mouse\_write}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{aux\_mouse\_write()}{aux\_mouse\_write()}}
+{\footnotesize\ttfamily int aux\+\_\+mouse\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{command\+Byte }\end{DoxyParamCaption})}
+
+
+
+Writes a command byte to a specified port related to mouse input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port to which the command byte will be written. \\
+\hline
+{\em command\+Byte} & The command byte to write to the port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_a210374b50462acdedab00df64d5cea3c}\label{mouse_8c_a210374b50462acdedab00df64d5cea3c}} 
+\index{mouse.c@{mouse.c}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily void() mouse\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mouse interrupt handler. 
+
+This function should be executed on each mouse interrupt. It\textquotesingle{}s responsible for handling the interrupt and processing its data. \mbox{\Hypertarget{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}\label{mouse_8c_a08895a8a691590216c1e72bbf1b2d333}} 
+\index{mouse.c@{mouse.c}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Returns bit order in interrupt mask; negative value on failure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_a8d6ee7592c47e8f3830a140c1c36587d}\label{mouse_8c_a8d6ee7592c47e8f3830a140c1c36587d}} 
+\index{mouse.c@{mouse.c}!mouse\_sync\_bytes@{mouse\_sync\_bytes}}
+\index{mouse\_sync\_bytes@{mouse\_sync\_bytes}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_sync\_bytes()}{mouse\_sync\_bytes()}}
+{\footnotesize\ttfamily void mouse\+\_\+sync\+\_\+bytes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sync bytes related to the mouse. 
+
+This function ensures that mouse-\/related bytes are correctly aligned and in sync. \mbox{\Hypertarget{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}\label{mouse_8c_aa832040dd305ba3a8401cc3a4e6a4cc4}} 
+\index{mouse.c@{mouse.c}!mouse\_sync\_info@{mouse\_sync\_info}}
+\index{mouse\_sync\_info@{mouse\_sync\_info}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_sync\_info()}{mouse\_sync\_info()}}
+{\footnotesize\ttfamily void() mouse\+\_\+sync\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sync mouse-\/related information. 
+
+This function ensures that mouse-\/related information is correctly aligned, in sync and processed accordingly. \mbox{\Hypertarget{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}\label{mouse_8c_a3ecf823d80520009ae5e0d76ae40a3c3}} 
+\index{mouse.c@{mouse.c}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+Return 0 upon success and non-\/zero otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mouse_8c_a1703c3c5b61eef30d724b15cafd1d75e}\label{mouse_8c_a1703c3c5b61eef30d724b15cafd1d75e}} 
+\index{mouse.c@{mouse.c}!mouse\_write@{mouse\_write}}
+\index{mouse\_write@{mouse\_write}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_write()}{mouse\_write()}}
+{\footnotesize\ttfamily int() mouse\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+
+
+Writes a command to the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & The command to be written. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{mouse_8c_a8884dab9d88cd6c24f21afc6c7144a7b}\label{mouse_8c_a8884dab9d88cd6c24f21afc6c7144a7b}} 
+\index{mouse.c@{mouse.c}!byte\_index@{byte\_index}}
+\index{byte\_index@{byte\_index}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{byte\_index}{byte\_index}}
+{\footnotesize\ttfamily uint8\+\_\+t byte\+\_\+index = 0}
+
+\mbox{\Hypertarget{mouse_8c_a65b988e1163cc65c6d3e5562fbc36a98}\label{mouse_8c_a65b988e1163cc65c6d3e5562fbc36a98}} 
+\index{mouse.c@{mouse.c}!current\_byte@{current\_byte}}
+\index{current\_byte@{current\_byte}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{current\_byte}{current\_byte}}
+{\footnotesize\ttfamily uint8\+\_\+t current\+\_\+byte}
+
+\mbox{\Hypertarget{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}\label{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}} 
+\index{mouse.c@{mouse.c}!hook\_id\_mouse@{hook\_id\_mouse}}
+\index{hook\_id\_mouse@{hook\_id\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_mouse}{hook\_id\_mouse}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+mouse = 2}
+
+\mbox{\Hypertarget{mouse_8c_a9fcc2243068f8e628648febc0909c509}\label{mouse_8c_a9fcc2243068f8e628648febc0909c509}} 
+\index{mouse.c@{mouse.c}!mode\_info@{mode\_info}}
+\index{mode\_info@{mode\_info}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mode\_info}{mode\_info}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t mode\+\_\+info\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{mouse_8c_addea07e4cbaf9574f38de24dcf0bf3cb}\label{mouse_8c_addea07e4cbaf9574f38de24dcf0bf3cb}} 
+\index{mouse.c@{mouse.c}!mouse\_bytes@{mouse\_bytes}}
+\index{mouse\_bytes@{mouse\_bytes}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_bytes}{mouse\_bytes}}
+{\footnotesize\ttfamily uint8\+\_\+t mouse\+\_\+bytes\mbox{[}3\mbox{]}}
+
+\mbox{\Hypertarget{mouse_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}\label{mouse_8c_aca6f3dcdcc4cc2ba6dcc37485f211439}} 
+\index{mouse.c@{mouse.c}!mouse\_info@{mouse\_info}}
+\index{mouse\_info@{mouse\_info}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_info}{mouse\_info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmouse__info__t}{mouse\+\_\+info\+\_\+t}} mouse\+\_\+info = \{0, 0, 100, 100\}}
+

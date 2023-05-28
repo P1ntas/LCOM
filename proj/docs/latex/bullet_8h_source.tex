@@ -1,0 +1,48 @@
+\hypertarget{bullet_8h_source}{}\doxysection{bullet.\+h}
+\mbox{\hyperlink{bullet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_BULLET\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_BULLET\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <minix/sysutil.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{video_8h}{video.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{space_ship_8h}{spaceShip.h}}"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \{}
+\DoxyCodeLine{15     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa}{UP}},}
+\DoxyCodeLine{16     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da}{DOWN}},}
+\DoxyCodeLine{17     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065}{LEFT}},}
+\DoxyCodeLine{18     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38}{RIGHT}},}
+\DoxyCodeLine{19     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaaa30e5e6cfd104178275f087ae51b3b74}{UP\_LEFT}},}
+\DoxyCodeLine{20     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa91a530eb0387ac0d86947784a1946a14}{UP\_RIGHT}},}
+\DoxyCodeLine{21     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa0ae724cef12b771121df5a7c083bf1b6}{DOWN\_LEFT}},}
+\DoxyCodeLine{22     \mbox{\hyperlink{group__bullet_ga224b9163917ac32fc95a60d8c1eec3aaa2877ba4eb53c0dec12f0363cfca35d0e}{DOWN\_RIGHT}}}
+\DoxyCodeLine{23 \} \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{30 \mbox{\hyperlink{bullet_8h_a224b9163917ac32fc95a60d8c1eec3aa}{Direction}} \mbox{\hyperlink{bullet_8h_a9ecc7ce02f7739f91450cc4104f0505c}{get\_ship\_direction}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{42 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{43     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga6150e0515f7202e2fb518f7206ed97dc}{x}}; }
+\DoxyCodeLine{44     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga0a2f84ed7838f07779ae24c5a9086d33}{y}}; }
+\DoxyCodeLine{45     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga90b9d56e145baae469f7b6bb757d9b27}{xspeed}}; }
+\DoxyCodeLine{46     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga8e19090b4aa5dd9bb43efe8b74488f6d}{yspeed}}; }
+\DoxyCodeLine{47     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga2474a5474cbff19523a51eb1de01cda4}{width}}; }
+\DoxyCodeLine{48     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_gad12fc34ce789bce6c8a05d8a17138534}{height}}; }
+\DoxyCodeLine{49     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_gacb559820d9ca11295b4500f179ef6392}{i}}; }
+\DoxyCodeLine{50     \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_gae2c6087027bfdf561a2b766975b47ee8}{timer}}; }
+\DoxyCodeLine{51 \} \mbox{\hyperlink{struct_bullet}{Bullet}};}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{63 \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}{create\_bullet}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} xspeed, \textcolor{keywordtype}{int} yspeed, \textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{70 \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}{shoot}}();}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{77 \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_gafaf27910ed3e0f09abba76c775399d97}{update\_bullets}}();}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{84 \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga45449723feed27f8b5f902bcba3b6465}{destroy\_bullet}}(\mbox{\hyperlink{struct_bullet}{Bullet}}* \mbox{\hyperlink{game_8c_af22fee458d0f31d0f7cdf06ef1168ad3}{bullet}});}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{91 \textcolor{keywordtype}{int} \mbox{\hyperlink{group__bullet_ga382a297cb513f604c8454b568483bbcf}{check\_bullet\_collision}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

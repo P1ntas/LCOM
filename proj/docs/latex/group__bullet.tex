@@ -1,0 +1,208 @@
+\hypertarget{group__bullet}{}\doxysection{Bullet}
+\label{group__bullet}\index{Bullet@{Bullet}}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_bullet}{Bullet}}
+\begin{DoxyCompactList}\small\item\em Struct that represents a bullet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}{create\+\_\+bullet}} (int x, int y, int xspeed, int yspeed, int i)
+\begin{DoxyCompactList}\small\item\em Creates a bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}{shoot}} ()
+\begin{DoxyCompactList}\small\item\em Shoots a bullet, creating it and adding it to the array of bullets. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gafaf27910ed3e0f09abba76c775399d97}{update\+\_\+bullets}} ()
+\begin{DoxyCompactList}\small\item\em Updates the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga45449723feed27f8b5f902bcba3b6465}{destroy\+\_\+bullet}} (\mbox{\hyperlink{struct_bullet}{Bullet}} $\ast$\mbox{\hyperlink{video_8c_af22fee458d0f31d0f7cdf06ef1168ad3}{bullet}})
+\begin{DoxyCompactList}\small\item\em Destroys the bullet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga382a297cb513f604c8454b568483bbcf}{check\+\_\+bullet\+\_\+collision}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the bullet collides with a asteroid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{group__bullet_ga6150e0515f7202e2fb518f7206ed97dc}{x}}
+\begin{DoxyCompactList}\small\item\em x coordinate of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga0a2f84ed7838f07779ae24c5a9086d33}{y}}
+\begin{DoxyCompactList}\small\item\em y coordinate of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga90b9d56e145baae469f7b6bb757d9b27}{xspeed}}
+\begin{DoxyCompactList}\small\item\em speed of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga8e19090b4aa5dd9bb43efe8b74488f6d}{yspeed}}
+\begin{DoxyCompactList}\small\item\em speed of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_ga2474a5474cbff19523a51eb1de01cda4}{width}}
+\begin{DoxyCompactList}\small\item\em width of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gad12fc34ce789bce6c8a05d8a17138534}{height}}
+\begin{DoxyCompactList}\small\item\em height of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gacb559820d9ca11295b4500f179ef6392}{i}}
+\begin{DoxyCompactList}\small\item\em index of the bullet \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group__bullet_gae2c6087027bfdf561a2b766975b47ee8}{timer}}
+\begin{DoxyCompactList}\small\item\em timer of the bullet \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for manipulating the bullets 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__bullet_ga382a297cb513f604c8454b568483bbcf}\label{group__bullet_ga382a297cb513f604c8454b568483bbcf}} 
+\index{Bullet@{Bullet}!check\_bullet\_collision@{check\_bullet\_collision}}
+\index{check\_bullet\_collision@{check\_bullet\_collision}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{check\_bullet\_collision()}{check\_bullet\_collision()}}
+{\footnotesize\ttfamily int check\+\_\+bullet\+\_\+collision (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the bullet collides with a asteroid. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}\label{group__bullet_ga806447d2b81c280b6fd2cf1399b13161}} 
+\index{Bullet@{Bullet}!create\_bullet@{create\_bullet}}
+\index{create\_bullet@{create\_bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{create\_bullet()}{create\_bullet()}}
+{\footnotesize\ttfamily int create\+\_\+bullet (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{xspeed,  }\item[{int}]{yspeed,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Creates a bullet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate of the bullet \\
+\hline
+{\em y} & y coordinate of the bullet \\
+\hline
+{\em xspeed} & speed of the bullet \\
+\hline
+{\em yspeed} & speed of the bullet \\
+\hline
+{\em i} & index of the bullet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__bullet_ga45449723feed27f8b5f902bcba3b6465}\label{group__bullet_ga45449723feed27f8b5f902bcba3b6465}} 
+\index{Bullet@{Bullet}!destroy\_bullet@{destroy\_bullet}}
+\index{destroy\_bullet@{destroy\_bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{destroy\_bullet()}{destroy\_bullet()}}
+{\footnotesize\ttfamily int destroy\+\_\+bullet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_bullet}{Bullet}} $\ast$}]{bullet }\end{DoxyParamCaption})}
+
+
+
+Destroys the bullet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bullet} & pointer to the bullet to be destroyed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}\label{group__bullet_ga11e11a24b8eea7952c31294bbfd74435}} 
+\index{Bullet@{Bullet}!shoot@{shoot}}
+\index{shoot@{shoot}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{shoot()}{shoot()}}
+{\footnotesize\ttfamily int shoot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shoots a bullet, creating it and adding it to the array of bullets. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__bullet_gafaf27910ed3e0f09abba76c775399d97}\label{group__bullet_gafaf27910ed3e0f09abba76c775399d97}} 
+\index{Bullet@{Bullet}!update\_bullets@{update\_bullets}}
+\index{update\_bullets@{update\_bullets}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{update\_bullets()}{update\_bullets()}}
+{\footnotesize\ttfamily int update\+\_\+bullets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the bullet. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if success, 1 otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{group__bullet_gad12fc34ce789bce6c8a05d8a17138534}\label{group__bullet_gad12fc34ce789bce6c8a05d8a17138534}} 
+\index{Bullet@{Bullet}!height@{height}}
+\index{height@{height}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily int height}
+
+
+
+height of the bullet 
+
+\mbox{\Hypertarget{group__bullet_gacb559820d9ca11295b4500f179ef6392}\label{group__bullet_gacb559820d9ca11295b4500f179ef6392}} 
+\index{Bullet@{Bullet}!i@{i}}
+\index{i@{i}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{i}{i}}
+{\footnotesize\ttfamily int i}
+
+
+
+index of the bullet 
+
+\mbox{\Hypertarget{group__bullet_gae2c6087027bfdf561a2b766975b47ee8}\label{group__bullet_gae2c6087027bfdf561a2b766975b47ee8}} 
+\index{Bullet@{Bullet}!timer@{timer}}
+\index{timer@{timer}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily int timer}
+
+
+
+timer of the bullet 
+
+\mbox{\Hypertarget{group__bullet_ga2474a5474cbff19523a51eb1de01cda4}\label{group__bullet_ga2474a5474cbff19523a51eb1de01cda4}} 
+\index{Bullet@{Bullet}!width@{width}}
+\index{width@{width}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily int width}
+
+
+
+width of the bullet 
+
+\mbox{\Hypertarget{group__bullet_ga6150e0515f7202e2fb518f7206ed97dc}\label{group__bullet_ga6150e0515f7202e2fb518f7206ed97dc}} 
+\index{Bullet@{Bullet}!x@{x}}
+\index{x@{x}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily int x}
+
+
+
+x coordinate of the bullet 
+
+\mbox{\Hypertarget{group__bullet_ga90b9d56e145baae469f7b6bb757d9b27}\label{group__bullet_ga90b9d56e145baae469f7b6bb757d9b27}} 
+\index{Bullet@{Bullet}!xspeed@{xspeed}}
+\index{xspeed@{xspeed}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{xspeed}{xspeed}}
+{\footnotesize\ttfamily int xspeed}
+
+
+
+speed of the bullet 
+
+\mbox{\Hypertarget{group__bullet_ga0a2f84ed7838f07779ae24c5a9086d33}\label{group__bullet_ga0a2f84ed7838f07779ae24c5a9086d33}} 
+\index{Bullet@{Bullet}!y@{y}}
+\index{y@{y}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily int y}
+
+
+
+y coordinate of the bullet 
+
+\mbox{\Hypertarget{group__bullet_ga8e19090b4aa5dd9bb43efe8b74488f6d}\label{group__bullet_ga8e19090b4aa5dd9bb43efe8b74488f6d}} 
+\index{Bullet@{Bullet}!yspeed@{yspeed}}
+\index{yspeed@{yspeed}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{yspeed}{yspeed}}
+{\footnotesize\ttfamily int yspeed}
+
+
+
+speed of the bullet 
+

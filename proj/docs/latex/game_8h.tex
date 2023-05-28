@@ -1,0 +1,179 @@
+\hypertarget{game_8h}{}\doxysection{game.\+h File Reference}
+\label{game_8h}\index{game.h@{game.h}}
+{\ttfamily \#include $<$minix/sysutil.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}mouse.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}video.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}space\+Ship.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/mouse.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/asteroid.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/single\+\_\+player.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/multiplayer.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/controls.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/menu.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/quit.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/title.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/game-\/over.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/controls\+\_\+menu.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+4.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+6.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+7.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/space\+\_\+ship\+\_\+8.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/bullet.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num1.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num2.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num3.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num4.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num5.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num6.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num7.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num8.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num9.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/num0.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/score.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}xpm/msg.\+xpm\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bitmap.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}asteroid.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bullet.\+h\char`\"{}}\newline
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}} \{ \newline
+\mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a4c40e60bc71a32b924ce1f08d57f9721}{MENU}}
+, \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62ae0c9d3e5c71ae4b23a63b36eaac2f918}{SINGLE\+\_\+\+PLAYER}}
+, \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a403778345700cbd36b5b26352b144f78}{MULTIPLAYER}}
+, \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62a9fd926c53f93b60670d93d2d15c36539}{CONTROLS}}
+, \newline
+\mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62adc6f24fd6915a3f2786a1b7045406924}{END}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated type for the state of the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8h_addc8a9450a2f61f0c8bc0f4f819b1f52}{create\+\_\+bitmaps}} ()
+\begin{DoxyCompactList}\small\item\em Predefine the sprites used in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_afc4aef311af2a6a00f278d8072328692}{destroy\+\_\+bitmaps}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the sprites used in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a2e7983abedd3fae94a24b4775a97210f}{update\+\_\+timer\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Actions to perform whenever a timer interrupt occurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a8752fe09dfb8f14e87756d9cefa5467d}{update\+\_\+game\+State}} ()
+\begin{DoxyCompactList}\small\item\em Actions to perform whenever a keyboard interrupt occurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_aa577e78e2462033d486b5d8fa64c7bec}{update\+\_\+mouse\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Actions to perform whenever a mouse interrupt occurs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a04a6d2a31e79c09343524b363d57fe7a}{update\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em Updates the state of the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8h_a1a5640b92afc268e7635f2b57ad1172a}{game\+\_\+reset}} ()
+\begin{DoxyCompactList}\small\item\em Resets the game attributes, like the score, the spaceship position, etc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62}} 
+\index{game.h@{game.h}!gameState@{gameState}}
+\index{gameState@{gameState}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{gameState}{gameState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game_8h_aaf29bbe309504beb4cfec2481eacee62}{game\+State}}}
+
+
+
+Enumerated type for the state of the menu. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU@{MENU}!game.h@{game.h}}\index{game.h@{game.h}!MENU@{MENU}}}\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62a4c40e60bc71a32b924ce1f08d57f9721}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62a4c40e60bc71a32b924ce1f08d57f9721}} 
+MENU&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SINGLE\_PLAYER@{SINGLE\_PLAYER}!game.h@{game.h}}\index{game.h@{game.h}!SINGLE\_PLAYER@{SINGLE\_PLAYER}}}\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62ae0c9d3e5c71ae4b23a63b36eaac2f918}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62ae0c9d3e5c71ae4b23a63b36eaac2f918}} 
+SINGLE\+\_\+\+PLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MULTIPLAYER@{MULTIPLAYER}!game.h@{game.h}}\index{game.h@{game.h}!MULTIPLAYER@{MULTIPLAYER}}}\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62a403778345700cbd36b5b26352b144f78}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62a403778345700cbd36b5b26352b144f78}} 
+MULTIPLAYER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CONTROLS@{CONTROLS}!game.h@{game.h}}\index{game.h@{game.h}!CONTROLS@{CONTROLS}}}\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62a9fd926c53f93b60670d93d2d15c36539}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62a9fd926c53f93b60670d93d2d15c36539}} 
+CONTROLS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{END@{END}!game.h@{game.h}}\index{game.h@{game.h}!END@{END}}}\mbox{\Hypertarget{game_8h_aaf29bbe309504beb4cfec2481eacee62adc6f24fd6915a3f2786a1b7045406924}\label{game_8h_aaf29bbe309504beb4cfec2481eacee62adc6f24fd6915a3f2786a1b7045406924}} 
+END&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{game_8h_addc8a9450a2f61f0c8bc0f4f819b1f52}\label{game_8h_addc8a9450a2f61f0c8bc0f4f819b1f52}} 
+\index{game.h@{game.h}!create\_bitmaps@{create\_bitmaps}}
+\index{create\_bitmaps@{create\_bitmaps}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{create\_bitmaps()}{create\_bitmaps()}}
+{\footnotesize\ttfamily void create\+\_\+bitmaps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Predefine the sprites used in the game. 
+
+\mbox{\Hypertarget{game_8h_afc4aef311af2a6a00f278d8072328692}\label{game_8h_afc4aef311af2a6a00f278d8072328692}} 
+\index{game.h@{game.h}!destroy\_bitmaps@{destroy\_bitmaps}}
+\index{destroy\_bitmaps@{destroy\_bitmaps}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{destroy\_bitmaps()}{destroy\_bitmaps()}}
+{\footnotesize\ttfamily void destroy\+\_\+bitmaps (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys the sprites used in the game. 
+
+\mbox{\Hypertarget{game_8h_a1a5640b92afc268e7635f2b57ad1172a}\label{game_8h_a1a5640b92afc268e7635f2b57ad1172a}} 
+\index{game.h@{game.h}!game\_reset@{game\_reset}}
+\index{game\_reset@{game\_reset}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{game\_reset()}{game\_reset()}}
+{\footnotesize\ttfamily void game\+\_\+reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the game attributes, like the score, the spaceship position, etc. 
+
+\mbox{\Hypertarget{game_8h_a8752fe09dfb8f14e87756d9cefa5467d}\label{game_8h_a8752fe09dfb8f14e87756d9cefa5467d}} 
+\index{game.h@{game.h}!update\_gameState@{update\_gameState}}
+\index{update\_gameState@{update\_gameState}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{update\_gameState()}{update\_gameState()}}
+{\footnotesize\ttfamily void update\+\_\+game\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions to perform whenever a keyboard interrupt occurs. 
+
+\mbox{\Hypertarget{game_8h_a04a6d2a31e79c09343524b363d57fe7a}\label{game_8h_a04a6d2a31e79c09343524b363d57fe7a}} 
+\index{game.h@{game.h}!update\_menu@{update\_menu}}
+\index{update\_menu@{update\_menu}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{update\_menu()}{update\_menu()}}
+{\footnotesize\ttfamily void update\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates the state of the menu. 
+
+\mbox{\Hypertarget{game_8h_aa577e78e2462033d486b5d8fa64c7bec}\label{game_8h_aa577e78e2462033d486b5d8fa64c7bec}} 
+\index{game.h@{game.h}!update\_mouse\_state@{update\_mouse\_state}}
+\index{update\_mouse\_state@{update\_mouse\_state}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{update\_mouse\_state()}{update\_mouse\_state()}}
+{\footnotesize\ttfamily void update\+\_\+mouse\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions to perform whenever a mouse interrupt occurs. 
+
+\mbox{\Hypertarget{game_8h_a2e7983abedd3fae94a24b4775a97210f}\label{game_8h_a2e7983abedd3fae94a24b4775a97210f}} 
+\index{game.h@{game.h}!update\_timer\_state@{update\_timer\_state}}
+\index{update\_timer\_state@{update\_timer\_state}!game.h@{game.h}}
+\doxysubsubsection{\texorpdfstring{update\_timer\_state()}{update\_timer\_state()}}
+{\footnotesize\ttfamily void update\+\_\+timer\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actions to perform whenever a timer interrupt occurs. 
+

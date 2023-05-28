@@ -1,0 +1,50 @@
+\hypertarget{video_8h_source}{}\doxysection{video.\+h}
+\mbox{\hyperlink{video_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_\_VIDEO\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_\_VIDEO\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <minix/sysutil.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mouse_8h}{mouse.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{bitmap_8h}{bitmap.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{game_8h}{game.h}}"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 vbe\_mode\_info\_t \mbox{\hyperlink{video_8h_a9fcc2243068f8e628648febc0909c509}{mode\_info}};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{20 int (\mbox{\hyperlink{video_8h_ada3e20ea63a4f7e572c329f56f8dda44}{set\_mode}})(uint16\_t mode);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{29 int (\mbox{\hyperlink{video_8h_a55bb0148c696baca125c2c03bd585ae5}{set\_frame\_buffer}})(uint16\_t mode);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{41 int (\mbox{\hyperlink{video_8h_aa75d96618132cccec2c977ae043d31fe}{draw\_pixel}})(uint16\_t x, uint16\_t y, uint32\_t color);}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{53 int (\mbox{\hyperlink{video_8h_ac09489dd9ea607a80cbc34da200bd0c8}{draw\_line}})(uint16\_t x, uint16\_t y, uint16\_t len, uint32\_t color);}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{66 int (\mbox{\hyperlink{video_8h_a31178cc71e7af0d6045707842517b225}{draw\_rectangle}})(uint16\_t x, uint16\_t y, uint16\_t width, uint16\_t height, uint32\_t color);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{75 \textcolor{keywordtype}{int} \mbox{\hyperlink{video_8h_a3ad9f04212e7602618a0dd7ad4afbd4e}{set\_frame\_buffers}}(uint16\_t mode);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_a09274e99ae82fefc69ea9388bc245b8d}{refresh\_screen}}();}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_a2e293823f22abda1c98f45d8035282d8}{draw\_initial\_menu}}();}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{90 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_aa37e76033505d7f48a87284bd85c48a2}{draw\_game\_over}}();}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{95 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_a42f4903ab89aff9e3ee0206c52cf710a}{draw\_mouse}}();}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{105 \textcolor{keywordtype}{int} \mbox{\hyperlink{video_8h_af56df24f61a1d64987b572659b8d8e82}{draw\_asteroid}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{115 \textcolor{keywordtype}{int} \mbox{\hyperlink{video_8h_a29ee461f6134a3e4fb1e72dd0bf72bcf}{draw\_bullet}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{126 \textcolor{keywordtype}{int} \mbox{\hyperlink{video_8h_af59451533fcbdaa57b5c4c84d84774a7}{draw\_bitmap}}(\mbox{\hyperlink{struct_bit_map}{BitMap}} *bitmap, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{135 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_ad4db50e84100b110372c12cfdb41a3f3}{draw\_score}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} \mbox{\hyperlink{bullet_8c_aef160b7437d94056f1dc59646cd5b87d}{score}});}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{144 \textcolor{keywordtype}{void} \mbox{\hyperlink{video_8h_aea59e5669edc12d0b9ac1dc5a83a9969}{draw\_number}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} number);}
+\DoxyCodeLine{145 }
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

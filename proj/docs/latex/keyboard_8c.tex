@@ -1,0 +1,136 @@
+\hypertarget{keyboard_8c}{}\doxysection{keyboard.\+c File Reference}
+\label{keyboard_8c}\index{keyboard.c@{keyboard.c}}
+{\ttfamily \#include \char`\"{}keyboard.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int() \mbox{\hyperlink{keyboard_8c_aa23b07fa2192ce772fe143de1bc99695}{keyboard\+\_\+subscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes and enables Keyboard interrupts. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{keyboard_8c_a32cc4de66854f8a7bd909e7aa8b901ed}{keyboard\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes Keyboard interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8c_a8dbcd66b0e7cbac6b890b2b993102f38}{aux\+\_\+keyboard\+\_\+read}} (uint8\+\_\+t port, uint8\+\_\+t $\ast$output)
+\begin{DoxyCompactList}\small\item\em Reads a byte from a specified port. \end{DoxyCompactList}\item 
+void() \mbox{\hyperlink{keyboard_8c_aea970a154161a35f6894898a092ed70a}{kbc\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Keyboard interrupt handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{keyboard_8c_ac3c92b523a1d9f6afa9f0d8b60d26c92}{aux\+\_\+keyboard\+\_\+write}} (uint8\+\_\+t port, uint8\+\_\+t command\+Byte)
+\begin{DoxyCompactList}\small\item\em Writes a command byte to a specified port. \end{DoxyCompactList}\item 
+int() \mbox{\hyperlink{keyboard_8c_a58017421d19bb2004825d339ebb600fa}{keyboard\+\_\+restore}} ()
+\begin{DoxyCompactList}\small\item\em Restores the Keyboard configuration by enabling interrupts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}{scancode}} = 0
+\item 
+int \mbox{\hyperlink{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}{hook\+\_\+id\+\_\+keyboard}} = \mbox{\hyperlink{i8042_8h_a8092843c014fad609c1b01a4604a44a3}{IRQ\+\_\+\+KEYBOARD}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{keyboard_8c_a8dbcd66b0e7cbac6b890b2b993102f38}\label{keyboard_8c_a8dbcd66b0e7cbac6b890b2b993102f38}} 
+\index{keyboard.c@{keyboard.c}!aux\_keyboard\_read@{aux\_keyboard\_read}}
+\index{aux\_keyboard\_read@{aux\_keyboard\_read}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{aux\_keyboard\_read()}{aux\_keyboard\_read()}}
+{\footnotesize\ttfamily int aux\+\_\+keyboard\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t $\ast$}]{output }\end{DoxyParamCaption})}
+
+
+
+Reads a byte from a specified port. 
+
+This function attempts to read a byte from a port of the auxiliary keyboard. If the read is successful, the result is placed in the location pointed to by the output parameter.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port from which to read the byte. \\
+\hline
+{\em output} & Pointer to a variable where the result of the read will be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{keyboard_8c_ac3c92b523a1d9f6afa9f0d8b60d26c92}\label{keyboard_8c_ac3c92b523a1d9f6afa9f0d8b60d26c92}} 
+\index{keyboard.c@{keyboard.c}!aux\_keyboard\_write@{aux\_keyboard\_write}}
+\index{aux\_keyboard\_write@{aux\_keyboard\_write}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{aux\_keyboard\_write()}{aux\_keyboard\_write()}}
+{\footnotesize\ttfamily int aux\+\_\+keyboard\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{command\+Byte }\end{DoxyParamCaption})}
+
+
+
+Writes a command byte to a specified port. 
+
+This function attempts to write a command byte to a port of the auxiliary keyboard.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port to which the command byte will be written. \\
+\hline
+{\em command\+Byte} & The command byte to write to the port. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of the operation. A return value of 0 typically indicates success, while a non-\/zero value indicates an error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{keyboard_8c_aea970a154161a35f6894898a092ed70a}\label{keyboard_8c_aea970a154161a35f6894898a092ed70a}} 
+\index{keyboard.c@{keyboard.c}!kbc\_ih@{kbc\_ih}}
+\index{kbc\_ih@{kbc\_ih}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{kbc\_ih()}{kbc\_ih()}}
+{\footnotesize\ttfamily void() kbc\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Keyboard interrupt handler. 
+
+\mbox{\Hypertarget{keyboard_8c_a58017421d19bb2004825d339ebb600fa}\label{keyboard_8c_a58017421d19bb2004825d339ebb600fa}} 
+\index{keyboard.c@{keyboard.c}!keyboard\_restore@{keyboard\_restore}}
+\index{keyboard\_restore@{keyboard\_restore}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_restore()}{keyboard\_restore()}}
+{\footnotesize\ttfamily int() keyboard\+\_\+restore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Restores the Keyboard configuration by enabling interrupts. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{keyboard_8c_aa23b07fa2192ce772fe143de1bc99695}\label{keyboard_8c_aa23b07fa2192ce772fe143de1bc99695}} 
+\index{keyboard.c@{keyboard.c}!keyboard\_subscribe\_int@{keyboard\_subscribe\_int}}
+\index{keyboard\_subscribe\_int@{keyboard\_subscribe\_int}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_subscribe\_int()}{keyboard\_subscribe\_int()}}
+{\footnotesize\ttfamily int() keyboard\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables Keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{keyboard_8c_a32cc4de66854f8a7bd909e7aa8b901ed}\label{keyboard_8c_a32cc4de66854f8a7bd909e7aa8b901ed}} 
+\index{keyboard.c@{keyboard.c}!keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}}
+\index{keyboard\_unsubscribe\_int@{keyboard\_unsubscribe\_int}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{keyboard\_unsubscribe\_int()}{keyboard\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int() keyboard\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes Keyboard interrupts. 
+
+\begin{DoxyReturn}{Returns}
+int 0 if successful, 1 otherwise 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}\label{keyboard_8c_a302ad6946d3fafa84df3d343d44034a4}} 
+\index{keyboard.c@{keyboard.c}!hook\_id\_keyboard@{hook\_id\_keyboard}}
+\index{hook\_id\_keyboard@{hook\_id\_keyboard}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_keyboard}{hook\_id\_keyboard}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+keyboard = \mbox{\hyperlink{i8042_8h_a8092843c014fad609c1b01a4604a44a3}{IRQ\+\_\+\+KEYBOARD}}}
+
+\mbox{\Hypertarget{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}\label{keyboard_8c_aa1de7a5557e9d96b83cf03f73c92163f}} 
+\index{keyboard.c@{keyboard.c}!scancode@{scancode}}
+\index{scancode@{scancode}!keyboard.c@{keyboard.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily uint8\+\_\+t scancode = 0}
+

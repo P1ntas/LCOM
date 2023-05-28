@@ -1,0 +1,31 @@
+\hypertarget{asteroid_8h_source}{}\doxysection{asteroid.\+h}
+\mbox{\hyperlink{asteroid_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_ASTEROID\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_ASTEROID\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <minix/sysutil.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <lcom/lcf.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{video_8h}{video.h}}"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{12 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_a6150e0515f7202e2fb518f7206ed97dc}{x}};}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_a0a2f84ed7838f07779ae24c5a9086d33}{y}};}
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_a90b9d56e145baae469f7b6bb757d9b27}{xspeed}};}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_a8e19090b4aa5dd9bb43efe8b74488f6d}{yspeed}};}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_a2474a5474cbff19523a51eb1de01cda4}{width}};}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_ad12fc34ce789bce6c8a05d8a17138534}{height}};}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_asteroid_acb559820d9ca11295b4500f179ef6392}{i}};}
+\DoxyCodeLine{20 \} \mbox{\hyperlink{struct_asteroid}{Asteroid}};}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{30 \textcolor{keywordtype}{int} \mbox{\hyperlink{asteroid_8h_ab461d5f7ee911d59c927cf642a385060}{create\_asteroid}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{37 \textcolor{keywordtype}{int} \mbox{\hyperlink{asteroid_8h_a241a81e4363c0ed96a55ddf9ca0b1640}{update\_asteroid}}();}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{45 \textcolor{keywordtype}{int} \mbox{\hyperlink{asteroid_8h_a6be86d5630fa1cf9a2a682a5e351a5b2}{destroy\_asteroid}}(\mbox{\hyperlink{struct_asteroid}{Asteroid}}* \mbox{\hyperlink{game_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}{asteroid}});}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{56 \textcolor{keywordtype}{int} \mbox{\hyperlink{asteroid_8h_a8597ef1b20830645480c6a1a4a3e7dbe}{check\_collision}}(\mbox{\hyperlink{struct_asteroid}{Asteroid}} *\mbox{\hyperlink{game_8c_a15a0b1dafd9d6ff0ca53f62907da2f35}{asteroid}}, \textcolor{keywordtype}{int} ship\_x, \textcolor{keywordtype}{int} ship\_y, \textcolor{keywordtype}{int} ship\_width, \textcolor{keywordtype}{int} ship\_height);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
