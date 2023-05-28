@@ -79,7 +79,6 @@
 #define WRITE_BYTE_MOUSE    0xD4
 
 #define WAIT_KBC        20000
-#define MAX_ATTEMPS     10
 
 #define ACK 0xFA    
 #define NACK 0xFE

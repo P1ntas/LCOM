@@ -39,20 +39,9 @@
 #include "xpm/num0.xpm"
 #include "xpm/score.xpm"
 #include "xpm/msg.xpm"
-#include "sprite.h"
+#include "bitmap.h"
 #include "asteroid.h"
 #include "bullet.h"
-
-/**
- * 
- * @brief Enumerated type for the state of the system
- * 
- */
-typedef enum {
-    RUNNING,
-    EXIT,
-} SystemState;
-
 
 /**
  * 
@@ -60,12 +49,22 @@ typedef enum {
  * 
  */
 typedef enum {
-    MAIN_MENU,
+    MENU,
     SINGLE_PLAYER,
     MULTIPLAYER,
     CONTROLS,
     END
-} MenuState;
+} gameState;
+
+/**
+ * @brief Predefine the sprites used in the game
+ */
+void create_bitmaps();
+
+/**
+ * @brief Destroys the sprites used in the game
+ */
+void destroy_bitmaps();
 
 /**
  * @brief Actions to perform whenever a timer interrupt occurs
@@ -75,7 +74,7 @@ void update_timer_state();
 /**
  * @brief Actions to perform whenever a keyboard interrupt occurs
  */
-void update_keyboard_state();
+void update_gameState();
 
 /**
  * @brief Actions to perform whenever a mouse interrupt occurs
@@ -85,17 +84,7 @@ void update_mouse_state();
 /**
  * @brief Updates the state of the menu
  */
-void update_buttons_state();
-
-/**
- * @brief Predefine the sprites used in the game
- */
-void setup_sprites();
-
-/**
- * @brief Destroys the sprites used in the game
- */
-void destroy_sprites();
+void update_menu();
 
 /**
  * @brief Resets the game attributes, like the score, the spaceship position, etc.

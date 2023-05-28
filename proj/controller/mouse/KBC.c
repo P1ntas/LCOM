@@ -47,8 +47,8 @@ int read_KBC_output(uint8_t port, uint8_t *output, uint8_t mouse) {
 
 int (write_KBC_command)(uint8_t port, uint8_t commandByte) {
 
-    uint8_t status;
-    uint8_t attemps = MAX_ATTEMPS;
+    uint8_t status = 0;
+    uint8_t attemps = 10;
 
     while (attemps) {
 
@@ -66,7 +66,7 @@ int (write_KBC_command)(uint8_t port, uint8_t commandByte) {
 
             return 0;
         }
-        tickdelay(micros_to_ticks(WAIT_KBC));
+        tickdelay(micros_to_ticks(20000));
         attemps--;
     }
     

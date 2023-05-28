@@ -1,48 +1,48 @@
 #include "game.h"
 
+bool running = TRUE;
 extern uint8_t scancode;
+extern mouse_info_t mouse_info;
 extern uint8_t byte_index;
-SystemState systemState = RUNNING;
-MenuState menuState = MAIN_MENU;
-extern MouseInfo mouse_info;
 extern vbe_mode_info_t mode_info;
+gameState menuState = MENU;
 
-Sprite *mouse;
-Sprite *asteroid;
-Sprite *single_player;
-Sprite *multiplayer;
-Sprite *controls;
-Sprite *menu;
-Sprite *quit;
-Sprite *space;
-Sprite *title;
-Sprite *game_over;
-Sprite *controls_menu;
-Sprite *space_ship1;
-Sprite *space_ship2;
-Sprite *space_ship3;
-Sprite *space_ship4;
-Sprite *space_ship5;
-Sprite *space_ship6;
-Sprite *space_ship7;
-Sprite *space_ship8;
-Sprite *bullet;
-Sprite *num_1;
-Sprite *num_2;
-Sprite *num_3;
-Sprite *num_4;
-Sprite *num_5;
-Sprite *num_6;
-Sprite *num_7;
-Sprite *num_8;
-Sprite *num_9;
-Sprite *num_0;
-Sprite *score_sprite;
-Sprite *msg;
+BitMap *mouse;
+BitMap *asteroid;
+BitMap *single_player;
+BitMap *multiplayer;
+BitMap *controls;
+BitMap *menu;
+BitMap *quit;
+BitMap *space;
+BitMap *title;
+BitMap *game_over;
+BitMap *controls_menu;
+BitMap *space_ship1;
+BitMap *space_ship2;
+BitMap *space_ship3;
+BitMap *space_ship4;
+BitMap *space_ship5;
+BitMap *space_ship6;
+BitMap *space_ship7;
+BitMap *space_ship8;
+BitMap *bullet;
+BitMap *num_1;
+BitMap *num_2;
+BitMap *num_3;
+BitMap *num_4;
+BitMap *num_5;
+BitMap *num_6;
+BitMap *num_7;
+BitMap *num_8;
+BitMap *num_9;
+BitMap *num_0;
+BitMap *score_sprite;
+BitMap *msg;
 
 // Game attributes
-Asteroid* asteroids[1];
-Bullet* bullets[10];
+Asteroid* asteroids[3];
+Bullet* bullets[5];
 int score = 0;
 
 // Spaceship attributes
@@ -51,82 +51,82 @@ int y_pos = 300;
 int x_speed = 0;
 int y_speed = 0;
 
-int timer_interrupts = 0;
+int counter_timer = 0;
 
-void setup_sprites() {
-    mouse = create_sprite_xpm((xpm_map_t) mouse_xpm);
-    asteroid = create_sprite_xpm((xpm_map_t) asteroid_xpm);
-    single_player = create_sprite_xpm((xpm_map_t) single_player_xpm);
-    multiplayer = create_sprite_xpm((xpm_map_t) multiplayer_xpm);
-    controls = create_sprite_xpm((xpm_map_t) controls_xpm);
-    menu = create_sprite_xpm((xpm_map_t)menu_xpm);
-    quit = create_sprite_xpm((xpm_map_t) quit_xpm);
-    space = create_sprite_xpm((xpm_map_t) space_xpm);
-    title = create_sprite_xpm((xpm_map_t) title_xpm);
-    game_over = create_sprite_xpm((xpm_map_t) game_over_xpm);
-    controls_menu = create_sprite_xpm((xpm_map_t) controls_menu_xpm);
-    space_ship1 = create_sprite_xpm((xpm_map_t) space_ship_xpm_1);
-    space_ship2 = create_sprite_xpm((xpm_map_t) space_ship_xpm_2);
-    space_ship3 = create_sprite_xpm((xpm_map_t) space_ship_xpm_3);
-    space_ship4 = create_sprite_xpm((xpm_map_t) space_ship_xpm_4);
-    space_ship5 = create_sprite_xpm((xpm_map_t) space_ship_xpm_5);
-    space_ship6 = create_sprite_xpm((xpm_map_t) space_ship_xpm_6);
-    space_ship7 = create_sprite_xpm((xpm_map_t) space_ship_xpm_7);
-    space_ship8 = create_sprite_xpm((xpm_map_t) space_ship_xpm_8);
-    bullet = create_sprite_xpm((xpm_map_t) bullet_xpm);
-    num_1 = create_sprite_xpm((xpm_map_t) num_1_xpm);
-    num_2 = create_sprite_xpm((xpm_map_t) num_2_xpm);
-    num_3 = create_sprite_xpm((xpm_map_t) num_3_xpm);
-    num_4 = create_sprite_xpm((xpm_map_t) num_4_xpm);
-    num_5 = create_sprite_xpm((xpm_map_t) num_5_xpm);
-    num_6 = create_sprite_xpm((xpm_map_t) num_6_xpm);
-    num_7 = create_sprite_xpm((xpm_map_t) num_7_xpm);
-    num_8 = create_sprite_xpm((xpm_map_t) num_8_xpm);
-    num_9 = create_sprite_xpm((xpm_map_t) num_9_xpm);
-    num_0 = create_sprite_xpm((xpm_map_t) num_0_xpm);
-    score_sprite = create_sprite_xpm((xpm_map_t) score_xpm);
-    msg = create_sprite_xpm((xpm_map_t) msg_xpm);
+void create_bitmaps() {
+    mouse = create_bitmap((xpm_map_t) mouse_xpm);
+    asteroid = create_bitmap((xpm_map_t) asteroid_xpm);
+    single_player = create_bitmap((xpm_map_t) single_player_xpm);
+    multiplayer = create_bitmap((xpm_map_t) multiplayer_xpm);
+    controls = create_bitmap((xpm_map_t) controls_xpm);
+    menu = create_bitmap((xpm_map_t)menu_xpm);
+    quit = create_bitmap((xpm_map_t) quit_xpm);
+    space = create_bitmap((xpm_map_t) space_xpm);
+    title = create_bitmap((xpm_map_t) title_xpm);
+    game_over = create_bitmap((xpm_map_t) game_over_xpm);
+    controls_menu = create_bitmap((xpm_map_t) controls_menu_xpm);
+    space_ship1 = create_bitmap((xpm_map_t) space_ship_xpm_1);
+    space_ship2 = create_bitmap((xpm_map_t) space_ship_xpm_2);
+    space_ship3 = create_bitmap((xpm_map_t) space_ship_xpm_3);
+    space_ship4 = create_bitmap((xpm_map_t) space_ship_xpm_4);
+    space_ship5 = create_bitmap((xpm_map_t) space_ship_xpm_5);
+    space_ship6 = create_bitmap((xpm_map_t) space_ship_xpm_6);
+    space_ship7 = create_bitmap((xpm_map_t) space_ship_xpm_7);
+    space_ship8 = create_bitmap((xpm_map_t) space_ship_xpm_8);
+    bullet = create_bitmap((xpm_map_t) bullet_xpm);
+    num_1 = create_bitmap((xpm_map_t) num_1_xpm);
+    num_2 = create_bitmap((xpm_map_t) num_2_xpm);
+    num_3 = create_bitmap((xpm_map_t) num_3_xpm);
+    num_4 = create_bitmap((xpm_map_t) num_4_xpm);
+    num_5 = create_bitmap((xpm_map_t) num_5_xpm);
+    num_6 = create_bitmap((xpm_map_t) num_6_xpm);
+    num_7 = create_bitmap((xpm_map_t) num_7_xpm);
+    num_8 = create_bitmap((xpm_map_t) num_8_xpm);
+    num_9 = create_bitmap((xpm_map_t) num_9_xpm);
+    num_0 = create_bitmap((xpm_map_t) num_0_xpm);
+    score_sprite = create_bitmap((xpm_map_t) score_xpm);
+    msg = create_bitmap((xpm_map_t) msg_xpm);
 }
 
-void destroy_sprites() {
-    destroy_sprite(mouse);
-    destroy_sprite(asteroid);
-    destroy_sprite(single_player);
-    destroy_sprite(multiplayer);
-    destroy_sprite(controls);
-    destroy_sprite(menu);
-    destroy_sprite(quit);
-    destroy_sprite(space);
-    destroy_sprite(title);
-    destroy_sprite(game_over);
-    destroy_sprite(controls_menu);
-    destroy_sprite(space_ship1);
-    destroy_sprite(space_ship2);
-    destroy_sprite(space_ship3);
-    destroy_sprite(space_ship4);
-    destroy_sprite(space_ship5);
-    destroy_sprite(space_ship6);
-    destroy_sprite(space_ship7);
-    destroy_sprite(space_ship8);
-    destroy_sprite(bullet);
-    destroy_sprite(num_1);
-    destroy_sprite(num_2);
-    destroy_sprite(num_3);
-    destroy_sprite(num_4);
-    destroy_sprite(num_5);
-    destroy_sprite(num_6);
-    destroy_sprite(num_7);
-    destroy_sprite(num_8);
-    destroy_sprite(num_9);
-    destroy_sprite(num_0);
-    destroy_sprite(score_sprite);
-    destroy_sprite(msg);
+void destroy_bitmaps() {
+    destroy_bitmap(mouse);
+    destroy_bitmap(asteroid);
+    destroy_bitmap(single_player);
+    destroy_bitmap(multiplayer);
+    destroy_bitmap(controls);
+    destroy_bitmap(menu);
+    destroy_bitmap(quit);
+    destroy_bitmap(space);
+    destroy_bitmap(title);
+    destroy_bitmap(game_over);
+    destroy_bitmap(controls_menu);
+    destroy_bitmap(space_ship1);
+    destroy_bitmap(space_ship2);
+    destroy_bitmap(space_ship3);
+    destroy_bitmap(space_ship4);
+    destroy_bitmap(space_ship5);
+    destroy_bitmap(space_ship6);
+    destroy_bitmap(space_ship7);
+    destroy_bitmap(space_ship8);
+    destroy_bitmap(bullet);
+    destroy_bitmap(num_1);
+    destroy_bitmap(num_2);
+    destroy_bitmap(num_3);
+    destroy_bitmap(num_4);
+    destroy_bitmap(num_5);
+    destroy_bitmap(num_6);
+    destroy_bitmap(num_7);
+    destroy_bitmap(num_8);
+    destroy_bitmap(num_9);
+    destroy_bitmap(num_0);
+    destroy_bitmap(score_sprite);
+    destroy_bitmap(msg);
 }
 
 void update_timer_state() {
-    timer_interrupts++;
+    counter_timer++;
 
-    draw_new_frame();
+    refresh_screen();
     if (menuState == SINGLE_PLAYER || menuState == MULTIPLAYER) {
         update_spaceship_position();
         update_asteroid();
@@ -139,21 +139,21 @@ void update_timer_state() {
     swap_buffers();
 }
 
-void update_keyboard_state() {
+void update_gameState() {
     (kbc_ih)();
     switch (scancode) {
         case Q_KEY:
-            systemState = EXIT;
+            running = FALSE;
             break;
         case BREAK_ESC:
-            menuState = MAIN_MENU;
+            menuState = MENU;
             break;
         case G_KEY:
             menuState = SINGLE_PLAYER;
             game_reset();
             break;
         case M_KEY:
-            menuState = MAIN_MENU;
+            menuState = MENU;
             break;
         case C_KEY:
             menuState = CONTROLS;
@@ -168,48 +168,47 @@ void update_keyboard_state() {
 
 void update_mouse_state() {
     (mouse_ih)();
+
     mouse_sync_bytes();
+
     if (byte_index == 3) {
         mouse_sync_info();
-        update_buttons_state();
+        update_menu();
         byte_index = 0;
     }
 }
 
-void update_buttons_state() {
+void update_menu() {
 
     if (mouse_info.left_click) {
         if (mouse_info.x >= mode_info.XResolution/4 - 100 && mouse_info.y >= mode_info.YResolution/2 - 50
-                && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48))
-            single_player->pressed = 1;
+                && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48)) {
+            menuState = SINGLE_PLAYER;
+            game_reset();
+        }
 
         if ((mouse_info.x >= 3 * mode_info.XResolution/4 - 100) && (mouse_info.y >= mode_info.YResolution/2 - 50)
                 && (mouse_info.x <= 3 * mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48))
-            multiplayer->pressed = 1;
+            menuState = MULTIPLAYER;
 
         if ((mouse_info.x >= mode_info.XResolution/4 - 100) && (mouse_info.y >= 3 * mode_info.YResolution/4 - 50)
                 && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= 3 * mode_info.YResolution/4 - 50 + 48))
-            controls->pressed = 1;
+            menuState = CONTROLS;
 
         if ((mouse_info.x >= 3 * mode_info.XResolution/4 - 100) && (mouse_info.y >= 3 * mode_info.YResolution/4 - 50)
                 && (mouse_info.x <= 3 * mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= 3 * mode_info.YResolution/4 - 50 + 48))
-            quit->pressed = 1;
+            running = FALSE;
 
-    } else {
-        single_player->pressed = 0;
-        multiplayer->pressed = 0;
-        controls->pressed = 0;
-        quit->pressed = 0;
     }
 }
 
 void game_reset(){
     score = 0;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 5; i++) {
         if (bullets[i] != NULL)
             destroy_bullet(bullets[i]);
     }
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 3; i++) {
         if (asteroids[i] != NULL)
             destroy_asteroid(asteroids[i]);
     }

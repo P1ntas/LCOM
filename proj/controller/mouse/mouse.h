@@ -8,15 +8,15 @@
 #include "video.h"
 
 typedef struct {
-    uint8_t right_click;
     uint8_t left_click;
+    uint8_t right_click;
     int16_t x;
     int16_t y;
-} MouseInfo;   
+} mouse_info_t;   
 
-int (mouse_subscribe_interrupts)();
+int (mouse_subscribe_int)();
 
-int (mouse_unsubscribe_interrupts)();
+int (mouse_unsubscribe_int)();
 
 void (mouse_ih)();
 

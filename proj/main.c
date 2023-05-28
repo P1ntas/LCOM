@@ -5,7 +5,7 @@
 #include "controller/mouse/mouse.h"
 #include "game.h"
 
-extern SystemState systemState;
+extern bool running;
 
 int (main)(int argc, char *argv[]) {
   lcf_set_language("EN-US");
@@ -17,41 +17,41 @@ int (main)(int argc, char *argv[]) {
 }
 
 int setup() {
-  if (timer_set_frequency(TIMER, 60) != 0) return 1;
+  if (timer_set_frequency(0, 60) != 0) return 1;
   if (set_frame_buffers(0x115) != 0) return 1;
   if (set_mode(0x115) != 0) return 1;
-  setup_sprites();
-  if (timer_subscribe_interrupts() != 0) return 1;
-  if (keyboard_subscribe_interrupts() != 0) return 1;
-  if (mouse_subscribe_interrupts() != 0) return 1;
-  if (mouse_write(ENABLE_STREAM_MODE) != 0) return 1;
-  if (mouse_write(ENABLE_DATA_REPORT) != 0) return 1;
+  if (timer_subscribe_inte() != 0) return 1;
+  if (keyboard_subscribe_int() != 0) return 1;
+  if (mouse_subscribe_int() != 0) return 1;
+  if (mouse_write(0xEA) != 0) return 1;
+  if (mouse_write(0xF4) != 0) return 1;
+  create_bitmaps();
 
   return 0;
 }
 
-int teardown() {
+int shut_down() {
 
   if (vg_exit() != 0) return 1;
-  destroy_sprites();
-  if (timer_unsubscribe_interrupts() != 0) return 1;
-  if (keyboard_unsubscribe_interrupts() != 0) return 1;
-  if (mouse_unsubscribe_interrupts() != 0) return 1;
-  if (mouse_write(DISABLE_DATA_REPORT) != 0) return 1;
+  if (timer_unsubscribe_int() != 0) return 1;
+  if (keyboard_unsubscribe_int() != 0) return 1;
+  if (mouse_unsubscribe_int() != 0) return 1;
+  if (mouse_write(0xF5) != 0) return 1;
+  destroy_bitmaps();
 
   return 0;
 }
 
 int (proj_main_loop)(int argc, char *argv[]) {
 
-  if (setup() != 0) return teardown();
-  draw_new_frame();
+  if (setup() != 0) return shut_down();
+  refresh_screen();
 
   int ipc_status;
   message msg;
-  while (systemState == RUNNING) {
+  while (running) {
     if (driver_receive(ANY, &msg, &ipc_status) != 0) {
-      printf("driver_receive failed\n");
+      //printf("driver_receive failed\n");
       continue;
     }
 
@@ -59,12 +59,12 @@ int (proj_main_loop)(int argc, char *argv[]) {
       switch(_ENDPOINT_P(msg.m_source)) {
         case HARDWARE: 
           if (msg.m_notify.interrupts & BIT(0))    update_timer_state();
-          if (msg.m_notify.interrupts & BIT(1)) update_keyboard_state();
+          if (msg.m_notify.interrupts & BIT(1)) update_gameState();
           if (msg.m_notify.interrupts & BIT(2))    update_mouse_state();
         }
     }
   }
-  if (teardown() != 0) return 1;
+  if (shut_down() != 0) return 1;
 
   return 0;
 }

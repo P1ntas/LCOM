@@ -43,11 +43,11 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
   return 0;
 }
 
-int (timer_subscribe_interrupts)() {
+int (timer_subscribe_inte)() {
   return sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &hook_id);
 }
 
-int (timer_unsubscribe_interrupts)() {
+int (timer_unsubscribe_int)() {
   return sys_irqrmpolicy(&hook_id);
 }
 

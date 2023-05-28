@@ -21,7 +21,6 @@
 #define KBC_WRITE_CMD   0x60
 
 #define WAIT_KBC        20000
-#define MAX_ATTEMPS     10
 
 #define MOUSE_LB            BIT(0)
 #define MOUSE_RB            BIT(1)

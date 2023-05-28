@@ -3,7 +3,7 @@
 extern vbe_mode_info_t mode_info;
 
 unsigned int radius;
-extern Asteroid* asteroids[1];
+extern Asteroid* asteroids[3];
 
 int create_asteroid(int x, int y, int i) {
     Asteroid *asteroid = (Asteroid *)malloc(sizeof(Asteroid));
@@ -12,8 +12,8 @@ int create_asteroid(int x, int y, int i) {
 
     asteroid->x = x;
     asteroid->y = y;
-    asteroid->xspeed = (rand() % 21) - 10;
-    asteroid->yspeed = (rand() % 21) - 10;
+    asteroid->xspeed = (rand() % 15) - 7;
+    asteroid->yspeed = (rand() % 15) - 7;
     asteroid->width = 116;
     asteroid->height = 88;
     asteroid->i = i;
@@ -26,7 +26,7 @@ int create_asteroid(int x, int y, int i) {
 }
 
 int update_asteroid() {
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 3; i++) {
         if (asteroids[i] != NULL) {
             asteroids[i]->x += asteroids[i]->xspeed;
             asteroids[i]->y += asteroids[i]->yspeed;

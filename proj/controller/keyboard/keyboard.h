@@ -6,9 +6,9 @@
 #include "i8042.h"
 #include "KBC.h"
 
-int (keyboard_subscribe_interrupts)();
+int (keyboard_subscribe_int)();
 
-int (keyboard_unsubscribe_interrupts)();
+int (keyboard_unsubscribe_int)();
 
 void (kbc_ih)();
 

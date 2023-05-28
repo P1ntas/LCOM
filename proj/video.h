@@ -3,9 +3,8 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
-#include "VBE.h"
 #include "controller/mouse/mouse.h"
-#include "sprite.h"
+#include "bitmap.h"
 #include "game.h"
 
 
@@ -83,17 +82,12 @@ void swap_buffers();
 /**
  * @brief Draws a new frame, depending on the current state of the menu
  */
-void draw_new_frame();
+void refresh_screen();
 
 /**
  * @brief Draws the initial menu
  */
 void draw_initial_menu();
-
-/**
- * @brief Draws the controls menu
- */
-void draw_controls_menu();
 
 /**
  * @brief Draws the finish menu
@@ -129,18 +123,13 @@ int draw_bullet(int x, int y);
 /**
  * @brief Draws a sprite in the specified coordinates
  * 
- * @param sprite Sprite to be drawn
+ * @param sprite BitMap to be drawn
  * @param x X coordinate of the sprite
  * @param y Y coordinate of the sprite
  * 
  * @return Return 0 upon success and non-zero otherwise
  */
-int draw_sprite_xpm(Sprite *sprite, int x, int y);
-
-/**
- * @brief Updates the state of the menu
- */
-void update_state_menu();
+int draw_sprite_xpm(BitMap *sprite, int x, int y);
 
 /**
  * @brief Draws the score field in the specified coordinates

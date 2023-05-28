@@ -4,22 +4,22 @@
 
 extern uint8_t scancode;
 extern vbe_mode_info_t mode_info;
-extern Sprite *space_ship1;
-extern Sprite *space_ship2;
-extern Sprite *space_ship3;
-extern Sprite *space_ship4;
-extern Sprite *space_ship5;
-extern Sprite *space_ship6;
-extern Sprite *space_ship7;
-extern Sprite *space_ship8;
-extern Sprite *space;
+extern BitMap *space_ship1;
+extern BitMap *space_ship2;
+extern BitMap *space_ship3;
+extern BitMap *space_ship4;
+extern BitMap *space_ship5;
+extern BitMap *space_ship6;
+extern BitMap *space_ship7;
+extern BitMap *space_ship8;
+extern BitMap *space;
 extern int x_pos;
 extern int y_pos;
 extern int x_speed;
 extern int y_speed;
 
-extern MenuState menuState;
-extern Asteroid* asteroids[1];
+extern gameState menuState;
+extern Asteroid* asteroids[3];
 
 void update_spaceship_position() 
 {
@@ -63,7 +63,7 @@ void update_spaceship_position()
     else if (x_speed == 0 && y_speed < 0) draw_sprite_xpm(space_ship1, x_pos, y_pos); // vertical movement up 
     else draw_sprite_xpm(space_ship1, x_pos, y_pos); // default sprite
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 3; i++) {
         if (asteroids[i] != NULL) {
             if (check_collision(asteroids[i], x_pos, y_pos, space_ship1->width, space_ship1->height)) {
                 menuState = END;

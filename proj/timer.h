@@ -20,14 +20,14 @@ int (timer_set_frequency)(uint8_t timer, uint32_t freq);
  * 
  * @return int 0 if successful, 1 otherwise
  */
-int (timer_subscribe_interrupts)();
+int (timer_subscribe_inte)();
 
 /**
  * @brief Unsubscribes the timer interrupts, using sys_irqrmpolicy
  * 
  * @return int 0 if successful, 1 otherwise
  */
-int (timer_unsubscribe_interrupts)();
+int (timer_unsubscribe_int)();
 
 /**
  * @brief Gets the configuration of the timer

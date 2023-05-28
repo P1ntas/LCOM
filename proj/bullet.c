@@ -6,8 +6,8 @@
 
 extern uint8_t scancode;
 extern Bullet* bullets[5];
-extern Asteroid* asteroids[1];
-extern MouseInfo mouse_info;
+extern Asteroid* asteroids[3];
+extern mouse_info_t mouse_info;
 extern vbe_mode_info_t mode_info;
 
 extern int x_pos;
@@ -156,7 +156,7 @@ int destroy_bullet(Bullet* bullet) {
 int check_bullet_collision() {
     for (int i = 0; i < 5; i++) {
         if (bullets[i] != NULL) {
-            for (int j = 0; j < 1; j++) {
+            for (int j = 0; j < 3; j++) {
                 if (asteroids[j] != NULL) {
                     if (bullets[i]->x > asteroids[j]->x + asteroids[j]->width ||
                         bullets[i]->x + bullets[i]->width < asteroids[j]->x ||

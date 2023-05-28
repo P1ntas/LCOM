@@ -2,46 +2,43 @@
 #include "video.h"
 #include <math.h>
 
-// Machine attributes
 uint8_t *primary_vm_buffer;
 uint8_t *secondary_vm_buffer;
 uint8_t *drawing_vm_buffer;
 uint32_t frame_buffer_size;
-extern int timer_interrupts;
-extern MouseInfo mouse_info;
-extern MenuState menuState;
-extern SystemState systemState; 
+extern int counter_timer;
+extern mouse_info_t mouse_info;
+extern gameState menuState;
+extern bool running; 
 
 #define Double_Buffering 1 // 0 for single buffering, 1 for double buffering
 
-// Sprites
-extern Sprite *mouse;
-extern Sprite *asteroid;
-extern Sprite *single_player;
-extern Sprite *multiplayer;
-extern Sprite *controls;
-extern Sprite *menu;
-extern Sprite *quit;
-extern Sprite *space;
-extern Sprite *title;
-extern Sprite *game_over;
-extern Sprite *controls_menu;
-extern Sprite *space_ship;
-extern Sprite *bullet;
-extern Sprite *num_1;
-extern Sprite *num_2;
-extern Sprite *num_3;
-extern Sprite *num_4;
-extern Sprite *num_5;
-extern Sprite *num_6;
-extern Sprite *num_7;
-extern Sprite *num_8;
-extern Sprite *num_9;
-extern Sprite *num_0;
-extern Sprite *score_sprite;
-extern Sprite *msg;
+extern BitMap *mouse;
+extern BitMap *asteroid;
+extern BitMap *single_player;
+extern BitMap *multiplayer;
+extern BitMap *controls;
+extern BitMap *menu;
+extern BitMap *quit;
+extern BitMap *space;
+extern BitMap *title;
+extern BitMap *game_over;
+extern BitMap *controls_menu;
+extern BitMap *space_ship;
+extern BitMap *bullet;
+extern BitMap *num_1;
+extern BitMap *num_2;
+extern BitMap *num_3;
+extern BitMap *num_4;
+extern BitMap *num_5;
+extern BitMap *num_6;
+extern BitMap *num_7;
+extern BitMap *num_8;
+extern BitMap *num_9;
+extern BitMap *num_0;
+extern BitMap *score_sprite;
+extern BitMap *msg;
 
-// Game attributes
 extern int score;
 
 
@@ -52,13 +49,9 @@ int(set_mode)(uint16_t mode) {
   r86.intno = 0x10;
   r86.ah = 0x4F;
   r86.al = 0x02;
-  //r86.ax = 0x4F02;
   r86.bx = mode | BIT(14);
 
-  if (sys_int86(&r86) != 0) {
-    //failed
-    return 1;
-  }
+  if (sys_int86(&r86) != 0) return 1;
 
   return 0;
 }
@@ -67,7 +60,6 @@ int (set_frame_buffer)(uint16_t mode) {
 
   memset(&mode_info, 0, sizeof(mode_info));
   if (vbe_get_mode_info(mode, &mode_info) != 0) {
-    printf("Failed at getting mode info.\n");
     return 1;
   }
 
@@ -86,7 +78,6 @@ int (set_frame_buffer)(uint16_t mode) {
   
   primary_vm_buffer = (uint8_t *) vm_map_phys(SELF, (void *) mr.mr_base, vram_size);
   if (primary_vm_buffer == NULL) {
-    // failed
     return 1;
   }
   return 0;
@@ -139,10 +130,10 @@ void swap_buffers() {
     memcpy(primary_vm_buffer, secondary_vm_buffer, frame_buffer_size);
 }
 
-void draw_new_frame() {
+void refresh_screen() {
     //printf("Drawing new frame\n");
     switch (menuState) {
-        case MAIN_MENU:
+        case MENU:
             //printf("Drawing main menu\n");
             draw_initial_menu();
             break;
@@ -154,7 +145,7 @@ void draw_new_frame() {
             break;
         case CONTROLS:
             //printf("Drawing controls\n");
-            draw_controls_menu();
+            draw_sprite_xpm(controls_menu, 0, 0);
             break;
         case END:
             //printf("Drawing end\n");
@@ -173,14 +164,6 @@ void draw_initial_menu() {
     draw_sprite_xpm(controls, mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
     draw_sprite_xpm(multiplayer, 3 * mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
     draw_sprite_xpm(quit, 3 * mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
-
-    update_state_menu();
-}
-
-void draw_controls_menu() {
-    draw_sprite_xpm(controls_menu, 0, 0);
-
-    update_state_menu();
 }
 
 void draw_finish_menu() {
@@ -191,7 +174,7 @@ void draw_finish_menu() {
 
 void draw_mouse() {
     switch (menuState) {
-        case MAIN_MENU: case END: case CONTROLS:
+        case MENU: case END: case CONTROLS:
             draw_sprite_xpm(mouse, mouse_info.x, mouse_info.y);
             break;
         default: 
@@ -218,35 +201,20 @@ int draw_bullet(int x, int y) {
 }
 
 
-int draw_sprite_xpm(Sprite *sprite, int x, int y) { 
+int draw_sprite_xpm(BitMap *sprite, int x, int y) { 
     uint16_t height = sprite->height;
     uint16_t width = sprite->width;
     uint32_t current_color;
     for (int h = 0 ; h < height ; h++) {
       for (int w = 0 ; w < width ; w++) {
         current_color = sprite->colors[w + h*width];
-        if (current_color == TRANSPARENT) continue;
+        if (current_color == 0xFFFFFE) continue;
         if (draw_pixel(x + w, y + h, current_color) != 0) {
           return 1;
         }
       }
     }
     return 0; 
-}
-
-void update_state_menu() {
-    if (single_player->pressed == 1) {
-        menuState = SINGLE_PLAYER;
-        game_reset();
-    }
-    else if (multiplayer->pressed == 1) menuState = MULTIPLAYER;
-    else if (controls->pressed == 1) menuState = CONTROLS;
-    else if (quit->pressed == 1) systemState = EXIT;
-
-    single_player->pressed = 0;
-    multiplayer->pressed = 0;
-    controls->pressed = 0;
-    quit->pressed = 0;
 }
 
 void draw_score(int x, int y, int score) {
