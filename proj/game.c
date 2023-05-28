@@ -6,6 +6,9 @@ extern mouse_info_t mouse_info;
 extern uint8_t byte_index;
 extern vbe_mode_info_t mode_info;
 gameState menuState = MENU;
+extern uint8_t *primary_vm_buffer;
+extern uint8_t *secondary_vm_buffer;
+extern uint32_t frame_buffer_size;
 
 BitMap *mouse;
 BitMap *asteroid;
@@ -136,7 +139,7 @@ void update_timer_state() {
         draw_score(mode_info.XResolution - 300, 0, score);
     }
     draw_mouse();
-    swap_buffers();
+    memcpy(primary_vm_buffer, secondary_vm_buffer, frame_buffer_size);
 }
 
 void update_gameState() {

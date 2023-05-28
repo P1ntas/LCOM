@@ -52,16 +52,16 @@ void update_spaceship_position()
     if (y_pos > mode_info.YResolution) y_pos -= mode_info.YResolution;
     else if (y_pos < 0) y_pos += mode_info.YResolution;
 
-    draw_sprite_xpm(space, 0, 0);
-    if (x_speed > 0 && y_speed > 0) draw_sprite_xpm(space_ship8, x_pos, y_pos); // diagonal movement to the right and down 
-    else if (x_speed < 0 && y_speed < 0) draw_sprite_xpm(space_ship7, x_pos, y_pos); // diagonal movement to the left and up 
-    else if (x_speed > 0 && y_speed < 0) draw_sprite_xpm(space_ship6, x_pos, y_pos); // diagonal movement to the right and up 
-    else if (x_speed < 0 && y_speed > 0) draw_sprite_xpm(space_ship5, x_pos, y_pos); // diagonal movement to the left and down 
-    else if (x_speed > 0 && y_speed == 0) draw_sprite_xpm(space_ship4, x_pos, y_pos); // horizontal movement to the right 
-    else if (x_speed < 0 && y_speed == 0) draw_sprite_xpm(space_ship3, x_pos, y_pos); // horizontal movement to the left
-    else if (x_speed == 0 && y_speed > 0) draw_sprite_xpm(space_ship2, x_pos, y_pos); // vertical movement down 
-    else if (x_speed == 0 && y_speed < 0) draw_sprite_xpm(space_ship1, x_pos, y_pos); // vertical movement up 
-    else draw_sprite_xpm(space_ship1, x_pos, y_pos); // default sprite
+    draw_bitmap(space, 0, 0);
+    if (x_speed > 0 && y_speed > 0) draw_bitmap(space_ship8, x_pos, y_pos); // diagonal movement to the right and down 
+    else if (x_speed < 0 && y_speed < 0) draw_bitmap(space_ship7, x_pos, y_pos); // diagonal movement to the left and up 
+    else if (x_speed > 0 && y_speed < 0) draw_bitmap(space_ship6, x_pos, y_pos); // diagonal movement to the right and up 
+    else if (x_speed < 0 && y_speed > 0) draw_bitmap(space_ship5, x_pos, y_pos); // diagonal movement to the left and down 
+    else if (x_speed > 0 && y_speed == 0) draw_bitmap(space_ship4, x_pos, y_pos); // horizontal movement to the right 
+    else if (x_speed < 0 && y_speed == 0) draw_bitmap(space_ship3, x_pos, y_pos); // horizontal movement to the left
+    else if (x_speed == 0 && y_speed > 0) draw_bitmap(space_ship2, x_pos, y_pos); // vertical movement down 
+    else if (x_speed == 0 && y_speed < 0) draw_bitmap(space_ship1, x_pos, y_pos); // vertical movement up 
+    else draw_bitmap(space_ship1, x_pos, y_pos); // default sprite
 
     for (int i = 0; i < 3; i++) {
         if (asteroids[i] != NULL) {

@@ -75,11 +75,6 @@ int (draw_rectangle)(uint16_t x, uint16_t y, uint16_t width, uint16_t height, ui
 int set_frame_buffers(uint16_t mode);
 
 /**
- * @brief Swaps the frame buffers
- */
-void swap_buffers();
-
-/**
  * @brief Draws a new frame, depending on the current state of the menu
  */
 void refresh_screen();
@@ -92,8 +87,7 @@ void draw_initial_menu();
 /**
  * @brief Draws the finish menu
  */
-void draw_finish_menu();
-//void draw_game();
+void draw_game_over();
 
 /**
  * @brief Draws the mouse
@@ -123,13 +117,13 @@ int draw_bullet(int x, int y);
 /**
  * @brief Draws a sprite in the specified coordinates
  * 
- * @param sprite BitMap to be drawn
+ * @param bitmap BitMap to be drawn
  * @param x X coordinate of the sprite
  * @param y Y coordinate of the sprite
  * 
  * @return Return 0 upon success and non-zero otherwise
  */
-int draw_sprite_xpm(BitMap *sprite, int x, int y);
+int draw_bitmap(BitMap *bitmap, int x, int y);
 
 /**
  * @brief Draws the score field in the specified coordinates

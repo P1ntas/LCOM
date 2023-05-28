@@ -126,10 +126,6 @@ int set_frame_buffers(uint16_t mode) {
     return 0;
 }
 
-void swap_buffers() {
-    memcpy(primary_vm_buffer, secondary_vm_buffer, frame_buffer_size);
-}
-
 void refresh_screen() {
     //printf("Drawing new frame\n");
     switch (menuState) {
@@ -145,11 +141,11 @@ void refresh_screen() {
             break;
         case CONTROLS:
             //printf("Drawing controls\n");
-            draw_sprite_xpm(controls_menu, 0, 0);
+            draw_bitmap(controls_menu, 0, 0);
             break;
         case END:
             //printf("Drawing end\n");
-            draw_finish_menu();
+            draw_game_over();
             break;
         default:
             break;
@@ -158,24 +154,24 @@ void refresh_screen() {
 
 
 void draw_initial_menu() {
-    draw_sprite_xpm(menu, 0, 0);
-    draw_sprite_xpm(title, mode_info.XResolution/4, 20);
-    draw_sprite_xpm(single_player, mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
-    draw_sprite_xpm(controls, mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
-    draw_sprite_xpm(multiplayer, 3 * mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
-    draw_sprite_xpm(quit, 3 * mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
+    draw_bitmap(menu, 0, 0);
+    draw_bitmap(title, mode_info.XResolution/4, 20);
+    draw_bitmap(single_player, mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
+    draw_bitmap(controls, mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
+    draw_bitmap(multiplayer, 3 * mode_info.XResolution/4 - 100, mode_info.YResolution/2 - 50);
+    draw_bitmap(quit, 3 * mode_info.XResolution/4 - 100, 3 * mode_info.YResolution/4 - 50);
 }
 
-void draw_finish_menu() {
-    draw_sprite_xpm(game_over, 0, 0);
+void draw_game_over() {
+    draw_bitmap(game_over, 0, 0);
     draw_score(mode_info.XResolution/3 - 15, 3 * mode_info.YResolution/4, score);
-    draw_sprite_xpm(msg, mode_info.XResolution/4, 3 * mode_info.YResolution/4 + 60);
+    draw_bitmap(msg, mode_info.XResolution/4, 3 * mode_info.YResolution/4 + 60);
 }
 
 void draw_mouse() {
     switch (menuState) {
         case MENU: case END: case CONTROLS:
-            draw_sprite_xpm(mouse, mouse_info.x, mouse_info.y);
+            draw_bitmap(mouse, mouse_info.x, mouse_info.y);
             break;
         default: 
             break;
@@ -186,7 +182,7 @@ int draw_asteroid(int x, int y) {
 
     if (x > mode_info.XResolution || x < 0 || y > mode_info.YResolution || y < 0) return 1;
 
-    draw_sprite_xpm(asteroid, x, y);
+    draw_bitmap(asteroid, x, y);
 
     return 0;
 }
@@ -195,21 +191,21 @@ int draw_bullet(int x, int y) {
 
     if (x > mode_info.XResolution || x < 0 || y > mode_info.YResolution || y < 0) return 1;
 
-    draw_sprite_xpm(bullet, x, y);
+    draw_bitmap(bullet, x, y);
 
     return 0;
 }
 
 
-int draw_sprite_xpm(BitMap *sprite, int x, int y) { 
-    uint16_t height = sprite->height;
-    uint16_t width = sprite->width;
+int draw_bitmap(BitMap *sprite, int x, int y) { 
     uint32_t current_color;
-    for (int h = 0 ; h < height ; h++) {
-      for (int w = 0 ; w < width ; w++) {
-        current_color = sprite->colors[w + h*width];
+    uint16_t width = sprite->width;
+    uint16_t height = sprite->height;
+    for (int i = 0 ; i < height ; i++) {
+      for (int j = 0 ; j < width ; j++) {
+        current_color = sprite->colors[j + i*width];
         if (current_color == 0xFFFFFE) continue;
-        if (draw_pixel(x + w, y + h, current_color) != 0) {
+        if (draw_pixel(x + j, y + i, current_color) != 0) {
           return 1;
         }
       }
@@ -219,7 +215,7 @@ int draw_sprite_xpm(BitMap *sprite, int x, int y) {
 
 void draw_score(int x, int y, int score) {
     draw_rectangle(x, y, 300, 50, 0xFFFFFF);
-    draw_sprite_xpm(score_sprite, x+10, y+10);
+    draw_bitmap(score_sprite, x+10, y+10);
 
     int digitX = x + 270;
     int digitY = y + 10;
@@ -242,34 +238,34 @@ void draw_score(int x, int y, int score) {
 void draw_number(int x, int y, int number) {
     switch (number) {
         case 0:
-            draw_sprite_xpm(num_0, x, y);
+            draw_bitmap(num_0, x, y);
             break;
         case 1:
-            draw_sprite_xpm(num_1, x, y);
+            draw_bitmap(num_1, x, y);
             break;
         case 2:
-            draw_sprite_xpm(num_2, x, y);
+            draw_bitmap(num_2, x, y);
             break;
         case 3:
-            draw_sprite_xpm(num_3, x, y);
+            draw_bitmap(num_3, x, y);
             break;
         case 4:
-            draw_sprite_xpm(num_4, x, y);
+            draw_bitmap(num_4, x, y);
             break;
         case 5:
-            draw_sprite_xpm(num_5, x, y);
+            draw_bitmap(num_5, x, y);
             break;
         case 6: 
-            draw_sprite_xpm(num_6, x, y);
+            draw_bitmap(num_6, x, y);
             break;
         case 7: 
-            draw_sprite_xpm(num_7, x, y);
+            draw_bitmap(num_7, x, y);
             break;
         case 8:
-            draw_sprite_xpm(num_8, x, y);
+            draw_bitmap(num_8, x, y);
             break;
         case 9:
-            draw_sprite_xpm(num_9, x, y);
+            draw_bitmap(num_9, x, y);
             break;
         default:
             break;
