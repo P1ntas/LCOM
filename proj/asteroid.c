@@ -18,7 +18,7 @@ int create_asteroid(int x, int y, int i) {
     asteroid->height = 88;
     asteroid->i = i;
 
-    draw_asteroid(x, y);
+    //draw_asteroid(x, y);
 
     asteroids[i] = asteroid;
 

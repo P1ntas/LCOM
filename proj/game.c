@@ -183,7 +183,7 @@ void update_mouse_state() {
 
 void update_menu() {
 
-    if (mouse_info.left_click) {
+    if (mouse_info.left_click && menuState == MENU) {
         if (mouse_info.x >= mode_info.XResolution/4 - 100 && mouse_info.y >= mode_info.YResolution/2 - 50
                 && (mouse_info.x <= mode_info.XResolution/4 - 100 + 192) && (mouse_info.y <= mode_info.YResolution/2 - 50 + 48)) {
             menuState = SINGLE_PLAYER;

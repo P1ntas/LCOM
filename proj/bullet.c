@@ -99,7 +99,7 @@ int create_bullet(int x, int y, int xspeed, int yspeed, int i) {
     bullet->i = i;
     bullet->timer = 100;
 
-    draw_bullet(x, y);
+    //draw_bullet(x, y);
 
     bullets[i] = bullet;
 
