@@ -1,6 +1,7 @@
 #ifndef _LCOM_I8042_KEY_H_
 #define _LCOM_I8042_KEY_H_
 
+#define IRQ_MOUSE       12
 #define IRQ_KEYBOARD    1
 
 #define TIMEOUT_ERROR   BIT(6)

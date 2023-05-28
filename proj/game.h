@@ -4,7 +4,7 @@
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
 #include "KBC.h"
-#include "controller/mouse/mouse.h"
+#include "mouse.h"
 #include "video.h"
 #include "spaceShip.h"
 #include "xpm/mouse.xpm"

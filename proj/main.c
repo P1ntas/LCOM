@@ -2,7 +2,7 @@
 #include "timer.h"
 #include "video.h"
 #include "keyboard.h"
-#include "controller/mouse/mouse.h"
+#include "mouse.h"
 #include "game.h"
 
 extern bool running;

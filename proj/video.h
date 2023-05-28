@@ -3,7 +3,7 @@
 
 #include <minix/sysutil.h>
 #include <lcom/lcf.h>
-#include "controller/mouse/mouse.h"
+#include "mouse.h"
 #include "bitmap.h"
 #include "game.h"
 
