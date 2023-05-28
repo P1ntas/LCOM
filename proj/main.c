@@ -21,7 +21,7 @@ int setup() {
   if (set_frame_buffers(0x115) != 0) return 1;
   if (set_mode(0x115) != 0) return 1;
   if (timer_subscribe_inte() != 0) return 1;
-  if (keyboard_subscribe_interrupts() != 0) return 1;
+  if (keyboard_subscribe_int() != 0) return 1;
   if (mouse_subscribe_int() != 0) return 1;
   if (mouse_write(0xEA) != 0) return 1;
   if (mouse_write(0xF4) != 0) return 1;
@@ -34,7 +34,7 @@ int shut_down() {
 
   if (vg_exit() != 0) return 1;
   if (timer_unsubscribe_int() != 0) return 1;
-  if (keyboard_unsubscribe_interrupts() != 0) return 1;
+  if (keyboard_unsubscribe_int() != 0) return 1;
   if (mouse_unsubscribe_int() != 0) return 1;
   if (mouse_write(0xF5) != 0) return 1;
   destroy_bitmaps();

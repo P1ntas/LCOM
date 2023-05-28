@@ -1,9 +1,5 @@
 #include "KBC.h"
 
-int (read_KBC_status)(uint8_t* status) {
-    return util_sys_inb(KBC_STATUS_REG, status);
-}
-
 int read_KBC_output(uint8_t port, uint8_t *output, uint8_t mouse) {
 
     uint8_t status;
@@ -11,7 +7,7 @@ int read_KBC_output(uint8_t port, uint8_t *output, uint8_t mouse) {
     
     while (attemps) {
 
-        if (read_KBC_status(&status) != 0) {             
+        if (util_sys_inb(KBC_STATUS_REG, &status) != 0) {             
             return 1;
         }
 
@@ -46,7 +42,7 @@ int (write_KBC_command)(uint8_t port, uint8_t commandByte) {
 
     while (attemps) {
 
-        if (read_KBC_status(&status) != 0) return 1;
+        if (util_sys_inb(KBC_STATUS_REG, &status) != 0) return 1;
 
         if ((status & BIT(1)) == 0) {
 

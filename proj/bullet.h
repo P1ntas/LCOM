@@ -82,13 +82,6 @@ int shoot();
 int update_bullets();
 
 /**
- * @brief Draws the bullet
- * 
- * @return int 0 if success, 1 otherwise
- */
-int draw_bullet(int x, int y);
-
-/**
  * @brief Destroys the bullet
  * 
  * @param bullet pointer to the bullet to be destroyed
